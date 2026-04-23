@@ -1,5 +1,29 @@
 import { useState, useEffect, useRef } from 'react'
-import { Heart, MapPin, Eye, GraduationCap, Users, Mic, Briefcase, Activity, Send, X, Mail, MapPin as Location, CheckCircle, Star, Sparkles, ArrowRight, HandHeart } from 'lucide-react'
+import { 
+  Heart, MapPin, Eye, GraduationCap, Users, Mic, Briefcase, Activity, Send, X, Mail, 
+  MapPin as Location, CheckCircle, Star, Sparkles, ArrowRight, HandHeart, 
+  Image, Play, ChevronLeft, ChevronRight, Clock, DollarSign
+} from 'lucide-react'
+
+const activities = [
+  { id: 1, title: 'Beasiswa Anak Yatim', pillar: 'Pendidikan', image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&h=400&fit=crop', date: '20 Apr 2026' },
+  { id: 2, title: 'Distribusi Paket Sembako', pillar: 'Sosial', image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&h=400&fit=crop', date: '19 Apr 2026' },
+  { id: 3, title: 'Bantuan Kesehatan', pillar: 'Sosial', image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop', date: '18 Apr 2026' },
+  { id: 4, title: 'Webinar Islami', pillar: 'Media & Dakwah', image: 'https://images.unsplash.com/photo-1591115765373-ed8b0e5a8a23?w=600&h=400&fit=crop', date: '17 Apr 2026' },
+  { id: 5, title: 'Qurban 2026', pillar: 'Sedekah & Infaq', image: 'https://images.unsplash.com/photo-1531306728370-e2ebd9d7e99f?w=600&h=400&fit=crop', date: '16 Apr 2026' },
+  { id: 6, title: 'Modal UMKM Makassar', pillar: 'Ekonomi Ummat', image: 'https://images.unsplash.com/photo-1556742049-0c23a7e4ab7c?w=600&h=400&fit=crop', date: '15 Apr 2026' },
+  { id: 7, title: 'Les Privat Gratis', pillar: 'Pendidikan', image: 'https://images.unsplash.com/photo-1434030216411-0b793b9d9f1d?w=600&h=400&fit=crop', date: '14 Apr 2026' },
+  { id: 8, title: 'Panti Asuhan', pillar: 'Sosial', image: 'https://images.unsplash.com/photo-1531983412531-1f49a365ffed?w=600&h=400&fit=crop', date: '13 Apr 2026' },
+]
+
+const donors = [
+  { name: 'Ahmad Y.', amount: '500rb', time: 'Baru' },
+  { name: 'Siti H.', amount: '100rb', time: '5 mnt' },
+  { name: 'H. Abdul M.', amount: '1jt', time: '15 mnt' },
+  { name: 'Dr. Faisal', amount: '250rb', time: '1 jam' },
+  { name: 'Ibu Minah', amount: '75rb', time: '2 jam' },
+  { name: 'Pak Hamid', amount: '200rb', time: '3 jam' },
+]
 
 const pillars = [
   { id: 'pendidikan', title: 'Pendidikan', icon: GraduationCap, color: 'bg-blue-500', gradient: 'from-blue-500 to-blue-700', campaigns: [
@@ -34,20 +58,6 @@ const pillars = [
   ]}
 ]
 
-const activities = [
-  { title: 'Beasiswa 50 Anak Yatim', date: '20 Apr 2026', icon: GraduationCap },
-  { title: 'Distribusi Paket Ramadan', date: '19 Apr 2026', icon: Star },
-  { title: 'Pelatihan Digital Marketing', date: '18 Apr 2026', icon: Briefcase },
-  { title: 'Bantuan Kesehatan Gratis', date: '17 Apr 2026', icon: Activity }
-]
-
-const donors = [
-  { name: 'Ahmad Y.', amount: '500rb', time: 'Baru' },
-  { name: 'Siti H.', amount: '100rb', time: '5 mnt' },
-  { name: 'H. Abdul M.', amount: '1jt', time: '15 mnt' },
-  { name: 'Dr. Faisal', amount: '250rb', time: '1 jam' }
-]
-
 function App() {
   const [activePillar, setActivePillar] = useState('pendidikan')
   const [modalOpen, setModalOpen] = useState(false)
@@ -55,9 +65,11 @@ function App() {
   const [donorData, setDonorData] = useState({ name: '', whatsapp: '', email: '' })
   const [donationAmount, setDonationAmount] = useState(0)
   const [loaded, setLoaded] = useState(false)
+  const [galleryIndex, setGalleryIndex] = useState(0)
+  const galleryRef = useRef(null)
 
-  const heroRef = useRef(null)
-  const programsRef = useRef(null)
+  const currentPillar = pillars.find(p => p.id === activePillar)
+  const formatRupiah = (num) => new Intl.NumberFormat('id-ID').format(num)
 
   useEffect(() => {
     setLoaded(true)
@@ -65,8 +77,13 @@ function App() {
     if (saved) setDonorData(JSON.parse(saved))
   }, [])
 
-  const currentPillar = pillars.find(p => p.id === activePillar)
-  const formatRupiah = (num) => new Intl.NumberFormat('id-ID').format(num)
+  // Auto-scroll gallery
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setGalleryIndex(prev => (prev + 1) % activities.length)
+    }, 4000)
+    return () => clearInterval(interval)
+  }, [])
 
   const openModal = (pillarId, campaignId) => {
     const pillar = pillars.find(p => p.id === pillarId)
@@ -101,6 +118,9 @@ function App() {
     closeModal()
   }
 
+  const prevGallery = () => setGalleryIndex(prev => (prev - 1 + activities.length) % activities.length)
+  const nextGallery = () => setGalleryIndex(prev => (prev + 1) % activities.length)
+
   return (
     <div className="min-h-screen bg-cream-soft">
       {/* Navigation */}
@@ -122,7 +142,7 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section ref={heroRef} className="min-h-screen flex items-center pt-20 bg-gradient-to-b from-cream-soft via-white to-white relative overflow-hidden">
+      <section className="min-h-screen flex items-center pt-20 bg-gradient-to-b from-cream-soft via-white to-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-40" style={{ backgroundImage: 'radial-gradient(#006D77 0.5px, transparent 0.5px)', backgroundSize: '16px 16px' }}></div>
         <div className="absolute top-1/4 -left-32 w-64 h-64 bg-emerald-bright/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-teal-deep/10 rounded-full blur-3xl"></div>
@@ -179,7 +199,7 @@ function App() {
       </section>
 
       {/* Programs Section */}
-      <section ref={programsRef} id="programs" className="py-20 lg:py-28 bg-white relative">
+      <section id="programs" className="py-20 lg:py-28 bg-white relative">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block bg-emerald-bright/10 text-emerald-bright font-medium px-4 py-2 rounded-full text-sm mb-4">PROGRAM KAMI</span>
@@ -230,8 +250,8 @@ function App() {
                 >
                   {/* Image */}
                   <div className="relative h-40 overflow-hidden">
-                    <img src={c.image} alt={c.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                    <div className={`absolute inset-0 bg-gradient-to-t ${p.gradient} opacity-60`}></div>
+                    <img src={c.image} alt={c.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onError={(e) => e.target.style.display = 'none'} />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${currentPillar.gradient} opacity-60`}></div>
                     <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
                       <span className="text-white/90 text-xs font-medium">{currentPillar.title}</span>
                       <span className="bg-white/90 text-teal-deep text-xs font-bold px-2 py-1 rounded-full">{percent}%</span>
@@ -280,51 +300,91 @@ function App() {
         </div>
       </section>
 
-      {/* Transparency Section */}
+      {/* Transparency - Gallery Section */}
       <section id="transparency" className="py-20 lg:py-28 bg-gradient-to-b from-cream-soft to-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block bg-teal-deep/10 text-teal-deep font-medium px-4 py-2 rounded-full text-sm mb-4">TRANSPARANSI</span>
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-teal-deep mb-4">Laporan Aktivitas</h2>
-            <p className="text-gray-500 max-w-xl mx-auto">Kami percaya transparansi adalah fondasi kepercayaan.</p>
+            <h2 className="font-display text-4xl lg:text-5xl font-bold text-teal-deep mb-4">Bukti Penyaluran</h2>
+            <p className="text-gray-500 max-w-xl mx-auto">See firsthand the impact of your generosity through our documentation.</p>
           </div>
-          
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-12 h-12 rounded-xl bg-emerald-bright/10 flex items-center justify-center">
-                  <Activity className="w-6 h-6 text-emerald-bright" />
-                </div>
-                <h3 className="font-display text-xl font-bold text-teal-deep">Aktivitas Terkini</h3>
-              </div>
-              <div className="space-y-3">
-                {activities.map((a, i) => (
-                  <div key={i} className="flex items-center gap-4 p-3 rounded-xl hover:bg-cream-soft transition-colors cursor-pointer group">
-                    <div className="w-10 h-10 rounded-lg bg-emerald-bright/10 flex items-center justify-center group-hover:bg-emerald-bright/20 transition-colors">
-                      <a.icon className="w-5 h-5 text-emerald-bright" />
+
+          {/* Photo Gallery Carousel */}
+          <div className="relative mb-12" ref={galleryRef}>
+            <div className="overflow-hidden rounded-3xl shadow-2xl">
+              <div className="relative h-64 sm:h-80 lg:h-96">
+                {activities.map((activity, idx) => (
+                  <div 
+                    key={activity.id}
+                    className={`absolute inset-0 transition-all duration-700 ${idx === galleryIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}
+                    style={{ transform: idx === galleryIndex ? 'translateX(0)' : 'translateX(100%)' }}
+                  >
+                    <img 
+                      src={activity.image} 
+                      alt={activity.title} 
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="250" fill="%23f1f5f9"%3E%3Crect width="400" height="250" fill="%23f1f5f9"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239ca3af" font-size="14"%3EImage not available%3C/text%3E%3C/svg%3E'
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <span className="inline-block bg-emerald-bright text-teal-deep text-xs font-bold px-3 py-1 rounded-full mb-2">{activity.pillar}</span>
+                      <h3 className="text-white text-xl sm:text-2xl font-bold">{activity.title}</h3>
+                      <div className="flex items-center gap-2 text-white/70 text-sm mt-1">
+                        <Clock className="w-4 h-4" /> {activity.date}
+                      </div>
                     </div>
-                    <div className="flex-1">
-                      <p className="font-medium text-gray-800">{a.title}</p>
-                      <p className="text-xs text-gray-400">{a.date}</p>
-                    </div>
-                    <ArrowRight className="w-4 h-4 text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
                 ))}
               </div>
+              
+              {/* Navigation Arrows */}
+              <button onClick={prevGallery} className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-colors">
+                <ChevronLeft className="w-6 h-6 text-teal-deep" />
+              </button>
+              <button onClick={nextGallery} className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-colors">
+                <ChevronRight className="w-6 h-6 text-teal-deep" />
+              </button>
+              
+              {/* Dots Indicator */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                {activities.map((_, idx) => (
+                  <button 
+                    key={idx}
+                    onClick={() => setGalleryIndex(idx)}
+                    className={`w-2 h-2 rounded-full transition-all ${idx === galleryIndex ? 'bg-white w-6' : 'bg-white/50'}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+          
+          {/* Stats & Donors */}
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Total Raised */}
+            <div className="bg-gradient-to-br from-teal-deep to-teal-light rounded-2xl shadow-xl p-8 text-white">
+              <div className="flex items-center gap-3 mb-4">
+                <DollarSign className="w-8 h-8 text-emerald-bright" />
+                <h3 className="font-display text-xl font-bold">Total Penyaluran</h3>
+              </div>
+              <div className="text-4xl font-bold mb-2">Rp 187.500.000</div>
+              <div className="text-teal-light/70">Telah penyalurkan kepada 1.247 penerima manfaat</div>
             </div>
             
-            <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+            {/* Recent Donors */}
+            <div className="bg-white rounded-2xl shadow-lg p-6">
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-12 h-12 rounded-xl bg-emerald-bright/10 flex items-center justify-center">
                   <Users className="w-6 h-6 text-emerald-bright" />
                 </div>
                 <h3 className="font-display text-xl font-bold text-teal-deep">Donatur Terkini</h3>
               </div>
-              <div className="space-y-3">
+              <div className="space-y-3 max-h-48 overflow-y-auto">
                 {donors.map((d, i) => (
-                  <div key={i} className="flex items-center gap-4 p-3 rounded-xl hover:bg-cream-soft transition-colors cursor-pointer group">
+                  <div key={i} className="flex items-center gap-3 p-2 rounded-lg hover:bg-cream-soft transition-colors">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-deep to-teal-light flex items-center justify-center">
-                      <span className="text-white font-semibold">{d.name[0]}</span>
+                      <span className="text-white font-semibold text-sm">{d.name[0]}</span>
                     </div>
                     <div className="flex-1">
                       <p className="font-medium text-gray-800">{d.name}</p>
