@@ -23,13 +23,13 @@ const pillars = [
     icon: GraduationCap, 
     color: 'bg-blue-500', 
     gradient: 'from-blue-500 to-blue-700', 
-    tagline: 'Membangun Generasi Emas',
-    description: 'Program pendidikan kami fokus pada pemberian akses pendidikan berkualitas bagi anak-anak kurang mampu di Makassar. Kami percaya bahwa pendidikan adalah investasi terbaik untuk masa depan.',
+    tagline: 'Wujudkan Mimpi Mereka',
+    description: 'Ribuan anak di Makassar terancam kehilangan kesempatan belajar karena keterbatasan ekonomi. Setiap donasi Anda bisa membantu mereka tetap sekolah dan bermimpi besar.',
     reasons: [
-      'Beasiswa penuh untuk anak yatim dan kurang mampu',
-      'Les privat gratis untuk persiapan ujian',
-      'Pelatihan digital literacy untuk era modern',
-      'Pendampingan akademik sampai lulus'
+      'Anak yatim mendapatkan chance yang sama untuk pendidikan',
+      'Bantu mereka kuliiah dengan biaya tercukupi',
+      'Les privat gratis untuk siapkan masa depan cerah',
+      'Tablet dan laptop untuk anak tidak mampu'
     ],
     campaigns: [
       { id: 'beasiswa', title: 'Beasiswa Anak Yatim', image: 'https://images.unsplash.com/photo-1503676260728-1c00da1a492d?w=400&h=250&fit=crop', target: 50000000, raised: 32500000, donors: 145 },
@@ -44,7 +44,14 @@ const pillars = [
     icon: Users, 
     color: 'bg-purple-500', 
     gradient: 'from-purple-500 to-purple-700', 
-    tagline: 'Merangkul Sesama',
+    tagline: 'Uluran Tangan Kita',
+    description: 'Ada keluarga di Makassar yang belum makan hari ini. Ada yang sakit tapi tidak punya biaya berobat. Mari ulurkan tangan kita sebelum terlambat.',
+    reasons: [
+      'Bantu keluarga kurang mampu bisa makan hari ini',
+      'Biaya pengobatan untuk yang sakit',
+      'Dukungan untuk panti asuhan yang membutuhkan',
+      'Bantuan korban banjir dan bencana'
+    ],
     description: 'Bantuan sosial untuk saudara-saudara kita yang membutuhkan. Dari paket kebutuhan dasar hingga bantuan kesehatan, kami hadir untuk meringankan beban mereka.',
     reasons: [
       'Distribusi paket Sembako setiap bulan',
@@ -267,19 +274,13 @@ function App() {
             
             {/* Right: Text & CTA */}
             <div className="order-1 lg:order-2">
-              <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full mb-6 shadow-lg">
-                <Sparkles className="w-4 h-4 text-emerald-bright animate-pulse" />
-                <span className="text-sm font-medium text-gray-600">Makassar, Sulawesi Selatan</span>
-              </div>
-              
               <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-teal-deep leading-[1.1] mb-6 tracking-tight">
-                Menebar Manfaat,<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-bright to-teal-deep">Membangun Ummat</span><br />
-                <span className="text-gray-400">di Kota Daeng</span>
+                Setiap Rupiah Anda,<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-bright to-teal-deep">Mengubah Hidup Mereka</span>
               </h1>
               
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                <span className="font-medium text-teal-deep">JNS Social</span> hadir untuk kehidupan bermakna melalui lima pilar program: <span className="font-medium">Pendidikan</span>, <span className="font-medium">Sosial</span>, <span className="font-medium">Media & Dakwah</span>, <span className="font-medium">Sedekah & Infaq</span>, dan <span className="font-medium">Ekonomi Ummat</span>.
+              <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+                Di belakang kita, ada <span className="font-semibold text-teal-deep">ribuan anak</span> yang bermimpi punya masa depan cerah. Tapi keterbatasan ekonomi mengancam mimpi mereka. <span className="font-semibold">Bantu kami wujudkan harapan mereka</span> — karena kebaikan Anda hari ini, adalah investasi untuk generasi masa depan.
               </p>
               
               <div className="flex flex-wrap gap-4 mb-10">
@@ -290,95 +291,80 @@ function App() {
                 </button>
                 <a href="#transparency" 
                   className="border-2 border-teal-deep text-teal-deep font-semibold px-6 py-4 rounded-full transition-all duration-300 hover:bg-teal-deep hover:text-white hover:scale-105 active:scale-95">
-                  Transparansi
+                  Lihat Dampak
                 </a>
-              </div>
-              
-              <div className="grid grid-cols-3 gap-4 pt-6 border-t border-gray-200">
-                <div className="text-center p-4 bg-white rounded-2xl shadow-md">
-                  <div className="font-display text-2xl lg:text-3xl font-bold text-teal-deep">5</div>
-                  <div className="text-xs text-gray-500 font-medium">Pilar Program</div>
-                </div>
-                <div className="text-center p-4 bg-white rounded-2xl shadow-md">
-                  <div className="font-display text-2xl lg:text-3xl font-bold text-purple-500">20</div>
-                  <div className="text-xs text-gray-500 font-medium">Campaign</div>
-                </div>
-                <div className="text-center p-4 bg-white rounded-2xl shadow-md">
-                  <div className="font-display text-2xl lg:text-3xl font-bold text-emerald-bright">100%</div>
-                  <div className="text-xs text-gray-500 font-medium">Transparan</div>
-                </div>
               </div>
             </div>
           </div>
         </div>
-        
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden lg:block">
-          <ArrowRight className="w-6 h-6 text-teal-deep/50 rotate-90" />
-        </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 lg:py-28 bg-white">
+      <section id="about" className="py-20 lg:py-28 bg-gradient-to-b from-white to-emerald-50/30">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="inline-block bg-teal-deep/10 text-teal-deep font-medium px-4 py-2 rounded-full text-sm mb-4">TENTANG KAMI</span>
               <h2 className="font-display text-4xl lg:text-5xl font-bold text-teal-deep mb-6">JNS Social</h2>
-              <div className="space-y-4 text-gray-600 leading-relaxed">
-                <p>
-                  <strong className="text-teal-deep">JNS Social</strong> adalah organisasi nirlaba yang berbasis di Makassar, Sulawesi Selatan. Kami berkomitmen untuk menebar manfaat dan membangun ummat melalui program-program pemberdayaan yang berkelanjutan.
+              <div className="space-y-5 text-gray-700 leading-relaxed">
+                <p className="text-lg">
+                  <strong className="text-teal-deep">JNS Social</strong> lahir dari keprihatinan melihat kondisi saudara-saudara kita di Makassar yang membutuhkan uluran tangan. Kami percaya bahwa satu rupiah dari Anda bisa mengubah hidup mereka.
                 </p>
                 <p>
-                  Didirikan dengan semangat <em>ukhuwah islamiyah</em>, kami percaya bahwa kebaikan yang kita tabur akan kembali kepada kita. Setiap rupiah donasi dikelola dengan penuh amanah dan transparansi.
+                  Setiap donasi yang masuk <span className="font-semibold text-emerald-600">100% kami salurkan</span> ke penerima manfaat. Kami beroperasi dengan prinsip transparansi penuh — karena kepercayaan Anda adalah tanggung jawab kami.
                 </p>
                 <p>
-                  Fokus kami adalah pada <strong className="text-teal-deep">lima pilar utama</strong>: Pendidikan, Sosial, Media & Dakwah, Sedekah & Infaq, dan Ekonomi Ummat. Dengan pendekatan yang komprehensif, kami berharap dapat memberikan dampak positif yang nyata bagi masyarakat Makassar.
+                  Dari anak yatim yang bermimpi menjadi dokter, ibu-ibu yang ingin mandiri secara ekonomi, hingga masyarakat yang membutuhkan bantuan kesehatan — <span className="font-semibold text-teal-deep">mereka menunggu kebaikan hati Anda.</span>
                 </p>
               </div>
               
               <div className="mt-8 grid grid-cols-2 gap-4">
-                <div className="bg-cream-soft p-4 rounded-xl">
-                  <div className="flex items-center gap-3 mb-2">
-                    <Target className="w-5 h-5 text-emerald-bright" />
-                    <span className="font-semibold text-gray-800">Visi</span>
+                <div className="bg-white border-2 border-emerald-100 p-5 rounded-2xl">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-deep flex items-center justify-center">
+                      <Target className="w-6 h-6 text-white" />
+                    </div>
+                    <span className="font-display text-lg font-bold text-teal-deep">Visi</span>
                   </div>
-                  <p className="text-sm text-gray-600">Menjadi organisasi Islam terbaik dalam pemberdayaan ummat di Timur Indonesia.</p>
+                  <p className="text-sm text-gray-600">Menjadi harapan bagi mereka yang membutuhkan di Sulawesi Selatan.</p>
                 </div>
-                <div className="bg-cream-soft p-4 rounded-xl">
-                  <div className="flex items-center gap-3 mb-2">
-                    <Shield className="w-5 h-5 text-emerald-bright" />
-                    <span className="font-semibold text-gray-800">Misi</span>
+                <div className="bg-white border-2 border-emerald-100 p-5 rounded-2xl">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-deep flex items-center justify-center">
+                      <Shield className="w-6 h-6 text-white" />
+                    </div>
+                    <span className="font-display text-lg font-bold text-teal-deep">Misi</span>
                   </div>
-                  <p className="text-sm text-gray-600">Memberdayakan masyarakat melalui lima pilar program yang berkelanjutan.</p>
+                  <p className="text-sm text-gray-600">Menyalurkan bantuan dengan amanah dan transparan.</p>
                 </div>
               </div>
             </div>
             
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
-                <div className="bg-gradient-to-br from-teal-deep to-teal-light rounded-2xl p-6 text-white">
-                  <div className="font-display text-4xl font-bold mb-2">5</div>
-                  <div className="text-teal-light/80">Pilar Program</div>
+                <div className="bg-gradient-to-br from-teal-deep to-teal-light rounded-2xl p-6 text-white shadow-xl">
+                  <div className="font-display text-5xl font-bold mb-2">5</div>
+                  <div className="text-teal-light/80 font-medium">Pilar Program</div>
                 </div>
-                <div className="bg-cream-soft rounded-2xl p-6">
+                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
                   <div className="flex items-center gap-3 mb-3">
-                    <Heart className="w-6 h-6 text-emerald-bright" />
-                    <span className="font-display text-xl font-bold text-teal-deep">Transparan</span>
+                    <Heart className="w-6 h-6 text-emerald-500" />
+                    <span className="font-display text-lg font-bold text-teal-deep">Transparan</span>
                   </div>
-                  <p className="text-sm text-gray-600">Setiap donasi dilaporkan dan diaudit secara berkala.</p>
+                  <p className="text-sm text-gray-600">Laporan keuangan publik dan audit berkala.</p>
                 </div>
               </div>
               <div className="space-y-4 mt-8">
-                <div className="bg-cream-soft rounded-2xl p-6">
+                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
                   <div className="flex items-center gap-3 mb-3">
-                    <Users className="w-6 h-6 text-emerald-bright" />
-                    <span className="font-display text-xl font-bold text-teal-deep">Community</span>
+                    <Users className="w-6 h-6 text-purple-500" />
+                    <span className="font-display text-lg font-bold text-teal-deep">Community</span>
                   </div>
-                  <p className="text-sm text-gray-600">Dukungan dari ribuan donatur yang peduli.</p>
+                  <p className="text-sm text-gray-600">Ribuan donatur yang telah terpercaya.</p>
                 </div>
-                <div className="bg-gradient-to-br from-emerald-bright to-emerald-400 rounded-2xl p-6 text-teal-deep">
-                  <div className="font-display text-4xl font-bold mb-2">100%</div>
-                  <div className="text-teal-deep/70">Amanah</div>
+                <div className="bg-gradient-to-br from-emerald-400 to-emerald-500 rounded-2xl p-6 text-white shadow-xl">
+                  <div className="font-display text-5xl font-bold mb-2">100%</div>
+                  <div className="text-emerald-100 font-medium">Dana Tersalur</div>
                 </div>
               </div>
             </div>
