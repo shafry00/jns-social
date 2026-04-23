@@ -152,14 +152,6 @@ function App() {
     return () => clearInterval(interval)
   }, [])
 
-  // Running marquee for gallery
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setScrollPosition(prev => prev + 1)
-    }, 50)
-    return () => clearInterval(interval)
-  }, [])
-
   const openModal = (pillarId, campaignId) => {
     const pillar = pillars.find(p => p.id === pillarId)
     const campaign = pillar.campaigns.find(c => c.id === campaignId)
@@ -256,13 +248,15 @@ function App() {
           
           <div className="flex justify-center gap-12 pt-10 border-t border-gray-200/50 mx-auto max-w-2xl">
             {[
-              { n: '5', l: 'Pilar' },
-              { n: '20', l: 'Campaign' },
-              { n: '100%', l: 'Transparan' }
+              { n: '5', l: 'Pilar', color: 'bg-gradient-to-br from-blue-500 to-blue-600' },
+              { n: '20', l: 'Campaign', color: 'bg-gradient-to-br from-purple-500 to-purple-600' },
+              { n: '100%', l: 'Transparan', color: 'bg-gradient-to-br from-emerald-500 to-emerald-600' }
             ].map((item, i) => (
               <div key={i} className="text-center group">
-                <div className="font-display text-3xl lg:text-4xl font-bold text-teal-deep">{item.n}</div>
-                <div className="text-sm text-gray-400 font-medium">{item.l} Program</div>
+                <div className={`w-16 h-16 mx-auto mb-3 rounded-2xl ${item.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform`}>
+                  <div className="font-display text-xl lg:text-2xl font-bold text-white">{item.n}</div>
+                </div>
+                <div className="text-sm text-gray-500 font-medium">{item.l} Program</div>
               </div>
             ))}
           </div>
@@ -378,7 +372,7 @@ function App() {
           </div>
 
           {/* Pillar Description */}
-          <div className="bg-white rounded-3xl shadow-xl p-8 mb-12 max-w-4xl mx-auto">
+          <div className="bg-white rounded-3xl shadow-xl p-8 mb-12 max-w-4xl mx-auto border-t-4 border-emerald-bright">
             <div className="flex items-start gap-6">
               <div className={`w-16 h-16 rounded-2xl ${currentPillar.gradient} flex items-center justify-center flex-shrink-0 shadow-lg`}>
                 <currentPillar.icon className="w-8 h-8 text-white" />
@@ -386,28 +380,28 @@ function App() {
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
                   <h3 className="font-display text-2xl font-bold text-teal-deep">{currentPillar.title}</h3>
-                  <span className="bg-emerald-bright/10 text-emerald-bright text-sm font-medium px-3 py-1 rounded-full">{currentPillar.tagline}</span>
+                  <span className="bg-gradient-to-r from-emerald-bright to-teal-deep text-white text-sm font-medium px-3 py-1 rounded-full">{currentPillar.tagline}</span>
                 </div>
                 <p className="text-gray-600 mb-6">{currentPillar.description}</p>
                 
                 <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="bg-cream-soft rounded-xl p-4">
+                  <div className="bg-gradient-to-br from-emerald-bright/5 to-teal-deep/5 rounded-xl p-4 border border-emerald-bright/10">
                     <div className="flex items-center gap-2 mb-3">
                       <HeartHandshake className="w-5 h-5 text-emerald-bright" />
-                      <span className="font-semibold text-gray-800">Kenapa Berdonasi?</span>
+                      <span className="font-semibold text-teal-deep">Kenapa Berdonasi?</span>
                     </div>
                     <ul className="space-y-2">
                       {currentPillar.reasons.map((reason, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
+                        <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
                           <CheckCircle className="w-4 h-4 text-emerald-bright mt-0.5 flex-shrink-0" />
                           {reason}
                         </li>
                       ))}
                     </ul>
                   </div>
-                  <div className="bg-gradient-to-br from-teal-deep/5 to-teal-deep/10 rounded-xl p-4 flex flex-col justify-center">
-                    <Quote className="w-8 h-8 text-teal-deep/20 mb-2" />
-                    <p className="text-gray-600 italic text-sm leading-relaxed">
+                  <div className="bg-gradient-to-br from-teal-deep/5 to-emerald-bright/5 rounded-xl p-4 flex flex-col justify-center border border-emerald-bright/20">
+                    <Quote className="w-8 h-8 text-emerald-bright mb-2" />
+                    <p className="text-teal-deep/80 italic text-sm leading-relaxed">
                       "Setiap kebaikan yang kita lakukan untuk sesama adalah investasi untuk akhirat. Mari bersama menebar manfaat di Kota Daeng."
                     </p>
                   </div>
