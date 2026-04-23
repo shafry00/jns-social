@@ -462,27 +462,21 @@ return (
                 </div>
                 <p className="text-gray-600 mb-6">{currentPillar.description}</p>
                 
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="bg-gradient-to-br from-emerald-bright/5 to-teal-deep/5 rounded-xl p-4 border border-emerald-bright/10">
-                    <div className="flex items-center gap-2 mb-3">
-                      <HeartHandshake className="w-5 h-5 text-emerald-bright" />
-                      <span className="font-semibold text-primary-green">Kenapa Berdonasi?</span>
+                <div className="grid grid-cols-2 gap-3">
+                  {[
+                    { icon: HeartHandshake, title: 'Berarti', desc: 'Donasi Anda berdampak langsung' },
+                    { icon: CheckCircle, title: 'Transparan', desc: 'Laporan keuangan terbuka' },
+                    { icon: Users, title: 'Komunitas', desc: 'Bergabung dengan kebaikan' },
+                    { icon: Sparkles, title: 'Berkah', desc: 'Investasi akhirat yang означает' }
+                  ].map((item, i) => (
+                    <div key={i} className="bg-white rounded-xl p-3 border border-primary-green/10 flex items-start gap-2 shadow-sm">
+                      <item.icon className="w-5 h-5 text-primary-green flex-shrink-0 mt-0.5" />
+                      <div>
+                        <span className="font-semibold text-primary-green text-sm block">{item.title}</span>
+                        <span className="text-xs text-neutral-gray">{item.desc}</span>
+                      </div>
                     </div>
-                    <ul className="space-y-2">
-                      {currentPillar.reasons.map((reason, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                          <CheckCircle className="w-4 h-4 text-emerald-bright mt-0.5 flex-shrink-0" />
-                          {reason}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="bg-gradient-to-br from-teal-deep/5 to-emerald-bright/5 rounded-xl p-4 flex flex-col justify-center border border-emerald-bright/20">
-                    <Quote className="w-8 h-8 text-emerald-bright mb-2" />
-                    <p className="text-primary-green/80 italic text-sm leading-relaxed">
-                      "Setiap kebaikan yang kita lakukan untuk sesama adalah investasi untuk akhirat. Mari bersama menebar manfaat di Kota Daeng."
-                    </p>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
