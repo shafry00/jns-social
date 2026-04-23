@@ -265,20 +265,21 @@ return (
             </button>
           </div>
         </div>
-        {/* Ticker inside nav, below content */}
-        <div className="bg-primary-green/95 backdrop-blur-sm py-2 overflow-hidden">
-          <div className="animate-marquee whitespace-nowrap">
-            <span className="inline-flex items-center text-white text-xs sm:text-sm font-medium mx-8">
-              <Heart className="w-4 h-4 mr-2 flex-shrink-0" /> 
-              Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat.
-            </span>
-            <span className="inline-flex items-center text-white text-xs sm:text-sm font-medium mx-8">
-              <Heart className="w-4 h-4 mr-2 flex-shrink-0" /> 
-              Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat.
-            </span>
-          </div>
-        </div>
       </nav>
+
+      {/* Donation Ticker Banner - Below nav, fixed */}
+      <div className="fixed left-0 right-0 z-50 bg-primary-green/95 backdrop-blur-sm py-2 overflow-hidden" style={{ top: '72px' }}>
+        <div className="animate-marquee whitespace-nowrap">
+          <span className="inline-flex items-center text-white text-xs sm:text-sm font-medium mx-8">
+            <Heart className="w-4 h-4 mr-2 flex-shrink-0" /> 
+            Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat.
+          </span>
+          <span className="inline-flex items-center text-white text-xs sm:text-sm font-medium mx-8">
+            <Heart className="w-4 h-4 mr-2 flex-shrink-0" /> 
+            Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat.
+          </span>
+        </div>
+      </div>
 
       {/* Hero Section */}
       <section id="hero" className="min-h-screen flex items-center pt-16 sm:pt-20 bg-gradient-to-br from-white via-light-bg to-white relative overflow-hidden">
