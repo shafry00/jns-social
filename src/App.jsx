@@ -247,28 +247,7 @@ return (
         <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7" />
       </a>
       
-<!-- Navbar -->
-<div className="sticky top-0 z-50">
-  <nav className="bg-white/95 backdrop-blur-md shadow-sm">
-  <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-    <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-      <img src="/jns-logo.png" alt="JNS Social" className="w-12 h-12 rounded-xl object-contain" />
-      <div>
-        <span className="font-display text-lg font-bold text-primary-green block tracking-tight">JNS Social</span>
-      </div>
-    </div>
-    <div className="flex items-center gap-6">
-      <a href="#about" className="hidden sm:block text-sm font-medium text-gray-600 hover:text-primary-green transition-colors">Tentang Kami</a>
-      <a href="#programs" className="hidden sm:block text-sm font-medium text-gray-600 hover:text-primary-green transition-colors">Program</a>
-      <a href="#contact" className="hidden sm:block text-sm font-medium text-gray-600 hover:text-primary-green transition-colors">Kontak</a>
-      <button onClick={() => document.getElementById('programs').scrollIntoView({ behavior: 'smooth' })} className="bg-primary-green hover:bg-dark-green text-white font-medium px-4 py-2 rounded-lg transition-all text-sm">
-        Donasi
-      </button>
-    </div>
-  </div>
-</div>
-
-{/* Navbar + Ticker - Sticky together */}
+<!-- Navbar + Ticker - Sticky together -->
 <div className="sticky top-0 z-50">
   <nav className="bg-white/95 backdrop-blur-md shadow-sm">
     <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
