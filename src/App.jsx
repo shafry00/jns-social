@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from 'react'
 import { 
   Heart, MapPin, Eye, GraduationCap, Users, Mic, Briefcase, Send, X, Mail, 
   MapPin as Location, CheckCircle, Sparkles, Star, ArrowRight, HandHeart, 
-  ChevronLeft, ChevronRight, Clock, Quote, ArrowUpRight, HeartHandshake, Target, Shield, Upload, MessageCircle
+  ChevronLeft, ChevronRight, Clock, Quote, ArrowUpRight, HeartHandshake, Target, Shield, Upload, MessageCircle,
+  BookOpen, Laptop, Package, Stethoscope, Home, Leaf, Video, Headphones, Globe, Wallet, Calendar, Banknote, ShoppingBag, Network
 } from 'lucide-react'
 
 const activities = [
@@ -25,11 +26,11 @@ const pillars = [
     gradient: 'from-primary-green to-soft-green', 
     tagline: 'Wujudkan Mimpi Mereka',
     description: 'Ribuan anak di Makassar terancam kehilangan kesempatan belajar karena keterbatasan ekonomi. Setiap donasi Anda bisa membantu mereka tetap sekolah dan bermimpi besar.',
-    reasons: [
-      'Anak yatim mendapatkan chance yang sama untuk pendidikan',
-      'Bantu mereka kuliiah dengan biaya tercukupi',
-      'Les privat gratis untuk siapkan masa depan cerah',
-      'Tablet dan laptop untuk anak tidak mampu'
+    benefits: [
+      { icon: GraduationCap, title: 'Pendidikan', desc: 'Bantuan biaya sekolah' },
+      { icon: BookOpen, title: 'Beasiswa', desc: 'Support biaya kuliah' },
+      { icon: Laptop, title: 'Digital', desc: 'Tablet & laptop untuk belajar' },
+      { icon: Users, title: 'Mentoring', desc: 'Bimbingan dari mentor' }
     ],
     campaigns: [
       { id: 'beasiswa', title: 'Beasiswa Anak Yatim', image: 'https://images.unsplash.com/photo-1503676260728-1c00da1a492d?w=300&q=60&fit=crop', target: 50000000, raised: 32500000, donors: 145 },
@@ -46,11 +47,11 @@ const pillars = [
     gradient: 'from-primary-green to-soft-green', 
     tagline: 'Uluran Tangan Kita',
     description: 'Bantuan sosial untuk saudara-saudara kita yang membutuhkan. Dari paket kebutuhan dasar hingga bantuan kesehatan, kami hadir untuk meringankan beban mereka.',
-    reasons: [
-      'Distribusi paket Sembako setiap bulan',
-      'Bantuan biaya pengobatan dan operasi',
-      'Dukungan untuk panti asuhan',
-      'Program lingkungan bersih Makassar'
+    benefits: [
+      { icon: Package, title: 'Sembako', desc: 'Paket kebutuhan pokok' },
+      { icon: Stethoscope, title: 'Kesehatan', desc: 'Bantuan biaya berobat' },
+      { icon: Home, title: 'Panti', desc: 'Dukungan untuk panti asuhan' },
+      { icon: Leaf, title: 'Lingkungan', desc: 'Program Clean Makassar' }
     ],
     campaigns: [
       { id: 'sembako', title: 'Paket Sembako', image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=300&q=60&fit=crop', target: 30000000, raised: 24800000, donors: 234 },
@@ -60,18 +61,18 @@ const pillars = [
     ]
   },
   { 
-    id: 'media-dakwah', 
+id: 'media-dakwah', 
     title: 'Media & Dakwah', 
     icon: Mic, 
     color: 'bg-primary-green', 
     gradient: 'from-primary-green to-soft-green', 
-    tagline: 'Menyebarkan Kebenaran',
-    description: 'Konten dakwah Islami yang edukatif dan relevan untuk ummat di era digital. Kami memproduksi berbagai konten untuk memudahkan传播 ilmu agama.',
-    reasons: [
-      'Konten dakwah di platform digital',
-      'Webinar Islami dengan ustadz ternama',
-      'Podcast pembelajaran Al-Quran',
-      'Campaign dakwah ke daerah terpencil'
+    tagline: 'Menyebaran Kebenaran',
+    description: 'Konten dakwah Islami yang edukatif dan relevan untuk ummat di era digital. Kami memproduksi berbagai konten untuk memudahkan spread ilmu agama.',
+    benefits: [
+      { icon: Video, title: 'Konten', desc: 'Video dakwah Islami' },
+      { icon: Mic, title: 'Webinar', desc: 'Live dengan ustadz' },
+      { icon: Headphones, title: 'Podcast', desc: 'Kajian audio islami' },
+      { icon: Globe, title: 'Digital', desc: 'Jangkauan nationwide' }
     ],
     campaigns: [
       { id: 'konten', title: 'Konten Dakwah', image: 'https://images.unsplash.com/photo-1594736797935-d09bc5b33f1a?w=300&q=60&fit=crop', target: 10000000, raised: 7500000, donors: 56 },
@@ -88,11 +89,11 @@ const pillars = [
     gradient: 'from-gold to-gold-light', 
     tagline: 'Beramal dengan Hati',
     description: 'Menghimpun dan menyalurkan sedekah dan infaq untuk kepentingan ummat. Setiap rupiah yang masuk akan kami salurkan dengan penuh amanah.',
-    reasons: [
-      '100% dana tersalurkan ke penerima manfaat',
-      'Laporan keuangan transparan dan audit',
-      'Beragam program infaq harian dan bulanan',
-      'Program qurban untuk sesama'
+    benefits: [
+      { icon: Heart, title: 'Sedekah', desc: 'Beramal dengan hati' },
+      { icon: Wallet, title: 'Infaq', desc: 'Infaq harian & bulanan' },
+      { icon: Package, title: 'Qurban', desc: 'Program qurban Berkah' },
+      { icon: Calendar, title: 'Monthly', desc: 'Donasi rutin setiap bulan' }
     ],
     campaigns: [
       { id: 'infaq', title: 'Infaq Sekarang', image: 'https://images.unsplash.com/photo-1594708767771-a25160e4c8b4?w=300&q=60&fit=crop', target: 50000000, raised: 42300000, donors: 312 },
@@ -109,11 +110,11 @@ const pillars = [
     gradient: 'from-primary-green to-soft-green', 
     tagline: 'Membangun Kemandirian',
     description: 'Memberdayakan pelaku UMKM lokal Makassar melalui pelatihan, permodalan, dan akses pasar. Kami membantu masyarakat mencapai kemandirian ekonomi.',
-    reasons: [
-      'Modal usaha untuk UMKM lokal Makassar',
-      'Mentoring bisnis dari praktisi berpengalaman',
-      'Pasar Islami untuk menjangkau lebih banyak pembeli',
-      'Jaringan bisnis untuk perluasan usaha'
+    benefits: [
+      { icon: Banknote, title: 'Modal', desc: 'Bantuan modal usaha' },
+      { icon: Users, title: 'Mentoring', desc: 'Bimbing bisnis expert' },
+      { icon: ShoppingBag, title: 'Pasar', desc: 'Pasar islami online' },
+      { icon: Network, title: 'Jaringan', desc: 'Connect dengan para pelaku' }
     ],
     campaigns: [
       { id: 'modal', title: 'Modal UMKM', image: 'https://images.unsplash.com/photo-1556742049-0c23a7e4ab7c?w=300&q=60&fit=crop', target: 50000000, raised: 38500000, donors: 78 },
@@ -463,12 +464,7 @@ return (
                 <p className="text-gray-600 mb-6">{currentPillar.description}</p>
                 
                 <div className="grid grid-cols-2 gap-3">
-                  {[
-                    { icon: HeartHandshake, title: 'Berarti', desc: 'Donasi Anda berdampak langsung' },
-                    { icon: CheckCircle, title: 'Transparan', desc: 'Laporan keuangan terbuka' },
-                    { icon: Users, title: 'Komunitas', desc: 'Bergabung dengan kebaikan' },
-                    { icon: Sparkles, title: 'Berkah', desc: 'Investasi akhirat yang означает' }
-                  ].map((item, i) => (
+                  {currentPillar.benefits?.map((item, i) => (
                     <div key={i} className="bg-white rounded-xl p-3 border border-primary-green/10 flex items-start gap-2 shadow-sm">
                       <item.icon className="w-5 h-5 text-primary-green flex-shrink-0 mt-0.5" />
                       <div>
