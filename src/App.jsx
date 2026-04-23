@@ -170,11 +170,17 @@ function App() {
     if (saved) setDonorData(JSON.parse(saved))
   }, [])
 
-  // Auto-scroll gallery
+  // Auto-scroll gallery + transparency gallery
   useEffect(() => {
     const interval = setInterval(() => {
       setGalleryIndex(prev => (prev + 1) % activities.length)
-    }, 3000)
+      if (galleryRef.current) {
+        galleryRef.current.scrollBy({ left: 280, behavior: 'smooth' })
+        if (galleryRef.current.scrollLeft >= galleryRef.current.scrollWidth - galleryRef.current.clientWidth - 10) {
+          galleryRef.current.scrollTo({ left: 0, behavior: 'smooth' })
+        }
+      }
+    }, 4000)
     return () => clearInterval(interval)
   }, [])
 
@@ -559,30 +565,28 @@ return (
 
           {/* Transparency - Gallery Slider */}
           <div className="relative">
-            <div className="flex items-center justify-between mb-4">
-              <button 
-                onClick={() => {
-                  const container = galleryRef.current
-                  container.scrollBy({ left: -280, behavior: 'smooth' })
-                }}
-                className="p-2 rounded-full bg-white shadow-md hover:bg-light-bg transition-colors z-10"
-              >
-                <ChevronLeft className="w-5 h-5 text-primary-green" />
-              </button>
-              <button 
-                onClick={() => {
-                  const container = galleryRef.current
-                  container.scrollBy({ left: 280, behavior: 'smooth' })
-                }}
-                className="p-2 rounded-full bg-white shadow-md hover:bg-light-bg transition-colors z-10"
-              >
-                <ChevronRight className="w-5 h-5 text-primary-green" />
-              </button>
-            </div>
+            <button 
+              onClick={() => {
+                const container = galleryRef.current
+                container.scrollBy({ left: -280, behavior: 'smooth' })
+              }}
+              className="absolute left-2 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white/90 transition-all z-20 group"
+            >
+              <ChevronLeft className="w-6 h-6 text-primary-green group-hover:scale-110 transition-transform" />
+            </button>
+            <button 
+              onClick={() => {
+                const container = galleryRef.current
+                container.scrollBy({ left: 280, behavior: 'smooth' })
+              }}
+              className="absolute right-2 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white/90 transition-all z-20 group"
+            >
+              <ChevronRight className="w-6 h-6 text-primary-green group-hover:scale-110 transition-transform" />
+            </button>
             
             <div 
               ref={galleryRef}
-              className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4"
+              className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory px-12"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
               {[...activities, ...activities].map((activity, idx) => (
