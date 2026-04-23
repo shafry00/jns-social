@@ -429,7 +429,10 @@ return (
             {pillars.map((p, idx) => (
               <button 
                 key={p.id} 
-                onClick={() => setActivePillar(p.id)}
+                onClick={() => {
+                  setActivePillar(p.id)
+                  document.getElementById('campaigns')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }}
                 className={`group flex-shrink-0 w-28 sm:w-32 p-3 sm:p-4 rounded-xl sm:rounded-2xl transition-all duration-500 cursor-pointer ${
                   activePillar === p.id 
                     ? `bg-white shadow-2xl ring-2 ring-primary-green scale-105` 
@@ -479,7 +482,7 @@ return (
           </div>
           
           {/* Campaign Grid */}
-          <div className="flex flex-wrap gap-6 justify-center">
+          <div id="campaigns" className="flex flex-wrap gap-6 justify-center">
             {currentPillar.campaigns.map((c, idx) => {
               const percent = Math.round((c.raised / c.target) * 100)
               return (
