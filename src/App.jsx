@@ -326,7 +326,7 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className={`py-20 lg:py-28 bg-gradient-to-br from-violet-50 via-purple-50 to-pink-50 transition-all duration-700 ${
+      <section id="about" className={`py-20 lg:py-28 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 transition-all duration-700 ${
           visibleSections.about ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
         <div className="max-w-7xl mx-auto px-4">
@@ -347,18 +347,18 @@ function App() {
               </div>
               
               <div className="mt-8 grid grid-cols-2 gap-4">
-                <div className="bg-white border-2 border-emerald-100 p-5 rounded-2xl">
+                <div className="bg-white border-2 border-amber-100 p-5 rounded-2xl">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-deep flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-400 to-amber-500 flex items-center justify-center">
                       <Target className="w-6 h-6 text-white" />
                     </div>
                     <span className="font-display text-lg font-bold text-teal-deep">Visi</span>
                   </div>
                   <p className="text-sm text-gray-600">Menjadi harapan bagi mereka yang membutuhkan di Sulawesi Selatan.</p>
                 </div>
-                <div className="bg-white border-2 border-emerald-100 p-5 rounded-2xl">
+                <div className="bg-white border-2 border-amber-100 p-5 rounded-2xl">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-deep flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-400 to-amber-500 flex items-center justify-center">
                       <Shield className="w-6 h-6 text-white" />
                     </div>
                     <span className="font-display text-lg font-bold text-teal-deep">Misi</span>
@@ -370,7 +370,7 @@ function App() {
             
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
-                <div className="bg-gradient-to-br from-teal-deep to-teal-light rounded-2xl p-6 text-white shadow-xl">
+                <div className="bg-gradient-to-br from-orange-400 to-amber-500 rounded-2xl p-6 text-white shadow-xl">
                   <div className="font-display text-4xl font-bold mb-2 opacity-90">5</div>
                   <div className="text-white font-medium">Pilar Program</div>
                 </div>
@@ -390,9 +390,9 @@ function App() {
                   </div>
                   <p className="text-sm text-gray-600">Ribuan donatur yang telah terpercaya.</p>
                 </div>
-                <div className="bg-gradient-to-br from-emerald-400 to-emerald-500 rounded-2xl p-6 text-white shadow-xl">
+                <div className="bg-gradient-to-br from-orange-400 to-amber-500 rounded-2xl p-6 text-white shadow-xl">
                   <div className="font-display text-4xl font-bold mb-2 opacity-90">100%</div>
-                  <div className="text-emerald-100 font-medium">Dana Tersalur</div>
+                  <div className="text-orange-100 font-medium">Dana Tersalur</div>
                 </div>
               </div>
             </div>
@@ -401,7 +401,7 @@ function App() {
       </section>
 
       {/* Programs Section */}
-      <section id="programs" className={`py-20 lg:py-28 bg-gradient-to-br from-blue-50 via-indigo-50 to-violet-50 relative transition-all duration-700 ${
+      <section id="programs" className={`py-20 lg:py-28 bg-gradient-to-br from-blue-50 via-indigo-50 to-blue-100 relative transition-all duration-700 ${
           visibleSections.programs ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
         <div className="max-w-7xl mx-auto px-4">
@@ -529,7 +529,7 @@ function App() {
       </section>
 
       {/* Transparency - Running Gallery */}
-      <section id="transparency" className={`py-20 lg:py-28 bg-gradient-to-br from-cyan-50 via-blue-50 to-indigo-50 transition-all duration-700 ${
+      <section id="transparency" className={`py-20 lg:py-28 bg-gradient-to-br from-sky-50 via-blue-50 to-cyan-50 transition-all duration-700 ${
           visibleSections.transparency ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
         <div className="max-w-7xl mx-auto px-4">
@@ -569,7 +569,7 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className={`py-20 lg:py-28 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 transition-all duration-700 ${
+      <section id="contact" className={`py-20 lg:py-28 bg-gradient-to-br from-blue-600 via-indigo-600 to-cyan-600 transition-all duration-700 ${
           visibleSections.contact ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
         <div className="max-w-7xl mx-auto px-4">
