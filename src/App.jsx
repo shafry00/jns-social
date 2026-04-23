@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { 
   Heart, MapPin, Eye, GraduationCap, Users, Mic, Briefcase, Send, X, Mail, 
   MapPin as Location, CheckCircle, Sparkles, Star, ArrowRight, HandHeart, 
-  ChevronLeft, ChevronRight, Clock, Quote, ArrowUpRight, HeartHandshake, Target, Shield
+  ChevronLeft, ChevronRight, Clock, Quote, ArrowUpRight, HeartHandshake, Target, Shield, Upload
 } from 'lucide-react'
 
 const activities = [
@@ -130,6 +130,8 @@ function App() {
   const [selectedCampaign, setSelectedCampaign] = useState(null)
   const [donorData, setDonorData] = useState({ name: '', whatsapp: '', email: '' })
   const [donationAmount, setDonationAmount] = useState(0)
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null)
+  const [transactionProof, setTransactionProof] = useState(null)
   const [loaded, setLoaded] = useState(false)
   const [galleryIndex, setGalleryIndex] = useState(0)
   const [visibleSections, setVisibleSections] = useState({})
@@ -195,12 +197,14 @@ function App() {
     setModalOpen(false)
     setSelectedCampaign(null)
     setDonationAmount(0)
+    setSelectedPaymentMethod(null)
+    setTransactionProof(null)
     document.body.style.overflow = ''
   }
 
   const submitDonation = () => {
-    if (!donorData.name || !donorData.whatsapp || !donorData.email) {
-      alert('Mohon lengkapi data diri')
+    if (!donorData.name || !donorData.whatsapp) {
+      alert('Mohon lengkapi nama dan WhatsApp')
       return
     }
     const amount = donationAmount
@@ -208,9 +212,13 @@ function App() {
       alert('Pilih nominal donasi')
       return
     }
+    if (!selectedPaymentMethod) {
+      alert('Pilih metode pembayaran')
+      return
+    }
     localStorage.setItem('jns_donor', JSON.stringify(donorData))
     const { pillar, campaign } = selectedCampaign
-    const message = `Halo Admin JNS Social, saya ${donorData.name} ingin donasi ${campaign.title} (${pillar.title}) Rp${formatRupiah(amount)}. WA: ${donorData.whatsapp}, Email: ${donorData.email}`
+    const message = `Halo Admin JNS Social, saya ${donorData.name} ingin donasi ${campaign.title} (${pillar.title}) Rp${formatRupiah(amount)} via ${selectedPaymentMethod.name}. WA: ${donorData.whatsapp}${donorData.email ? `, Email: ${donorData.email}` : ''}`
     const waNumber = '628XXXXXXXXXX'
     window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`, '_blank')
     closeModal()
@@ -292,7 +300,7 @@ function App() {
             {/* Right: Text & CTA */}
             <div className="order-1 lg:order-2">
               <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-teal-deep leading-[1.1] mb-6 tracking-tight">
-                Setiap Rupiah Anda,<br />
+                Bantuan Anda,<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-bright to-teal-deep">Mengubah Hidup Mereka</span>
               </h1>
               
@@ -308,7 +316,7 @@ function App() {
                 </button>
                 <a href="#transparency" 
                   className="border-2 border-teal-deep text-teal-deep font-semibold px-6 py-4 rounded-full transition-all duration-300 hover:bg-teal-deep hover:text-white hover:scale-105 active:scale-95">
-                  Lihat Dampak
+                  Dampak Bantuan Anda
                 </a>
               </div>
             </div>
@@ -363,7 +371,7 @@ function App() {
               <div className="space-y-4">
                 <div className="bg-gradient-to-br from-teal-deep to-teal-light rounded-2xl p-6 text-white shadow-xl">
                   <div className="font-display text-4xl font-bold mb-2 opacity-90">5</div>
-                  <div className="text-teal-light/80 font-medium">Pilar Program</div>
+                  <div className="text-white font-medium">Pilar Program</div>
                 </div>
                 <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
                   <div className="flex items-center gap-3 mb-3">
@@ -633,8 +641,8 @@ function App() {
       {modalOpen && selectedCampaign && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={closeModal}>
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm animate-fade-in" />
-          <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden animate-scale-in" onClick={e => e.stopPropagation()}>
-            <div className="bg-gradient-to-r from-teal-deep to-teal-light px-6 py-5">
+          <div className="relative w-full max-w-lg max-h-[90vh] bg-white rounded-2xl shadow-2xl overflow-hidden animate-scale-in flex flex-col" onClick={e => e.stopPropagation()}>
+            <div className="bg-gradient-to-r from-teal-deep to-teal-light px-6 py-5 flex-shrink-0">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
@@ -648,21 +656,21 @@ function App() {
               </div>
             </div>
             
-            <div className="px-6 py-5 border-b border-gray-100">
+            <div className="px-6 py-4 border-b border-gray-100 flex-shrink-0">
               <p className="text-sm text-gray-400">Donasi untuk</p>
-              <p className="font-display text-lg font-bold text-teal-deep">{selectedCampaign.pillar.title} - {selectedCampaign.campaign.title}</p>
+              <p className="font-display text-base font-bold text-teal-deep">{selectedCampaign.pillar.title} - {selectedCampaign.campaign.title}</p>
             </div>
             
-            <div className="px-6 py-5">
+            <div className="flex-1 overflow-y-auto px-6 py-4">
               <p className="text-sm font-medium text-gray-700 mb-3">Pilih nominal:</p>
-              <div className="grid grid-cols-3 gap-3 mb-4">
+              <div className="grid grid-cols-3 gap-2 mb-3">
                 {[20000, 50000, 100000].map(amt => (
                   <button 
                     key={amt} 
                     onClick={() => setDonationAmount(amt)}
-                    className={`py-3 border-2 rounded-xl text-center font-bold transition-all duration-200 ${
+                    className={`py-2.5 border-2 rounded-lg text-center font-bold text-sm transition-all duration-200 ${
                       donationAmount === amt 
-                        ? 'bg-teal-deep text-white border-teal-deep shadow-lg shadow-teal-deep/30' 
+                        ? 'bg-teal-deep text-white border-teal-deep shadow-lg' 
                         : 'border-gray-200 hover:border-teal-deep hover:bg-teal-deep/5'
                     }`}
                   >
@@ -674,29 +682,96 @@ function App() {
               <input 
                 type="number" 
                 placeholder="Nominal custom (Rp)" 
-                className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-teal-deep focus:outline-none focus:ring-2 focus:ring-teal-deep/20 mb-5 transition-all duration-200"
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-teal-deep focus:outline-none focus:ring-2 focus:ring-teal-deep/20 mb-4 transition-all duration-200"
                 onChange={e => setDonationAmount(parseInt(e.target.value) || 0)}
               />
               
+              <p className="text-sm font-medium text-gray-700 mb-3">Metode Pembayaran:</p>
+              <div className="grid grid-cols-2 gap-2 mb-4">
+                {[
+                  { id: 'bni', name: 'BNI', rekening: '1234567890', an: 'Yayasan JNS Social' },
+                  { id: 'mandiri', name: 'Bank Mandiri', rekening: '9876543210', an: 'Yayasan JNS Social' },
+                  { id: 'gopay', name: 'GoPay', rekening: '081234567890', an: 'JNS Social' },
+                  { id: 'dana', name: 'DANA', rekening: '081234567890', an: 'JNS Social' },
+                ].map(method => (
+                  <button 
+                    key={method.id}
+                    onClick={() => setSelectedPaymentMethod(method)}
+                    className={`p-3 border-2 rounded-xl text-left transition-all duration-200 ${
+                      selectedPaymentMethod?.id === method.id
+                        ? 'bg-teal-deep/10 border-teal-deep'
+                        : 'border-gray-200 hover:border-teal-deep'
+                    }`}
+                  >
+                    <span className="font-semibold text-gray-800 block">{method.name}</span>
+                    {selectedPaymentMethod?.id === method.id && (
+                      <span className="text-xs text-teal-deep mt-1 block">
+                        {method.rekening} (a.n {method.an})
+                      </span>
+                    )}
+                  </button>
+                ))}
+              </div>
+              
               <p className="text-sm font-medium text-gray-700 mb-3">Data diri:</p>
-              <div className="space-y-3">
-                <input type="text" placeholder="Nama Lengkap" value={donorData.name} onChange={e => setDonorData({ ...donorData, name: e.target.value })} className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-teal-deep focus:outline-none focus:ring-2 focus:ring-teal-deep/20 transition-all duration-200" />
-                <input type="tel" placeholder="WhatsApp" value={donorData.whatsapp} onChange={e => setDonorData({ ...donorData, whatsapp: e.target.value })} className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-teal-deep focus:outline-none focus:ring-2 focus:ring-teal-deep/20 transition-all duration-200" />
-                <input type="email" placeholder="Email" value={donorData.email} onChange={e => setDonorData({ ...donorData, email: e.target.value })} className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-teal-deep focus:outline-none focus:ring-2 focus:ring-teal-deep/20 transition-all duration-200" />
+              <div className="space-y-3 mb-4">
+                <input 
+                  type="text" 
+                  placeholder="Nama Lengkap *" 
+                  required
+                  value={donorData.name} 
+                  onChange={e => setDonorData({ ...donorData, name: e.target.value })} 
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-teal-deep focus:outline-none focus:ring-2 focus:ring-teal-deep/20 transition-all duration-200" 
+                />
+                <input 
+                  type="tel" 
+                  placeholder="WhatsApp *" 
+                  required
+                  value={donorData.whatsapp} 
+                  onChange={e => setDonorData({ ...donorData, whatsapp: e.target.value })} 
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-teal-deep focus:outline-none focus:ring-2 focus:ring-teal-deep/20 transition-all duration-200" 
+                />
+                <input 
+                  type="email" 
+                  placeholder="Email (opsional)" 
+                  value={donorData.email} 
+                  onChange={e => setDonorData({ ...donorData, email: e.target.value })} 
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-teal-deep focus:outline-none focus:ring-2 focus:ring-teal-deep/20 transition-all duration-200" 
+                />
+              </div>
+              
+              <p className="text-sm font-medium text-gray-700 mb-3">Bukti Transfer:</p>
+              <div className="border-2 border-dashed border-gray-300 rounded-xl p-4 text-center mb-4">
+                <input 
+                  type="file" 
+                  accept="image/*"
+                  onChange={e => setTransactionProof(e.target.files[0])}
+                  className="hidden" 
+                  id="bukti-transfer"
+                />
+                <label htmlFor="bukti-transfer" className="cursor-pointer">
+                  {transactionProof ? (
+                    <div className="flex items-center justify-center gap-2 text-teal-deep">
+                      <CheckCircle className="w-5 h-5" />
+                      <span className="text-sm font-medium">{transactionProof.name}</span>
+                    </div>
+                  ) : (
+                    <div className="text-gray-500">
+                      <Upload className="w-8 h-8 mx-auto mb-2" />
+                      <span className="text-sm">Klik untuk upload bukti</span>
+                    </div>
+                  )}
+                </label>
               </div>
             </div>
             
-            <div className="px-6 py-5 bg-gradient-to-b from-gray-50 to-white">
-              <p className="text-sm font-medium text-gray-700 mb-3">Metode Pembayaran:</p>
-              <div className="bg-gray-50 rounded-xl p-4 mb-5">
-                <div className="text-sm space-y-2">
-                  <div className="flex justify-between"><span className="text-gray-500">Bank Makassar</span><span className="font-semibold">XXXX XXXX XXXX</span></div>
-                  <div className="flex justify-between"><span className="text-gray-500">A.n</span><span className="font-semibold">Yayasan JNS Social</span></div>
-                </div>
-              </div>
-              
-              <button onClick={submitDonation} className="w-full bg-gradient-to-r from-emerald-bright to-emerald-400 text-teal-deep font-semibold py-4 rounded-xl flex items-center justify-center gap-2 hover:shadow-xl hover:shadow-emerald-bright/30 transition-all duration-300">
-                <Send className="w-5 h-5" /> Konfirmasi via WhatsApp
+            <div className="px-6 py-4 bg-gray-50 border-t border-gray-100 flex-shrink-0">
+              <button 
+                onClick={submitDonation} 
+                disabled={!donorData.name || !donorData.whatsapp || !donationAmount || !selectedPaymentMethod}
+                className="w-full bg-gradient-to-r from-teal-deep to-teal-light text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <Send className="w-5 h-5" /> Konfirmasi Donasi
               </button>
             </div>
           </div>
