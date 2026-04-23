@@ -247,8 +247,8 @@ return (
         <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7" />
       </a>
       
-<!-- Navbar + Ticker - Sticky together -->
-<div className="sticky top-0 z-50">
+<!-- Navbar + Ticker - FIXED at top -->
+<div className="fixed top-0 left-0 right-0 z-50">
   <nav className="bg-white/95 backdrop-blur-md shadow-sm">
     <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
       <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
