@@ -493,8 +493,21 @@ function App() {
                     transition: `all 0.5s cubic-bezier(0.25, 1, 0.5, 1) ${(idx + 5) * 100}ms`
                   }}
                 >
-                  <div className="relative h-40 overflow-hidden">
-                    <img src={c.image + '&w=300&q=60'} alt={c.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" onError={(e) => e.target.style.display = 'none'} />
+                  <div className="relative h-40 overflow-hidden bg-gray-100">
+                    <img 
+                      src={c.image + '&w=300&q=60'} 
+                      alt={c.title} 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                      loading="lazy" 
+                      onError={(e) => {
+                        e.target.style.display = 'none'
+                        e.target.nextElementSibling.classList.remove('hidden')
+                        e.target.nextElementSibling.classList.add('flex')
+                      }} 
+                    />
+                    <div className="absolute inset-0 hidden items-center justify-center">
+                      <currentPillar.icon className={`w-10 h-10 ${currentPillar.color.replace('bg-', 'text-')}`} />
+                    </div>
                     <div className={`absolute inset-0 bg-gradient-to-t ${currentPillar.gradient} opacity-60`}></div>
                     <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
                       <span className="text-white/90 text-xs font-medium">{currentPillar.title}</span>
