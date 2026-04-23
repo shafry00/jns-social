@@ -689,26 +689,31 @@ function App() {
               <p className="text-sm font-medium text-gray-700 mb-3">Metode Pembayaran:</p>
               <div className="grid grid-cols-2 gap-2 mb-4">
                 {[
-                  { id: 'bni', name: 'BNI', rekening: '1234567890', an: 'Yayasan JNS Social' },
-                  { id: 'mandiri', name: 'Bank Mandiri', rekening: '9876543210', an: 'Yayasan JNS Social' },
-                  { id: 'gopay', name: 'GoPay', rekening: '081234567890', an: 'JNS Social' },
-                  { id: 'dana', name: 'DANA', rekening: '081234567890', an: 'JNS Social' },
+                  { id: 'bni', name: 'BNI', logo: 'BN', rekening: '1234567890', an: 'Yayasan JNS Social', color: 'bg-red-500' },
+                  { id: 'mandiri', name: 'Bank Mandiri', logo: 'M', rekening: '9876543210', an: 'Yayasan JNS Social', color: 'bg-blue-700' },
+                  { id: 'gopay', name: 'GoPay', logo: 'G', rekening: '081234567890', an: 'JNS Social', color: 'bg-green-500' },
+                  { id: 'dana', name: 'DANA', logo: 'D', rekening: '081234567890', an: 'JNS Social', color: 'bg-blue-500' },
                 ].map(method => (
                   <button 
                     key={method.id}
                     onClick={() => setSelectedPaymentMethod(method)}
-                    className={`p-3 border-2 rounded-xl text-left transition-all duration-200 ${
+                    className={`p-3 border-2 rounded-xl text-left transition-all duration-200 flex items-center gap-3 ${
                       selectedPaymentMethod?.id === method.id
                         ? 'bg-teal-deep/10 border-teal-deep'
                         : 'border-gray-200 hover:border-teal-deep'
                     }`}
                   >
-                    <span className="font-semibold text-gray-800 block">{method.name}</span>
-                    {selectedPaymentMethod?.id === method.id && (
-                      <span className="text-xs text-teal-deep mt-1 block">
-                        {method.rekening} (a.n {method.an})
-                      </span>
-                    )}
+                    <div className={`w-10 h-10 ${method.color} rounded-lg flex items-center justify-center text-white font-bold text-sm`}>
+                      {method.logo}
+                    </div>
+                    <div className="flex-1">
+                      <span className="font-semibold text-gray-800 block">{method.name}</span>
+                      {selectedPaymentMethod?.id === method.id && (
+                        <span className="text-xs text-teal-deep mt-0.5 block">
+                          {method.rekening}
+                        </span>
+                      )}
+                    </div>
                   </button>
                 ))}
               </div>
