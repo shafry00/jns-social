@@ -132,7 +132,6 @@ function App() {
   const [donationAmount, setDonationAmount] = useState(0)
   const [loaded, setLoaded] = useState(false)
   const [galleryIndex, setGalleryIndex] = useState(0)
-  const [scrollPosition, setScrollPosition] = useState(0)
   const galleryRef = useRef(null)
 
   const currentPillar = pillars.find(p => p.id === activePillar)
@@ -149,6 +148,14 @@ function App() {
     const interval = setInterval(() => {
       setGalleryIndex(prev => (prev + 1) % activities.length)
     }, 3000)
+    return () => clearInterval(interval)
+  }, [])
+
+  // Hero carousel auto-scroll
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setGalleryIndex(prev => (prev + 1) % pillars.length)
+    }, 4000)
     return () => clearInterval(interval)
   }, [])
 
@@ -212,57 +219,100 @@ function App() {
 
       {/* Hero Section */}
       <section className="min-h-screen flex items-center pt-20 bg-gradient-to-b from-cream-soft via-white to-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-40" style={{ backgroundImage: 'radial-gradient(#006D77 0.5px, transparent 0.5px)', backgroundSize: '16px 16px' }}></div>
+        <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(#006D77 0.5px, transparent 0.5px)', backgroundSize: '16px 16px' }}></div>
         <div className="absolute top-1/4 -left-32 w-64 h-64 bg-emerald-bright/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-teal-deep/10 rounded-full blur-3xl"></div>
         
-        <div className={`max-w-7xl mx-auto px-4 py-20 relative transition-all duration-1000 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full mb-8 shadow-lg shadow-teal-deep/5">
-              <Sparkles className="w-4 h-4 text-emerald-bright animate-pulse" />
-              <span className="text-sm font-medium text-gray-600">Makassar, Sulawesi Selatan</span>
-            </div>
-            
-            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-teal-deep leading-[1.1] mb-8 tracking-tight">
-              Menebar Manfaat,<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-bright to-teal-deep">Membangun Ummat</span><br />
-              <span className="text-gray-400">di Kota Daeng</span>
-            </h1>
-            
-            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-10 leading-relaxed">
-              <span className="font-medium text-teal-deep">JNS Social</span> hadir untuk kehidupan bermakna melalui lima pilar program: <span className="font-medium">Pendidikan</span>, <span className="font-medium">Sosial</span>, <span className="font-medium">Media & Dakwah</span>, <span className="font-medium">Sedekah & Infaq</span>, dan <span className="font-medium">Ekonomi Ummat</span>.
-            </p>
-            
-            <div className="flex flex-wrap justify-center gap-4">
-              <button onClick={() => document.getElementById('programs').scrollIntoView({ behavior: 'smooth' })} 
-                className="group bg-teal-deep hover:bg-teal-light text-white font-semibold px-10 py-4 rounded-full transition-all duration-300 hover:shadow-2xl hover:shadow-teal-deep/30 hover:scale-105 active:scale-95 flex items-center gap-3">
-                <Heart className="w-5 h-5 group-hover:scale-110 group-active:scale-90 transition-transform duration-200" />
-                <span>Donasi Sekarang</span>
-              </button>
-              <a href="#transparency" 
-                className="border-2 border-teal-deep text-teal-deep font-semibold px-6 py-4 rounded-full transition-all duration-300 hover:bg-teal-deep hover:text-white hover:scale-105 active:scale-95 flex items-center gap-2">
-                Transparansi
-              </a>
-            </div>
-          </div>
-          
-          <div className="flex justify-center gap-12 pt-10 border-t border-gray-200/50 mx-auto max-w-2xl">
-            {[
-              { n: '5', l: 'Pilar', color: 'bg-gradient-to-br from-blue-500 to-blue-600' },
-              { n: '20', l: 'Campaign', color: 'bg-gradient-to-br from-purple-500 to-purple-600' },
-              { n: '100%', l: 'Transparan', color: 'bg-gradient-to-br from-emerald-500 to-emerald-600' }
-            ].map((item, i) => (
-              <div key={i} className="text-center group">
-                <div className={`w-16 h-16 mx-auto mb-3 rounded-2xl ${item.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform`}>
-                  <div className="font-display text-xl lg:text-2xl font-bold text-white">{item.n}</div>
-                </div>
-                <div className="text-sm text-gray-500 font-medium">{item.l} Program</div>
+        <div className={`max-w-7xl mx-auto px-4 py-16 lg:py-20 relative transition-all duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Carousel */}
+            <div className="relative order-2 lg:order-1">
+              <div className="relative h-[400px] sm:h-[450px] lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
+                {pillars.map((pillar, idx) => (
+                  <div 
+                    key={pillar.id}
+                    className={`absolute inset-0 transition-all duration-700 ${idx === galleryIndex ? 'opacity-100 translate-x-0 z-10' : 'opacity-0 translate-x-8'}`}
+                  >
+                    <img 
+                      src={pillar.campaigns[0].image} 
+                      alt={pillar.title}
+                      className="w-full h-full object-cover"
+                      onError={(e) => e.target.style.display = 'none'}
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${pillar.gradient} opacity-60`}></div>
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <span className="inline-block bg-white/90 text-teal-deep text-sm font-bold px-3 py-1 rounded-full mb-2">{pillar.title}</span>
+                      <h3 className="text-white text-2xl font-bold mb-1">{pillar.campaigns[0].title}</h3>
+                      <p className="text-white/80 text-sm">{pillar.tagline}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+              
+              {/* Pillar Indicators */}
+              <div className="flex justify-center gap-3 mt-6">
+                {pillars.map((pillar, idx) => (
+                  <button 
+                    key={pillar.id}
+                    onClick={() => setGalleryIndex(idx)}
+                    className={`h-3 rounded-full transition-all ${idx === galleryIndex ? 'bg-emerald-bright w-8' : 'bg-gray-300 hover:bg-gray-400'}`}
+                  />
+                ))}
+              </div>
+              
+              {/* Decorative Elements */}
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-emerald-bright/20 to-teal-deep/20 rounded-full blur-2xl"></div>
+              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-tr from-teal-deep/10 to-emerald-bright/10 rounded-full blur-2xl"></div>
+            </div>
+            
+            {/* Right: Text & CTA */}
+            <div className="order-1 lg:order-2">
+              <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full mb-6 shadow-lg">
+                <Sparkles className="w-4 h-4 text-emerald-bright animate-pulse" />
+                <span className="text-sm font-medium text-gray-600">Makassar, Sulawesi Selatan</span>
+              </div>
+              
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-teal-deep leading-[1.1] mb-6 tracking-tight">
+                Menebar Manfaat,<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-bright to-teal-deep">Membangun Ummat</span><br />
+                <span className="text-gray-400">di Kota Daeng</span>
+              </h1>
+              
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                <span className="font-medium text-teal-deep">JNS Social</span> hadir untuk kehidupan bermakna melalui lima pilar program: <span className="font-medium">Pendidikan</span>, <span className="font-medium">Sosial</span>, <span className="font-medium">Media & Dakwah</span>, <span className="font-medium">Sedekah & Infaq</span>, dan <span className="font-medium">Ekonomi Ummat</span>.
+              </p>
+              
+              <div className="flex flex-wrap gap-4 mb-10">
+                <button onClick={() => document.getElementById('programs').scrollIntoView({ behavior: 'smooth' })} 
+                  className="group bg-gradient-to-r from-teal-deep to-teal-light hover:from-teal-light hover:to-teal-deep text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-2xl hover:shadow-teal-deep/30 hover:scale-105 active:scale-95 flex items-center gap-3">
+                  <Heart className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                  <span>Donasi Sekarang</span>
+                </button>
+                <a href="#transparency" 
+                  className="border-2 border-teal-deep text-teal-deep font-semibold px-6 py-4 rounded-full transition-all duration-300 hover:bg-teal-deep hover:text-white hover:scale-105 active:scale-95">
+                  Transparansi
+                </a>
+              </div>
+              
+              <div className="grid grid-cols-3 gap-4 pt-6 border-t border-gray-200">
+                <div className="text-center p-4 bg-white rounded-2xl shadow-md">
+                  <div className="font-display text-2xl lg:text-3xl font-bold text-teal-deep">5</div>
+                  <div className="text-xs text-gray-500 font-medium">Pilar Program</div>
+                </div>
+                <div className="text-center p-4 bg-white rounded-2xl shadow-md">
+                  <div className="font-display text-2xl lg:text-3xl font-bold text-purple-500">20</div>
+                  <div className="text-xs text-gray-500 font-medium">Campaign</div>
+                </div>
+                <div className="text-center p-4 bg-white rounded-2xl shadow-md">
+                  <div className="font-display text-2xl lg:text-3xl font-bold text-emerald-bright">100%</div>
+                  <div className="text-xs text-gray-500 font-medium">Transparan</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden lg:block">
           <ArrowRight className="w-6 h-6 text-teal-deep/50 rotate-90" />
         </div>
       </section>
