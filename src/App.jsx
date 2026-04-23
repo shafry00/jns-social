@@ -230,12 +230,10 @@ function App() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-deep to-teal-light flex items-center justify-center shadow-lg shadow-teal-deep/30">
-              <Heart className="w-5 h-5 text-white" fill="#38BDF8" />
-            </div>
-            <div>
+            <img src="/jns-logo.png" alt="JNS Social" className="w-10 h-10 rounded-xl object-contain" />
+            <div className="hidden sm:block">
               <span className="font-display text-lg font-bold text-teal-deep block tracking-tight">JNS</span>
-              <span className="font-display text-xs text-emerald-bright font-medium tracking-widest uppercase">Social</span>
+              <span className="font-display text-xs text-orange-500 font-medium tracking-widest uppercase">Social</span>
             </div>
           </div>
           <div className="flex items-center gap-6">
