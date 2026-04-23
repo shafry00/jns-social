@@ -164,18 +164,18 @@ function App() {
               <span className="font-medium text-teal-deep">JNS Social</span> hadir untuk kehidupan bermakna melalui lima pilar program: <span className="font-medium">Pendidikan</span>, <span className="font-medium">Sosial</span>, <span className="font-medium">Media & Dakwah</span>, <span className="font-medium">Sedekah & Infaq</span>, dan <span className="font-medium">Ekonomi Ummat</span>.
             </p>
             
-            <div className="flex flex-wrap justify-center gap-4">
-              <button onClick={() => document.getElementById('programs').scrollIntoView({ behavior: 'smooth' })} 
-                className="group bg-teal-deep hover:bg-teal-light text-white font-semibold px-10 py-4 rounded-full transition-all duration-300 hover:shadow-2xl hover:shadow-teal-deep/30 flex items-center gap-3 relative overflow-hidden">
-                <span className="relative z-10 flex items-center gap-2">
-                  <Heart className="w-5 h-5 group-hover:scale-110 transition-transform" /> Donasi Sekarang
-                </span>
-              </button>
-              <a href="#transparency" 
-                className="border-2 border-teal-deep text-teal-deep font-semibold px-10 py-4 rounded-full transition-all duration-300 hover:bg-teal-deep hover:text-white flex items-center gap-2">
-                <Eye className="w-5 h-5" /> Lihat Transparansi
-              </a>
-            </div>
+            <button 
+              onClick={() => document.getElementById('programs').scrollIntoView({ behavior: 'smooth' })} 
+              className="group bg-teal-deep hover:bg-teal-light text-white font-semibold px-10 py-4 rounded-full transition-all duration-300 hover:shadow-2xl hover:shadow-teal-deep/30 hover:scale-105 active:scale-95 flex items-center gap-3 relative overflow-hidden"
+            >
+              <Heart className="w-5 h-5 group-hover:scale-110 group-active:scale-90 transition-transform duration-200" />
+              <span>Donasi Sekarang</span>
+            </button>
+            <a href="#transparency" 
+              className="border-2 border-teal-deep text-teal-deep font-semibold px-10 py-4 rounded-full transition-all duration-300 hover:bg-teal-deep hover:text-white hover:scale-105 active:scale-95 flex items-center gap-2"
+            >
+              <Eye className="w-5 h-5" /> Lihat Transparansi
+            </a>
           </div>
           
           <div className="flex justify-center gap-12 pt-10 border-t border-gray-200/50 mx-auto max-w-2xl">
@@ -240,7 +240,8 @@ function App() {
               return (
                 <div 
                   key={c.id} 
-                  className="group w-full sm:w-72 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 cursor-pointer"
+                  className="group w-full sm:w-72 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer hover:-translate-y-2"
+                  onClick={() => openModal(currentPillar.id, c.id)}
                   style={{
                     animationDelay: `${(idx + 5) * 100}ms`,
                     transform: loaded ? 'translateY(0)' : 'translateY(20px)',
@@ -255,6 +256,12 @@ function App() {
                     <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
                       <span className="text-white/90 text-xs font-medium">{currentPillar.title}</span>
                       <span className="bg-white/90 text-teal-deep text-xs font-bold px-2 py-1 rounded-full">{percent}%</span>
+                    </div>
+                    {/* Overlay on hover */}
+                    <div className="absolute inset-0 bg-teal-deep/0 group-hover:bg-teal-deep/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                      <button className="bg-white text-teal-deep font-semibold px-4 py-2 rounded-full flex items-center gap-2 transform scale-90 group-hover:scale-100 transition-transform duration-300">
+                        <Heart className="w-4 h-4" /> Donasi
+                      </button>
                     </div>
                   </div>
                   
@@ -526,7 +533,7 @@ function App() {
               <input 
                 type="number" 
                 placeholder="Nominal custom (Rp)" 
-                className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-teal-deep focus:outline-none mb-5"
+                className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-teal-deep focus:outline-none focus:ring-2 focus:ring-teal-deep/20 mb-5 transition-all duration-200"
                 onChange={e => setDonationAmount(parseInt(e.target.value) || 0)}
               />
               
@@ -537,21 +544,21 @@ function App() {
                   placeholder="Nama Lengkap" 
                   value={donorData.name} 
                   onChange={e => setDonorData({ ...donorData, name: e.target.value })} 
-                  className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-teal-deep focus:outline-none" 
+                  className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-teal-deep focus:outline-none focus:ring-2 focus:ring-teal-deep/20 transition-all duration-200" 
                 />
                 <input 
                   type="tel" 
                   placeholder="WhatsApp" 
                   value={donorData.whatsapp} 
                   onChange={e => setDonorData({ ...donorData, whatsapp: e.target.value })} 
-                  className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-teal-deep focus:outline-none" 
+                  className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-teal-deep focus:outline-none focus:ring-2 focus:ring-teal-deep/20 transition-all duration-200" 
                 />
                 <input 
                   type="email" 
                   placeholder="Email" 
                   value={donorData.email} 
                   onChange={e => setDonorData({ ...donorData, email: e.target.value })} 
-                  className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-teal-deep focus:outline-none" 
+                  className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-teal-deep focus:outline-none focus:ring-2 focus:ring-teal-deep/20 transition-all duration-200" 
                 />
               </div>
             </div>
