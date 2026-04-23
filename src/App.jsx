@@ -248,7 +248,8 @@ return (
       </a>
       
 <!-- Navbar -->
-<div className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm">
+<div className="sticky top-0 z-50">
+  <nav className="bg-white/95 backdrop-blur-md shadow-sm">
   <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
     <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
       <img src="/jns-logo.png" alt="JNS Social" className="w-12 h-12 rounded-xl object-contain" />
@@ -267,17 +268,37 @@ return (
   </div>
 </div>
 
-{/* Ticker - Fixed di bawah navbar */}
-<div className="fixed left-0 top-[72px] right-0 z-40 bg-primary-green py-2">
-  <div className="animate-marquee whitespace-nowrap text-white text-sm px-4">
-    Jalankan program kebermanfaatan umat 2026: santunan fakir misère, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat.
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat.
+{/* Navbar + Ticker - Sticky together */}
+<div className="sticky top-0 z-50">
+  <nav className="bg-white/95 backdrop-blur-md shadow-sm">
+    <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        <img src="/jns-logo.png" alt="JNS Social" className="w-12 h-12 rounded-xl object-contain" />
+        <div>
+          <span className="font-display text-lg font-bold text-primary-green block tracking-tight">JNS Social</span>
+        </div>
+      </div>
+      <div className="flex items-center gap-6">
+        <a href="#about" className="hidden sm:block text-sm font-medium text-gray-600 hover:text-primary-green transition-colors">Tentang Kami</a>
+        <a href="#programs" className="hidden sm:block text-sm font-medium text-gray-600 hover:text-primary-green transition-colors">Program</a>
+        <a href="#contact" className="hidden sm:block text-sm font-medium text-gray-600 hover:text-primary-green transition-colors">Kontak</a>
+        <button onClick={() => document.getElementById('programs').scrollIntoView({ behavior: 'smooth' })} className="bg-primary-green hover:bg-dark-green text-white font-medium px-4 py-2 rounded-lg transition-all text-sm">
+          Donasi
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div className="bg-primary-green py-2">
+    <div className="animate-marquee whitespace-nowrap text-white text-sm px-4">
+      Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat.
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat.
+    </div>
   </div>
 </div>
 
 {/* Hero Section */}
-<div className="pt-20 relative">
+<div className="relative">
   <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(#2F5D3A 0.5px, transparent 0.5px)', backgroundSize: '16px 16px' }}></div>
   <div className="absolute top-1/3 -left-16 sm:-left-24 w-40 sm:w-56 h-40 sm:h-56 bg-primary-green/10 rounded-full blur-2xl"></div>
   <div className="absolute bottom-1/3 -right-16 sm:-right-24 w-40 sm:w-56 h-40 sm:h-56 bg-gold/10 rounded-full blur-2xl"></div>
