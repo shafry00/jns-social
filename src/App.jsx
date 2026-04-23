@@ -223,7 +223,7 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-deep to-teal-light flex items-center justify-center shadow-lg shadow-teal-deep/30">
-              <Heart className="w-5 h-5 text-white" fill="#06D6A0" />
+              <Heart className="w-5 h-5 text-white" fill="#38BDF8" />
             </div>
             <div>
               <span className="font-display text-lg font-bold text-teal-deep block tracking-tight">JNS</span>
@@ -638,7 +638,7 @@ function App() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
-                    <Heart className="w-5 h-5 text-emerald-bright" fill="#06D6A0" />
+                    <Heart className="w-5 h-5 text-emerald-bright" fill="#38BDF8" />
                   </div>
                   <span className="font-semibold text-white text-lg">Donasi</span>
                 </div>
