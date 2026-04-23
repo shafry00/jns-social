@@ -573,7 +573,7 @@ return (
           </div>
 
           {/* Transparency - Gallery Slider */}
-          <div className="relative">
+<div className="relative pt-16">
             <button 
               onClick={() => {
                 const container = galleryRef.current
