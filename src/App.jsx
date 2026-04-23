@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { 
   Heart, MapPin, Eye, GraduationCap, Users, Mic, Briefcase, Send, X, Mail, 
-  MapPin as Location, CheckCircle, Sparkles, ArrowRight, HandHeart, 
+  MapPin as Location, CheckCircle, Sparkles, Star, ArrowRight, HandHeart, 
   ChevronLeft, ChevronRight, Clock
 } from 'lucide-react'
 
