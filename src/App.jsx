@@ -267,13 +267,6 @@ return (
       </div>
     </div>
   </nav>
-  <div className="bg-primary-green py-2">
-    <div className="animate-marquee whitespace-nowrap text-white text-sm px-4">
-      Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat.
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat.
-    </div>
-  </div>
 </div>
 
 {/* Hero Section */}
