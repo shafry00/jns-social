@@ -6,14 +6,14 @@ import {
 } from 'lucide-react'
 
 const activities = [
-  { id: 1, title: 'Beasiswa Anak Yatim', pillar: 'Pendidikan', image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&h=600&fit=crop', date: '20 Apr 2026' },
-  { id: 2, title: 'Distribusi Paket Sembako', pillar: 'Sosial', image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&h=600&fit=crop', date: '19 Apr 2026' },
-  { id: 3, title: 'Bantuan Kesehatan', pillar: 'Sosial', image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=600&fit=crop', date: '18 Apr 2026' },
-  { id: 4, title: 'Webinar Islami', pillar: 'Media & Dakwah', image: 'https://images.unsplash.com/photo-1591115765373-ed8b0e5a8a23?w=600&h=600&fit=crop', date: '17 Apr 2026' },
-  { id: 5, title: 'Qurban 2026', pillar: 'Sedekah & Infaq', image: 'https://images.unsplash.com/photo-1531306728370-e2ebd9d7e99f?w=600&h=600&fit=crop', date: '16 Apr 2026' },
-  { id: 6, title: 'Modal UMKM Makassar', pillar: 'Ekonomi Ummat', image: 'https://images.unsplash.com/photo-1556742049-0c23a7e4ab7c?w=600&h=600&fit=crop', date: '15 Apr 2026' },
-  { id: 7, title: 'Les Privat Gratis', pillar: 'Pendidikan', image: 'https://images.unsplash.com/photo-1434030216411-0b793b9d9f1d?w=600&h=600&fit=crop', date: '14 Apr 2026' },
-  { id: 8, title: 'Panti Asuhan', pillar: 'Sosial', image: 'https://images.unsplash.com/photo-1531983412531-1f49a365ffed?w=600&h=600&fit=crop', date: '13 Apr 2026' },
+  { id: 1, title: 'Beasiswa Anak Yatim', pillar: 'Pendidikan', image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&q=60&fit=crop', date: '20 Apr 2026' },
+  { id: 2, title: 'Distribusi Paket Sembako', pillar: 'Sosial', image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400&q=60&fit=crop', date: '19 Apr 2026' },
+  { id: 3, title: 'Bantuan Kesehatan', pillar: 'Sosial', image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&q=60&fit=crop', date: '18 Apr 2026' },
+  { id: 4, title: 'Webinar Islami', pillar: 'Media & Dakwah', image: 'https://images.unsplash.com/photo-1591115765373-ed8b0e5a8a23?w=400&q=60&fit=crop', date: '17 Apr 2026' },
+  { id: 5, title: 'Qurban 2026', pillar: 'Sedekah & Infaq', image: 'https://images.unsplash.com/photo-1531306728370-e2ebd9d7e99f?w=400&q=60&fit=crop', date: '16 Apr 2026' },
+  { id: 6, title: 'Modal UMKM Makassar', pillar: 'Ekonomi Ummat', image: 'https://images.unsplash.com/photo-1556742049-0c23a7e4ab7c?w=400&q=60&fit=crop', date: '15 Apr 2026' },
+  { id: 7, title: 'Les Privat Gratis', pillar: 'Pendidikan', image: 'https://images.unsplash.com/photo-1434030216411-0b793b9d9f1d?w=400&q=60&fit=crop', date: '14 Apr 2026' },
+  { id: 8, title: 'Panti Asuhan', pillar: 'Sosial', image: 'https://images.unsplash.com/photo-1531983412531-1f49a365ffed?w=400&q=60&fit=crop', date: '13 Apr 2026' },
 ]
 
 const pillars = [
@@ -32,10 +32,10 @@ const pillars = [
       'Tablet dan laptop untuk anak tidak mampu'
     ],
     campaigns: [
-      { id: 'beasiswa', title: 'Beasiswa Anak Yatim', image: 'https://images.unsplash.com/photo-1503676260728-1c00da1a492d?w=400&h=250&fit=crop', target: 50000000, raised: 32500000, donors: 145 },
-      { id: 'sekolah', title: 'Sekolah Gratis', image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&h=250&fit=crop', target: 25000000, raised: 18200000, donors: 89 },
-      { id: 'les', title: 'Les Privat Gratis', image: 'https://images.unsplash.com/photo-1434030216411-0b793b9d9f1d?w=400&h=250&fit=crop', target: 15000000, raised: 9800000, donors: 67 },
-      { id: 'digital', title: 'Digital Literacy', image: 'https://images.unsplash.com/photo-1516321318423-f06f85e499b9?w=400&h=250&fit=crop', target: 20000000, raised: 14100000, donors: 112 }
+      { id: 'beasiswa', title: 'Beasiswa Anak Yatim', image: 'https://images.unsplash.com/photo-1503676260728-1c00da1a492d?w=300&q=60&fit=crop', target: 50000000, raised: 32500000, donors: 145 },
+      { id: 'sekolah', title: 'Sekolah Gratis', image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=300&q=60&fit=crop', target: 25000000, raised: 18200000, donors: 89 },
+      { id: 'les', title: 'Les Privat Gratis', image: 'https://images.unsplash.com/photo-1434030216411-0b793b9d9f1d?w=300&q=60&fit=crop', target: 15000000, raised: 9800000, donors: 67 },
+      { id: 'digital', title: 'Digital Literacy', image: 'https://images.unsplash.com/photo-1516321318423-f06f85e499b9?w=300&q=60&fit=crop', target: 20000000, raised: 14100000, donors: 112 }
     ]
   },
   { 
@@ -53,10 +53,10 @@ const pillars = [
       'Program lingkungan bersih Makassar'
     ],
     campaigns: [
-      { id: 'sembako', title: 'Paket Sembako', image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400&h=250&fit=crop', target: 30000000, raised: 24800000, donors: 234 },
-      { id: 'kesehatan', title: 'Bantuan Kesehatan', image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=250&fit=crop', target: 40000000, raised: 28500000, donors: 156 },
-      { id: 'panti', title: 'Bantuan Panti', image: 'https://images.unsplash.com/photo-1531983412531-1f49a365ffed?w=400&h=250&fit=crop', target: 25000000, raised: 19200000, donors: 98 },
-      { id: 'lingkungan', title: 'Clean Makassar', image: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=250&fit=crop', target: 15000000, raised: 11300000, donors: 87 }
+      { id: 'sembako', title: 'Paket Sembako', image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=300&q=60&fit=crop', target: 30000000, raised: 24800000, donors: 234 },
+      { id: 'kesehatan', title: 'Bantuan Kesehatan', image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=300&q=60&fit=crop', target: 40000000, raised: 28500000, donors: 156 },
+      { id: 'panti', title: 'Bantuan Panti', image: 'https://images.unsplash.com/photo-1531983412531-1f49a365ffed?w=300&q=60&fit=crop', target: 25000000, raised: 19200000, donors: 98 },
+      { id: 'lingkungan', title: 'Clean Makassar', image: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=300&q=60&fit=crop', target: 15000000, raised: 11300000, donors: 87 }
     ]
   },
   { 
@@ -74,10 +74,10 @@ const pillars = [
       'Campaign dakwah ke daerah terpencil'
     ],
     campaigns: [
-      { id: 'konten', title: 'Konten Dakwah', image: 'https://images.unsplash.com/photo-1594736797935-d09bc5b33f1a?w=400&h=250&fit=crop', target: 10000000, raised: 7500000, donors: 56 },
-      { id: 'webinar', title: 'Webinar Islami', image: 'https://images.unsplash.com/photo-1591115765373-ed8b0e5a8a23?w=400&h=250&fit=crop', target: 8000000, raised: 5200000, donors: 43 },
-      { id: 'podcast', title: 'Podcast UIN', image: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=400&h=250&fit=crop', target: 12000000, raised: 9100000, donors: 78 },
-      { id: 'campaign', title: 'Campaign Dakwah', image: 'https://images.unsplash.com/photo-1600038224101-5f1f40bc5d6a?w=400&h=250&fit=crop', target: 20000000, raised: 15800000, donors: 134 }
+      { id: 'konten', title: 'Konten Dakwah', image: 'https://images.unsplash.com/photo-1594736797935-d09bc5b33f1a?w=300&q=60&fit=crop', target: 10000000, raised: 7500000, donors: 56 },
+      { id: 'webinar', title: 'Webinar Islami', image: 'https://images.unsplash.com/photo-1591115765373-ed8b0e5a8a23?w=300&q=60&fit=crop', target: 8000000, raised: 5200000, donors: 43 },
+      { id: 'podcast', title: 'Podcast UIN', image: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=300&q=60&fit=crop', target: 12000000, raised: 9100000, donors: 78 },
+      { id: 'campaign', title: 'Campaign Dakwah', image: 'https://images.unsplash.com/photo-1600038224101-5f1f40bc5d6a?w=300&q=60&fit=crop', target: 20000000, raised: 15800000, donors: 134 }
     ]
   },
   { 
@@ -95,10 +95,10 @@ const pillars = [
       'Program qurban untuk sesama'
     ],
     campaigns: [
-      { id: 'infaq', title: 'Infaq Sekarang', image: 'https://images.unsplash.com/photo-1594708767771-a25160e4c8b4?w=400&h=250&fit=crop', target: 50000000, raised: 42300000, donors: 312 },
-      { id: 'sedekah', title: 'Sedekah Harian', image: 'https://images.unsplash.com/photo-1559027615-cd4627622ead?w=400&h=250&fit=crop', target: 30000000, raised: 26800000, donors: 267 },
-      { id: 'qurban', title: 'Qurban 2026', image: 'https://images.unsplash.com/photo-1531306728370-e2ebd9d7e99f?w=400&h=250&fit=crop', target: 40000000, raised: 31500000, donors: 189 },
-      { id: 'monthly', title: 'Monthly Donor', image: 'https://images.unsplash.com/photo-1553729784-e91953dec042?w=400&h=250&fit=crop', target: 25000000, raised: 18200000, donors: 445 }
+      { id: 'infaq', title: 'Infaq Sekarang', image: 'https://images.unsplash.com/photo-1594708767771-a25160e4c8b4?w=300&q=60&fit=crop', target: 50000000, raised: 42300000, donors: 312 },
+      { id: 'sedekah', title: 'Sedekah Harian', image: 'https://images.unsplash.com/photo-1559027615-cd4627622ead?w=300&q=60&fit=crop', target: 30000000, raised: 26800000, donors: 267 },
+      { id: 'qurban', title: 'Qurban 2026', image: 'https://images.unsplash.com/photo-1531306728370-e2ebd9d7e99f?w=300&q=60&fit=crop', target: 40000000, raised: 31500000, donors: 189 },
+      { id: 'monthly', title: 'Monthly Donor', image: 'https://images.unsplash.com/photo-1553729784-e91953dec042?w=300&q=60&fit=crop', target: 25000000, raised: 18200000, donors: 445 }
     ]
   },
   { 
@@ -116,10 +116,10 @@ const pillars = [
       'Jaringan bisnis untuk perluasan usaha'
     ],
     campaigns: [
-      { id: 'modal', title: 'Modal UMKM', image: 'https://images.unsplash.com/photo-1556742049-0c23a7e4ab7c?w=400&h=250&fit=crop', target: 50000000, raised: 38500000, donors: 78 },
-      { id: 'mentoring', title: 'Mentoring Bisnis', image: 'https://images.unsplash.com/photo-1559136555-c9305db8a925?w=400&h=250&fit=crop', target: 20000000, raised: 14200000, donors: 45 },
-      { id: 'pasar', title: 'Pasar Islami', image: 'https://images.unsplash.com/photo-1595246140625-573b715c11dc?w=400&h=250&fit=crop', target: 25000000, raised: 19800000, donors: 67 },
-      { id: 'umkm', title: 'UMKM Makassar', image: 'https://images.unsplash.com/photo-1600880292203-47a7d3bf8bb1?w=400&h=250&fit=crop', target: 35000000, raised: 27100000, donors: 89 }
+      { id: 'modal', title: 'Modal UMKM', image: 'https://images.unsplash.com/photo-1556742049-0c23a7e4ab7c?w=300&q=60&fit=crop', target: 50000000, raised: 38500000, donors: 78 },
+      { id: 'mentoring', title: 'Mentoring Bisnis', image: 'https://images.unsplash.com/photo-1559136555-c9305db8a925?w=300&q=60&fit=crop', target: 20000000, raised: 14200000, donors: 45 },
+      { id: 'pasar', title: 'Pasar Islami', image: 'https://images.unsplash.com/photo-1595246140625-573b715c11dc?w=300&q=60&fit=crop', target: 25000000, raised: 19800000, donors: 67 },
+      { id: 'umkm', title: 'UMKM Makassar', image: 'https://images.unsplash.com/photo-1600880292203-47a7d3bf8bb1?w=300&q=60&fit=crop', target: 35000000, raised: 27100000, donors: 89 }
     ]
   }
 ]
@@ -267,9 +267,10 @@ function App() {
                     className={`absolute inset-0 transition-all duration-700 ${idx === galleryIndex ? 'opacity-100 translate-x-0 z-10' : 'opacity-0 translate-x-8'}`}
                   >
                     <img 
-                      src={pillar.campaigns[0].image} 
+                      src={pillar.campaigns[0].image + '&w=600&q=70'} 
                       alt={pillar.title}
                       className="w-full h-full object-cover"
+                      loading="lazy"
                       onError={(e) => e.target.style.display = 'none'}
                     />
                     <div className={`absolute inset-0 bg-gradient-to-t ${pillar.gradient} opacity-60`}></div>
@@ -493,7 +494,7 @@ function App() {
                   }}
                 >
                   <div className="relative h-40 overflow-hidden">
-                    <img src={c.image} alt={c.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onError={(e) => e.target.style.display = 'none'} />
+                    <img src={c.image + '&w=300&q=60'} alt={c.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" onError={(e) => e.target.style.display = 'none'} />
                     <div className={`absolute inset-0 bg-gradient-to-t ${currentPillar.gradient} opacity-60`}></div>
                     <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
                       <span className="text-white/90 text-xs font-medium">{currentPillar.title}</span>
@@ -545,9 +546,10 @@ function App() {
               {[...activities, ...activities].map((activity, idx) => (
                 <div key={idx} className="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg relative group cursor-pointer">
                   <img 
-                    src={activity.image} 
+                    src={activity.image + '&w=300&q=60'} 
                     alt={activity.title} 
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    loading="lazy"
                     onError={(e) => {
                       e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400" fill="%23f1f5f9"%3E%3Crect width="400" height="400" fill="%23f1f5f9"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239ca3af" font-size="14"%3EImage not available%3C/text%3E%3C/svg%3E'
                     }}
