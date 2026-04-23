@@ -267,8 +267,8 @@ return (
         </div>
       </nav>
 
-      {/* Donation Ticker Banner - Below nav, fixed */}
-      <div className="fixed left-0 right-0 z-50 bg-primary-green/95 backdrop-blur-sm py-2 overflow-hidden" style={{ top: '72px' }}>
+      {/* Donation Ticker Banner - Fixed, in front of navbar */}
+      <div className="fixed left-0 right-0 z-[60] bg-primary-green/95 backdrop-blur-sm py-2 overflow-hidden" style={{ top: '72px' }}>
         <div className="animate-marquee whitespace-nowrap">
           <span className="inline-flex items-center text-white text-xs sm:text-sm font-medium mx-8">
             <Heart className="w-4 h-4 mr-2 flex-shrink-0" /> 
