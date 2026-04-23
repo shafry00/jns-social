@@ -1,36 +1,36 @@
-import { useState, useEffect } from 'react'
-import { Heart, MapPin, Eye, GraduationCap, Users, Mic, Briefcase, Activity, Send, X, Mail, MapPin as Location, CheckCircle, Star, ArrowDown } from 'lucide-react'
+import { useState, useEffect, useRef } from 'react'
+import { Heart, MapPin, Eye, GraduationCap, Users, Mic, Briefcase, Activity, Send, X, Mail, MapPin as Location, CheckCircle, Star, Sparkles, ArrowRight, HandHeart } from 'lucide-react'
 
 const pillars = [
-  { id: 'pendidikan', title: 'Pendidikan', icon: GraduationCap, color: 'bg-blue-500', campaigns: [
-    { id: 'beasiswa', title: 'Beasiswa Anak Yatim', target: 50000000, raised: 32500000, donors: 145 },
-    { id: 'sekolah', title: 'Sekolah Gratis', target: 25000000, raised: 18200000, donors: 89 },
-    { id: 'les', title: 'Les Privat Gratis', target: 15000000, raised: 9800000, donors: 67 },
-    { id: 'digital', title: 'Digital Literacy', target: 20000000, raised: 14100000, donors: 112 }
+  { id: 'pendidikan', title: 'Pendidikan', icon: GraduationCap, color: 'bg-blue-500', gradient: 'from-blue-500 to-blue-700', campaigns: [
+    { id: 'beasiswa', title: 'Beasiswa Anak Yatim', image: 'https://images.unsplash.com/photo-1503676260728-1c00da1a492d?w=400&h=250&fit=crop', target: 50000000, raised: 32500000, donors: 145 },
+    { id: 'sekolah', title: 'Sekolah Gratis', image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&h=250&fit=crop', target: 25000000, raised: 18200000, donors: 89 },
+    { id: 'les', title: 'Les Privat Gratis', image: 'https://images.unsplash.com/photo-1434030216411-0b793b9d9f1d?w=400&h=250&fit=crop', target: 15000000, raised: 9800000, donors: 67 },
+    { id: 'digital', title: 'Digital Literacy', image: 'https://images.unsplash.com/photo-1516321318423-f06f85e499b9?w=400&h=250&fit=crop', target: 20000000, raised: 14100000, donors: 112 }
   ]},
-  { id: 'sosial', title: 'Sosial', icon: Users, color: 'bg-purple-500', campaigns: [
-    { id: 'sembako', title: 'Paket Sembako', target: 30000000, raised: 24800000, donors: 234 },
-    { id: 'kesehatan', title: 'Bantuan Kesehatan', target: 40000000, raised: 28500000, donors: 156 },
-    { id: 'panti', title: 'Bantuan Panti', target: 25000000, raised: 19200000, donors: 98 },
-    { id: 'lingkungan', title: 'Clean Makassar', target: 15000000, raised: 11300000, donors: 87 }
+  { id: 'sosial', title: 'Sosial', icon: Users, color: 'bg-purple-500', gradient: 'from-purple-500 to-purple-700', campaigns: [
+    { id: 'sembako', title: 'Paket Sembako', image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400&h=250&fit=crop', target: 30000000, raised: 24800000, donors: 234 },
+    { id: 'kesehatan', title: 'Bantuan Kesehatan', image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=250&fit=crop', target: 40000000, raised: 28500000, donors: 156 },
+    { id: 'panti', title: 'Bantuan Panti', image: 'https://images.unsplash.com/photo-1531983412531-1f49a365ffed?w=400&h=250&fit=crop', target: 25000000, raised: 19200000, donors: 98 },
+    { id: 'lingkungan', title: 'Clean Makassar', image: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=250&fit=crop', target: 15000000, raised: 11300000, donors: 87 }
   ]},
-  { id: 'media-dakwah', title: 'Media & Dakwah', icon: Mic, color: 'bg-orange-500', campaigns: [
-    { id: 'konten', title: 'Konten Dakwah', target: 10000000, raised: 7500000, donors: 56 },
-    { id: 'webinar', title: 'Webinar Islami', target: 8000000, raised: 5200000, donors: 43 },
-    { id: 'podcast', title: 'Podcast UIN', target: 12000000, raised: 9100000, donors: 78 },
-    { id: 'campaign', title: 'Campaign Dakwah', target: 20000000, raised: 15800000, donors: 134 }
+  { id: 'media-dakwah', title: 'Media & Dakwah', icon: Mic, color: 'bg-orange-500', gradient: 'from-orange-500 to-orange-700', campaigns: [
+    { id: 'konten', title: 'Konten Dakwah', image: 'https://images.unsplash.com/photo-1594736797935-d09bc5b33f1a?w=400&h=250&fit=crop', target: 10000000, raised: 7500000, donors: 56 },
+    { id: 'webinar', title: 'Webinar Islami', image: 'https://images.unsplash.com/photo-1591115765373-ed8b0e5a8a23?w=400&h=250&fit=crop', target: 8000000, raised: 5200000, donors: 43 },
+    { id: 'podcast', title: 'Podcast UIN', image: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=400&h=250&fit=crop', target: 12000000, raised: 9100000, donors: 78 },
+    { id: 'campaign', title: 'Campaign Dakwah', image: 'https://images.unsplash.com/photo-1600038224101-5f1f40bc5d6a?w=400&h=250&fit=crop', target: 20000000, raised: 15800000, donors: 134 }
   ]},
-  { id: 'sedekah-infaq', title: 'Sedekah & Infaq', icon: Heart, color: 'bg-emerald-500', campaigns: [
-    { id: 'infaq', title: 'Infaq Sekarang', target: 50000000, raised: 42300000, donors: 312 },
-    { id: 'sedekah', title: 'Sedekah Harian', target: 30000000, raised: 26800000, donors: 267 },
-    { id: 'qurban', title: 'Qurban 2026', target: 40000000, raised: 31500000, donors: 189 },
-    { id: 'monthly', title: 'Monthly Donor', target: 25000000, raised: 18200000, donors: 445 }
+  { id: 'sedekah-infaq', title: 'Sedekah & Infaq', icon: Heart, color: 'bg-emerald-500', gradient: 'from-emerald-500 to-emerald-700', campaigns: [
+    { id: 'infaq', title: 'Infaq Sekarang', image: 'https://images.unsplash.com/photo-1594708767771-a25160e4c8b4?w=400&h=250&fit=crop', target: 50000000, raised: 42300000, donors: 312 },
+    { id: 'sedekah', title: 'Sedekah Harian', image: 'https://images.unsplash.com/photo-1559027615-cd4627622ead?w=400&h=250&fit=crop', target: 30000000, raised: 26800000, donors: 267 },
+    { id: 'qurban', title: 'Qurban 2026', image: 'https://images.unsplash.com/photo-1531306728370-e2ebd9d7e99f?w=400&h=250&fit=crop', target: 40000000, raised: 31500000, donors: 189 },
+    { id: 'monthly', title: 'Monthly Donor', image: 'https://images.unsplash.com/photo-1553729784-e91953dec042?w=400&h=250&fit=crop', target: 25000000, raised: 18200000, donors: 445 }
   ]},
-  { id: 'ekonomi-ummat', title: 'Ekonomi Ummat', icon: Briefcase, color: 'bg-teal-600', campaigns: [
-    { id: 'modal', title: 'Modal UMKM', target: 50000000, raised: 38500000, donors: 78 },
-    { id: 'mentoring', title: 'Mentoring Bisnis', target: 20000000, raised: 14200000, donors: 45 },
-    { id: 'pasar', title: 'Pasar Islami', target: 25000000, raised: 19800000, donors: 67 },
-    { id: 'umkm', title: 'UMKM Makassar', target: 35000000, raised: 27100000, donors: 89 }
+  { id: 'ekonomi-ummat', title: 'Ekonomi Ummat', icon: Briefcase, color: 'bg-teal-600', gradient: 'from-teal-600 to-teal-800', campaigns: [
+    { id: 'modal', title: 'Modal UMKM', image: 'https://images.unsplash.com/photo-1556742049-0c23a7e4ab7c?w=400&h=250&fit=crop', target: 50000000, raised: 38500000, donors: 78 },
+    { id: 'mentoring', title: 'Mentoring Bisnis', image: 'https://images.unsplash.com/photo-1559136555-c9305db8a925?w=400&h=250&fit=crop', target: 20000000, raised: 14200000, donors: 45 },
+    { id: 'pasar', title: 'Pasar Islami', image: 'https://images.unsplash.com/photo-1595246140625-573b715c11dc?w=400&h=250&fit=crop', target: 25000000, raised: 19800000, donors: 67 },
+    { id: 'umkm', title: 'UMKM Makassar', image: 'https://images.unsplash.com/photo-1600880292203-47a7d3bf8bb1?w=400&h=250&fit=crop', target: 35000000, raised: 27100000, donors: 89 }
   ]}
 ]
 
@@ -54,14 +54,18 @@ function App() {
   const [selectedCampaign, setSelectedCampaign] = useState(null)
   const [donorData, setDonorData] = useState({ name: '', whatsapp: '', email: '' })
   const [donationAmount, setDonationAmount] = useState(0)
+  const [loaded, setLoaded] = useState(false)
+
+  const heroRef = useRef(null)
+  const programsRef = useRef(null)
 
   useEffect(() => {
+    setLoaded(true)
     const saved = localStorage.getItem('jns_donor')
     if (saved) setDonorData(JSON.parse(saved))
   }, [])
 
   const currentPillar = pillars.find(p => p.id === activePillar)
-
   const formatRupiah = (num) => new Intl.NumberFormat('id-ID').format(num)
 
   const openModal = (pillarId, campaignId) => {
@@ -69,12 +73,14 @@ function App() {
     const campaign = pillar.campaigns.find(c => c.id === campaignId)
     setSelectedCampaign({ pillar, campaign })
     setModalOpen(true)
+    document.body.style.overflow = 'hidden'
   }
 
   const closeModal = () => {
     setModalOpen(false)
     setSelectedCampaign(null)
     setDonationAmount(0)
+    document.body.style.overflow = ''
   }
 
   const submitDonation = () => {
@@ -97,101 +103,173 @@ function App() {
 
   return (
     <div className="min-h-screen bg-cream-soft">
-      {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur shadow-sm">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-deep to-teal-light flex items-center justify-center">
-              <Heart className="w-5 h-5 text-white" />
+          <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-deep to-teal-light flex items-center justify-center shadow-lg shadow-teal-deep/30">
+              <Heart className="w-5 h-5 text-white" fill="#06D6A0" />
             </div>
             <div>
-              <span className="font-display text-lg font-bold text-teal-deep block">JNS</span>
-              <span className="font-display text-xs text-emerald-bright font-medium">SOCIAL</span>
+              <span className="font-display text-lg font-bold text-teal-deep block tracking-tight">JNS</span>
+              <span className="font-display text-xs text-emerald-bright font-medium tracking-widest uppercase">Social</span>
             </div>
           </div>
-          <a href="#contact" className="hidden sm:flex items-center gap-2 text-sm font-medium text-gray-600">
+          <a href="#contact" className="hidden sm:flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-teal-deep transition-colors">
             <MapPin className="w-4 h-4" /> Makassar
           </a>
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="min-h-screen flex items-center pt-20 bg-gradient-to-b from-cream-soft to-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(#006D77 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-        <div className="max-w-7xl mx-auto px-4 py-20 relative">
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full mb-6">
-              <MapPin className="w-4 h-4 text-emerald-bright" />
+      {/* Hero Section */}
+      <section ref={heroRef} className="min-h-screen flex items-center pt-20 bg-gradient-to-b from-cream-soft via-white to-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-40" style={{ backgroundImage: 'radial-gradient(#006D77 0.5px, transparent 0.5px)', backgroundSize: '16px 16px' }}></div>
+        <div className="absolute top-1/4 -left-32 w-64 h-64 bg-emerald-bright/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-teal-deep/10 rounded-full blur-3xl"></div>
+        
+        <div className={`max-w-7xl mx-auto px-4 py-20 relative transition-all duration-1000 ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur px-4 py-2 rounded-full mb-8 shadow-lg shadow-teal-deep/5">
+              <Sparkles className="w-4 h-4 text-emerald-bright animate-pulse" />
               <span className="text-sm font-medium text-gray-600">Makassar, Sulawesi Selatan</span>
             </div>
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-teal-deep leading-tight mb-6">
+            
+            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-teal-deep leading-[1.1] mb-8 tracking-tight">
               Menebar Manfaat,<br />
-              <span className="text-emerald-bright">Membangun Ummat</span><br />
-              di Kota Daeng
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-bright to-teal-deep">Membangun Ummat</span><br />
+              <span className="text-gray-400">di Kota Daeng</span>
             </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-              JNS Social hadir untuk kehidupan bermakna melalui lima pilar program: Pendidikan, Sosial, Media & Dakwah, Sedekah & Infaq, dan Ekonomi Ummat.
+            
+            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+              <span className="font-medium text-teal-deep">JNS Social</span> hadir untuk kehidupan bermakna melalui lima pilar program: <span className="font-medium">Pendidikan</span>, <span className="font-medium">Sosial</span>, <span className="font-medium">Media & Dakwah</span>, <span className="font-medium">Sedekah & Infaq</span>, dan <span className="font-medium">Ekonomi Ummat</span>.
             </p>
+            
             <div className="flex flex-wrap justify-center gap-4">
-              <button onClick={() => document.getElementById('programs').scrollIntoView({ behavior: 'smooth' })} className="bg-teal-deep hover:bg-teal-light text-white font-semibold px-8 py-4 rounded-full transition-all hover:shadow-xl hover:shadow-teal-deep/30 flex items-center gap-2">
-                <Heart className="w-5 h-5" /> Donasi Sekarang
+              <button onClick={() => document.getElementById('programs').scrollIntoView({ behavior: 'smooth' })} 
+                className="group bg-teal-deep hover:bg-teal-light text-white font-semibold px-10 py-4 rounded-full transition-all duration-300 hover:shadow-2xl hover:shadow-teal-deep/30 flex items-center gap-3 relative overflow-hidden">
+                <span className="relative z-10 flex items-center gap-2">
+                  <Heart className="w-5 h-5 group-hover:scale-110 transition-transform" /> Donasi Sekarang
+                </span>
               </button>
-              <a href="#transparency" className="border-2 border-teal-deep text-teal-deep font-semibold px-8 py-4 rounded-full transition-all hover:bg-teal-deep hover:text-white flex items-center gap-2">
+              <a href="#transparency" 
+                className="border-2 border-teal-deep text-teal-deep font-semibold px-10 py-4 rounded-full transition-all duration-300 hover:bg-teal-deep hover:text-white flex items-center gap-2">
                 <Eye className="w-5 h-5" /> Lihat Transparansi
               </a>
             </div>
           </div>
-          <div className="flex justify-center gap-8 pt-8 border-t border-gray-200 mx-auto max-w-lg">
-            {[{ n: '5', l: 'Pilar' }, { n: '20', l: 'Campaign' }, { n: '100%', l: 'Transparan' }].map((item, i) => (
-              <div key={i} className="text-center">
-                <div className="font-display text-2xl lg:text-3xl font-bold text-teal-deep">{item.n}</div>
-                <div className="text-sm text-gray-500">{item.l} Program</div>
+          
+          <div className="flex justify-center gap-12 pt-10 border-t border-gray-200/50 mx-auto max-w-2xl">
+            {[
+              { n: '5', l: 'Pilar Program', icon: Sparkles },
+              { n: '20', l: 'Campaign Aktif', icon: Star },
+              { n: '100%', l: 'Transparan', icon: CheckCircle }
+            ].map((item, i) => (
+              <div key={i} className="text-center group">
+                <item.icon className="w-6 h-6 text-teal-deep/50 mx-auto mb-2 group-hover:text-emerald-bright transition-colors" />
+                <div className="font-display text-3xl lg:text-4xl font-bold text-teal-deep">{item.n}</div>
+                <div className="text-sm text-gray-400 font-medium">{item.l}</div>
               </div>
             ))}
           </div>
         </div>
+        
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <ArrowRight className="w-6 h-6 text-teal-deep/50 rotate-90" />
+        </div>
       </section>
 
-      {/* Programs */}
-      <section id="programs" className="py-16 lg:py-24 bg-white">
+      {/* Programs Section */}
+      <section ref={programsRef} id="programs" className="py-20 lg:py-28 bg-white relative">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-10">
+          <div className="text-center mb-12">
             <span className="inline-block bg-emerald-bright/10 text-emerald-bright font-medium px-4 py-2 rounded-full text-sm mb-4">PROGRAM KAMI</span>
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-teal-deep mb-4">Pilar Program Kebaikan</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">Pilih salah satu pilar untuk melihat campaign donasi.</p>
+            <h2 className="font-display text-4xl lg:text-5xl font-bold text-teal-deep mb-4">Pilar Program Kebaikan</h2>
+            <p className="text-gray-500 max-w-xl mx-auto">Pilih salah satu pilar untuk melihat campaign donasi yang tersedia.</p>
           </div>
           
-          <div className="flex gap-4 justify-center flex-wrap mb-10" id="pillarContainer">
+          {/* Pillar Cards - Horizontal */}
+          <div className="flex gap-4 justify-center flex-wrap mb-12">
             {pillars.map((p, idx) => (
-              <button key={p.id} onClick={() => setActivePillar(p.id)} className={`flex-shrink-0 w-36 sm:w-40 p-4 rounded-2xl bg-white shadow-lg border-2 transition-all ${activePillar === p.id ? 'border-emerald-bright ring-2 ring-emerald-bright/30' : 'border-transparent'}`}>
-                <div className={`w-12 h-12 rounded-xl ${p.color} flex items-center justify-center mx-auto mb-3`}>
-                  <p.icon className="w-6 h-6 text-white" />
+              <button 
+                key={p.id} 
+                onClick={() => setActivePillar(p.id)}
+                className={`group flex-shrink-0 w-40 p-5 rounded-2xl transition-all duration-500 cursor-pointer ${
+                  activePillar === p.id 
+                    ? `bg-white shadow-2xl ring-2 ring-emerald-bright scale-105` 
+                    : 'bg-white/50 shadow-lg hover:shadow-xl hover:scale-102'
+                }`}
+                style={{ 
+                  animationDelay: `${idx * 100}ms`,
+                  transform: loaded ? 'scale(1)' : 'scale(0.9)',
+                  opacity: loaded ? 1 : 0,
+                  transition: `all 0.5s cubic-bezier(0.25, 1, 0.5, 1) ${idx * 100}ms`
+                }}
+              >
+                <div className={`w-14 h-14 rounded-2xl ${p.gradient} flex items-center justify-center mx-auto mb-4 shadow-lg transition-transform duration-300 group-hover:scale-110`}>
+                  <p.icon className="w-7 h-7 text-white" />
                 </div>
-                <p className="font-semibold text-gray-800">{p.title}</p>
+                <p className="font-semibold text-gray-800 text-center">{p.title}</p>
               </button>
             ))}
           </div>
           
-          <div className="flex flex-wrap gap-4 justify-center">
-            {currentPillar.campaigns.map(c => {
+          {/* Campaign Grid */}
+          <div className="flex flex-wrap gap-6 justify-center">
+            {currentPillar.campaigns.map((c, idx) => {
               const percent = Math.round((c.raised / c.target) * 100)
               return (
-                <div key={c.id} className="w-full sm:w-72 bg-white rounded-2xl shadow-lg overflow-hidden hover:-translate-y1 transition-all">
-                  <div className="h-2 bg-gray-100"><div className="h-full bg-emerald-bright transition-all" style={{ width: `${percent}%` }}></div></div>
+                <div 
+                  key={c.id} 
+                  className="group w-full sm:w-72 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 cursor-pointer"
+                  style={{
+                    animationDelay: `${(idx + 5) * 100}ms`,
+                    transform: loaded ? 'translateY(0)' : 'translateY(20px)',
+                    opacity: loaded ? 1 : 0,
+                    transition: `all 0.5s cubic-bezier(0.25, 1, 0.5, 1) ${(idx + 5) * 100}ms`
+                  }}
+                >
+                  {/* Image */}
+                  <div className="relative h-40 overflow-hidden">
+                    <img src={c.image} alt={c.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${p.gradient} opacity-60`}></div>
+                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                      <span className="text-white/90 text-xs font-medium">{currentPillar.title}</span>
+                      <span className="bg-white/90 text-teal-deep text-xs font-bold px-2 py-1 rounded-full">{percent}%</span>
+                    </div>
+                  </div>
+                  
                   <div className="p-5">
-                    <div className="flex items-start justify-between mb-3">
-                      <div>
-                        <p className="text-xs text-gray-500 uppercase">{currentPillar.title}</p>
-                        <p className="font-semibold mt-1">{c.title}</p>
+                    <h3 className="font-display text-lg font-bold text-gray-800 mb-4">{c.title}</h3>
+                    
+                    {/* Progress */}
+                    <div className="mb-4">
+                      <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                        <div 
+                          className={`h-full bg-gradient-to-r from-emerald-bright to-teal-deep rounded-full transition-all duration-1000`} 
+                          style={{ width: `${percent}%` }}
+                        ></div>
                       </div>
-                      <span className="text-xs bg-emerald-bright/10 text-emerald-bright px-2 py-1 rounded-full">{percent}%</span>
                     </div>
-                    <div className="space-y-2 mb-4 text-sm">
-                      <div className="flex justify-between"><span className="text-gray-500">Terkumpul</span><span className="font-medium text-emerald-bright">Rp{formatRupiah(c.raised)}</span></div>
-                      <div className="flex justify-between"><span className="text-gray-500">Target</span><span className="font-medium">Rp{formatRupiah(c.target)}</span></div>
-                      <div className="flex justify-between"><span className="text-gray-500">Donatur</span><span className="font-medium">{c.donors} orang</span></div>
+                    
+                    <div className="space-y-2 mb-5 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-gray-400">Terkumpul</span>
+                        <span className="font-semibold text-emerald-bright">Rp{formatRupiah(c.raised)}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-400">Target</span>
+                        <span className="font-medium text-gray-600">Rp{formatRupiah(c.target)}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-400">Donatur</span>
+                        <span className="font-medium text-gray-600">{c.donors} orang</span>
+                      </div>
                     </div>
-                    <button onClick={() => openModal(currentPillar.id, c.id)} className="w-full bg-teal-deep hover:bg-teal-light text-white font-medium py-3 rounded-lg flex items-center justify-center gap-2">
+                    
+                    <button 
+                      onClick={() => openModal(currentPillar.id, c.id)}
+                      className="w-full bg-teal-deep hover:bg-teal-light text-white font-medium py-3 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 hover:shadow-lg"
+                    >
                       <Heart className="w-4 h-4" /> Donasi Sekarang
                     </button>
                   </div>
@@ -202,47 +280,57 @@ function App() {
         </div>
       </section>
 
-      {/* Transparency */}
-      <section id="transparency" className="py-16 lg:py-24 bg-gradient-to-b from-cream-soft to-white">
+      {/* Transparency Section */}
+      <section id="transparency" className="py-20 lg:py-28 bg-gradient-to-b from-cream-soft to-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-10">
+          <div className="text-center mb-12">
             <span className="inline-block bg-teal-deep/10 text-teal-deep font-medium px-4 py-2 rounded-full text-sm mb-4">TRANSPARANSI</span>
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-teal-deep mb-4">Laporan Aktivitas</h2>
+            <h2 className="font-display text-4xl lg:text-5xl font-bold text-teal-deep mb-4">Laporan Aktivitas</h2>
+            <p className="text-gray-500 max-w-xl mx-auto">Kami percaya transparansi adalah fondasi kepercayaan.</p>
           </div>
+          
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-emerald-bright/10 flex items-center justify-center">
-                  <Activity className="w-5 h-5 text-emerald-bright" />
+            <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-12 h-12 rounded-xl bg-emerald-bright/10 flex items-center justify-center">
+                  <Activity className="w-6 h-6 text-emerald-bright" />
                 </div>
-                <h3 className="font-display text-lg font-bold text-teal-deep">Aktivitas Terkini</h3>
+                <h3 className="font-display text-xl font-bold text-teal-deep">Aktivitas Terkini</h3>
               </div>
               <div className="space-y-3">
                 {activities.map((a, i) => (
-                  <div key={i} className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50">
-                    <div className="w-8 h-8 rounded-lg bg-emerald-bright/10 flex items-center justify-center">
-                      <a.icon className="w-4 h-4 text-emerald-bright" />
+                  <div key={i} className="flex items-center gap-4 p-3 rounded-xl hover:bg-cream-soft transition-colors cursor-pointer group">
+                    <div className="w-10 h-10 rounded-lg bg-emerald-bright/10 flex items-center justify-center group-hover:bg-emerald-bright/20 transition-colors">
+                      <a.icon className="w-5 h-5 text-emerald-bright" />
                     </div>
-                    <div className="flex-1"><p className="text-sm font-medium">{a.title}</p><p className="text-xs text-gray-500">{a.date}</p></div>
+                    <div className="flex-1">
+                      <p className="font-medium text-gray-800">{a.title}</p>
+                      <p className="text-xs text-gray-400">{a.date}</p>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
                 ))}
               </div>
             </div>
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-emerald-bright/10 flex items-center justify-center">
-                  <Users className="w-5 h-5 text-emerald-bright" />
+            
+            <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-12 h-12 rounded-xl bg-emerald-bright/10 flex items-center justify-center">
+                  <Users className="w-6 h-6 text-emerald-bright" />
                 </div>
-                <h3 className="font-display text-lg font-bold text-teal-deep">Donatur Terkini</h3>
+                <h3 className="font-display text-xl font-bold text-teal-deep">Donatur Terkini</h3>
               </div>
               <div className="space-y-3">
                 {donors.map((d, i) => (
-                  <div key={i} className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50">
-                    <div className="w-8 h-8 rounded-full bg-teal-deep/10 flex items-center justify-center">
-                      <span className="text-sm font-medium text-teal-deep">{d.name[0]}</span>
+                  <div key={i} className="flex items-center gap-4 p-3 rounded-xl hover:bg-cream-soft transition-colors cursor-pointer group">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-deep to-teal-light flex items-center justify-center">
+                      <span className="text-white font-semibold">{d.name[0]}</span>
                     </div>
-                    <div className="flex-1"><p className="text-sm font-medium">{d.name}</p><p className="text-xs text-gray-500">{d.time}</p></div>
-                    <p className="text-sm font-medium text-emerald-bright">{d.amount}</p>
+                    <div className="flex-1">
+                      <p className="font-medium text-gray-800">{d.name}</p>
+                      <p className="text-xs text-gray-400">{d.time}</p>
+                    </div>
+                    <p className="font-semibold text-emerald-bright">{d.amount}</p>
                   </div>
                 ))}
               </div>
@@ -251,44 +339,78 @@ function App() {
         </div>
       </section>
 
-      {/* Contact */}
-      <section id="contact" className="py-16 lg:py-24 bg-teal-deep">
+      {/* Contact Section */}
+      <section id="contact" className="py-20 lg:py-28 bg-gradient-to-br from-teal-deep via-teal-deep to-teal-800">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-10">
+          <div className="grid lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="font-display text-3xl font-bold text-white mb-4">Hubungi Kami</h2>
-              <p className="text-teal-light/80 mb-8">Memiliki pertanyaan atau ingin berkolaborasi?</p>
-              <div className="space-y-4">
-                <div className="flex items-center gap-4 text-white">
+              <h2 className="font-display text-4xl font-bold text-white mb-4">Hubungi Kami</h2>
+              <p className="text-teal-light/80 text-lg mb-10">Memiliki pertanyaan atau ingin berkolaborasi?</p>
+              
+              <div className="space-y-5">
+                <div className="flex items-center gap-4 text-white p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors cursor-pointer">
                   <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
                     <Location className="w-5 h-5 text-emerald-bright" />
                   </div>
                   <div>
                     <div className="font-medium">Kantor Makassar</div>
-                    <div className="text-teal-light/80 text-sm">Jl. Perintis Kemerdekaan No.XX</div>
+                    <div className="text-teal-light/70 text-sm">Jl. Perintis Kemerdekaan No.XX, Sulawesi Selatan</div>
                   </div>
                 </div>
-                <div className="flex items-center gap-4 text-white">
+                
+                <div className="flex items-center gap-4 text-white p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors cursor-pointer">
                   <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
                     <Mail className="w-5 h-5 text-emerald-bright" />
                   </div>
                   <div>
                     <div className="font-medium">Email</div>
-                    <div className="text-teal-light/80 text-sm">info@jnssocial.org</div>
+                    <div className="text-teal-light/70 text-sm">info@jnssocial.org</div>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-4 text-white p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors cursor-pointer">
+                  <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
+                    <HandHeart className="w-5 h-5 text-emerald-bright" />
+                  </div>
+                  <div>
+                    <div className="font-medium">WhatsApp</div>
+                    <div className="text-teal-light/70 text-sm">+62 XXX XXXX XXXX</div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="bg-white rounded-2xl shadow-xl p-6">
-              <h3 className="font-display text-lg font-bold text-teal-deep mb-4">Legal</h3>
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between py-2 border-b border-gray-100">
-                  <span className="text-gray-500">Yayasan</span>
-                  <span className="font-medium">Yayasan JNS Social</span>
+            
+            <div className="bg-white rounded-3xl shadow-2xl p-8">
+              <h3 className="font-display text-2xl font-bold text-teal-deep mb-6">Informasi Legal</h3>
+              <div className="space-y-4">
+                <div className="flex justify-between py-3 border-b border-gray-100">
+                  <span className="text-gray-500">Nama Yayasan</span>
+                  <span className="font-semibold text-gray-800">Yayasan JNS Social</span>
                 </div>
-                <div className="flex justify-between py-2">
+                <div className="flex justify-between py-3 border-b border-gray-100">
+                  <span className="text-gray-500">SK Kemenkumham</span>
+                  <span className="font-semibold text-gray-800">AHU-XXXXXX</span>
+                </div>
+                <div className="flex justify-between py-3 border-b border-gray-100">
+                  <span className="text-gray-500">NPWP</span>
+                  <span className="font-semibold text-gray-800">XX.XXX.XXX.X-XXXX</span>
+                </div>
+                <div className="flex justify-between py-3">
                   <span className="text-gray-500">Status</span>
-                  <span className="font-medium text-emerald-bright flex items-center gap-1"><CheckCircle className="w-4 h-4" /> Terverifikasi</span>
+                  <span className="font-semibold text-emerald-bright flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5" /> Terverifikasi
+                  </span>
+                </div>
+              </div>
+              
+              <div className="mt-8 pt-6 border-t border-gray-100">
+                <p className="text-sm text-gray-500 mb-4">Ikuti kami:</p>
+                <div className="flex gap-3">
+                  {['instagram', 'facebook', 'youtube', 'twitter'].map((social) => (
+                    <button key={social} className="w-10 h-10 rounded-lg bg-teal-deep/5 flex items-center justify-center hover:bg-teal-deep hover:text-white transition-colors">
+                      <span className="text-sm font-medium capitalize">{social[0]}</span>
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>
@@ -296,55 +418,132 @@ function App() {
         </div>
       </section>
 
-      {/* Modal */}
+      {/* Donation Modal */}
       {modalOpen && selectedCampaign && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={closeModal}>
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
-          <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden" onClick={e => e.stopPropagation()}>
-            <div className="bg-teal-deep px-6 py-4 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <Heart className="w-5 h-5 text-emerald-bright" />
-                <span className="font-semibold text-white">Donasi</span>
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm animate-fade-in" />
+          <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden animate-scale-in" onClick={e => e.stopPropagation()}>
+            {/* Header */}
+            <div className="bg-gradient-to-r from-teal-deep to-teal-light px-6 py-5">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
+                    <Heart className="w-5 h-5 text-emerald-bright" fill="#06D6A0" />
+                  </div>
+                  <span className="font-semibold text-white text-lg">Donasi</span>
+                </div>
+                <button onClick={closeModal} className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+                  <X className="w-5 h-5 text-white" />
+                </button>
               </div>
-              <button onClick={closeModal} className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20">
-                <X className="w-4 h-4 text-white" />
-              </button>
             </div>
-            <div className="px-6 py-4 border-b border-gray-100">
-              <p className="text-sm text-gray-500">Donasi untuk</p>
-              <p className="font-semibold text-teal-deep">{selectedCampaign.pillar.title} - {selectedCampaign.campaign.title}</p>
+            
+            {/* Campaign Info */}
+            <div className="px-6 py-5 border-b border-gray-100">
+              <p className="text-sm text-gray-400">Donasi untuk</p>
+              <p className="font-display text-lg font-bold text-teal-deep">{selectedCampaign.pillar.title} - {selectedCampaign.campaign.title}</p>
             </div>
-            <div className="px-6 py-4">
-              <p className="text-sm text-gray-600 mb-3">Pilih nominal:</p>
-              <div className="grid grid-cols-3 gap-2 mb-3">
+            
+            {/* Form */}
+            <div className="px-6 py-5">
+              <p className="text-sm font-medium text-gray-700 mb-3">Pilih nominal:</p>
+              <div className="grid grid-cols-3 gap-3 mb-4">
                 {[20000, 50000, 100000].map(amt => (
-                  <button key={amt} onClick={() => setDonationAmount(amt)} className={`p-3 border-2 rounded-lg text-center transition-all ${donationAmount === amt ? 'bg-teal-deep text-white border-teal-deep' : 'border-gray-200 hover:border-teal-deep'}`}>
-                    <div className="font-bold">{amt / 1000}rb</div>
+                  <button 
+                    key={amt} 
+                    onClick={() => setDonationAmount(amt)}
+                    className={`py-3 border-2 rounded-xl text-center font-bold transition-all duration-200 ${
+                      donationAmount === amt 
+                        ? 'bg-teal-deep text-white border-teal-deep shadow-lg shadow-teal-deep/30' 
+                        : 'border-gray-200 hover:border-teal-deep hover:bg-teal-deep/5'
+                    }`}
+                  >
+                    {amt / 1000}rb
                   </button>
                 ))}
               </div>
-              <input type="number" placeholder="Nominal custom (Rp)" className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-teal-deep focus:outline-none mb-4"
-                onChange={e => setDonationAmount(parseInt(e.target.value) || 0)} />
-              <p className="text-sm text-gray-600 mb-3">Data diri:</p>
+              
+              <input 
+                type="number" 
+                placeholder="Nominal custom (Rp)" 
+                className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-teal-deep focus:outline-none mb-5"
+                onChange={e => setDonationAmount(parseInt(e.target.value) || 0)}
+              />
+              
+              <p className="text-sm font-medium text-gray-700 mb-3">Data diri:</p>
               <div className="space-y-3">
-                <input type="text" placeholder="Nama Lengkap" value={donorData.name} onChange={e => setDonorData({ ...donorData, name: e.target.value })} className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-teal-deep focus:outline-none" />
-                <input type="tel" placeholder="WhatsApp" value={donorData.whatsapp} onChange={e => setDonorData({ ...donorData, whatsapp: e.target.value })} className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-teal-deep focus:outline-none" />
-                <input type="email" placeholder="Email" value={donorData.email} onChange={e => setDonorData({ ...donorData, email: e.target.value })} className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-teal-deep focus:outline-none" />
+                <input 
+                  type="text" 
+                  placeholder="Nama Lengkap" 
+                  value={donorData.name} 
+                  onChange={e => setDonorData({ ...donorData, name: e.target.value })} 
+                  className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-teal-deep focus:outline-none" 
+                />
+                <input 
+                  type="tel" 
+                  placeholder="WhatsApp" 
+                  value={donorData.whatsapp} 
+                  onChange={e => setDonorData({ ...donorData, whatsapp: e.target.value })} 
+                  className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-teal-deep focus:outline-none" 
+                />
+                <input 
+                  type="email" 
+                  placeholder="Email" 
+                  value={donorData.email} 
+                  onChange={e => setDonorData({ ...donorData, email: e.target.value })} 
+                  className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-teal-deep focus:outline-none" 
+                />
               </div>
             </div>
-            <div className="px-6 py-4 bg-gray-50">
-              <p className="text-sm font-medium text-gray-700 mb-2">Transfer:</p>
-              <div className="text-sm space-y-1 mb-3">
-                <div className="flex justify-between"><span className="text-gray-500">Bank Makassar</span><span className="font-medium">XXXX XXXX XXXX</span></div>
-                <div className="flex justify-between"><span className="text-gray-500">A.n</span><span className="font-medium">Yayasan JNS Social</span></div>
+            
+            {/* Payment & Submit */}
+            <div className="px-6 py-5 bg-gradient-to-b from-gray-50 to-white">
+              <p className="text-sm font-medium text-gray-700 mb-3">Metode Pembayaran:</p>
+              <div className="bg-gray-50 rounded-xl p-4 mb-5">
+                <div className="text-sm space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">Bank Makassar</span>
+                    <span className="font-semibold">XXXX XXXX XXXX</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">A.n</span>
+                    <span className="font-semibold">Yayasan JNS Social</span>
+                  </div>
+                </div>
               </div>
-              <button onClick={submitDonation} className="w-full bg-emerald-bright text-teal-deep font-semibold py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-emerald-500">
-                <Send className="w-4 h-4" /> Konfirmasi via WhatsApp
+              
+              <button 
+                onClick={submitDonation}
+                className="w-full bg-gradient-to-r from-emerald-bright to-emerald-400 text-teal-deep font-semibold py-4 rounded-xl flex items-center justify-center gap-2 hover:shadow-xl hover:shadow-emerald-bright/30 transition-all duration-300"
+              >
+                <Send className="w-5 h-5" /> Konfirmasi via WhatsApp
               </button>
             </div>
           </div>
         </div>
       )}
+
+      {/* CSS Animations */}
+      <style>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes scaleIn {
+          from { opacity: 0; transform: scale(0.95) translateY(10px); }
+          to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .animate-fade-in { animation: fadeIn 0.3s ease forwards; }
+        .animate-scale-in { animation: scaleIn 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+        
+        @media (prefers-reduced-motion: reduce) {
+          *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+          }
+        }
+      `}</style>
     </div>
   )
 }
