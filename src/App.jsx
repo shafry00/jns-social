@@ -268,7 +268,7 @@ return (
       </nav>
 
 {/* Donation Ticker Banner */}
-      <div className="relative z-30 bg-primary-green/95 backdrop-blur-sm py-2 overflow-hidden" style={{ marginTop: '120px' }}>
+      <div className="relative z-50 bg-primary-green/95 backdrop-blur-sm py-2 overflow-hidden" style={{ marginTop: '100px' }}>
         <div className="animate-marquee whitespace-nowrap">
           <span className="inline-flex items-center text-white text-xs sm:text-sm font-medium mx-8">
             <Heart className="w-4 h-4 mr-2 flex-shrink-0" /> 
