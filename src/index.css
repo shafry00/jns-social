@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@theme {
+  --color-teal-deep: #006D77;
+  --color-teal: #006D77;
+  --color-teal-light: #0A8F9E;
+  --color-emerald-bright: #06D6A0;
+  --color-cream-soft: #F1FAEE;
+  --font-display: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
+}
