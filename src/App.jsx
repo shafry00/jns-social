@@ -430,7 +430,7 @@ function App() {
                   transition: `all 0.5s cubic-bezier(0.25, 1, 0.5, 1) ${idx * 100}ms`
                 }}
               >
-                <div className={`w-12 h-12 rounded-xl ${p.gradient} flex items-center justify-center mx-auto mb-3 shadow-lg transition-transform duration-300 group-hover:scale-110`}>
+                <div className={`w-12 h-12 rounded-xl ${p.color} flex items-center justify-center mx-auto mb-3 shadow-md transition-transform duration-300 group-hover:scale-110 bg-opacity-20`}>
                   <p.icon className="w-6 h-6 text-white" />
                 </div>
                 <p className="font-semibold text-gray-800 text-center text-sm">{p.title}</p>
