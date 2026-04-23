@@ -154,3 +154,12 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Hide scrollbar for gallery */
+.scroll-smooth::-webkit-scrollbar {
+  display: none;
+}
+.scroll-smooth {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

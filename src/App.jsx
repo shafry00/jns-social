@@ -557,32 +557,57 @@ return (
             <p className="text-gray-500 max-w-xl mx-auto">Dokumentasi kegiatan dan menyalurkan bantuan kami.</p>
           </div>
 
-          {/* Running Gallery - Marquee Style */}
-          <div className="relative overflow-hidden">
-            <div className="flex gap-4 animate-marquee" ref={galleryRef}>
+          {/* Transparency - Gallery Slider */}
+          <div className="relative">
+            <div className="flex items-center justify-between mb-4">
+              <button 
+                onClick={() => {
+                  const container = galleryRef.current
+                  container.scrollBy({ left: -280, behavior: 'smooth' })
+                }}
+                className="p-2 rounded-full bg-white shadow-md hover:bg-light-bg transition-colors z-10"
+              >
+                <ChevronLeft className="w-5 h-5 text-primary-green" />
+              </button>
+              <button 
+                onClick={() => {
+                  const container = galleryRef.current
+                  container.scrollBy({ left: 280, behavior: 'smooth' })
+                }}
+                className="p-2 rounded-full bg-white shadow-md hover:bg-light-bg transition-colors z-10"
+              >
+                <ChevronRight className="w-5 h-5 text-primary-green" />
+              </button>
+            </div>
+            
+            <div 
+              ref={galleryRef}
+              className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
               {[...activities, ...activities].map((activity, idx) => (
-                <div key={idx} className="flex-shrink-0 w-48 h-48 sm:w-56 sm:h-56 rounded-xl sm:rounded-2xl overflow-hidden shadow-md sm:shadow-lg relative group cursor-pointer">
+                <div key={idx} className="flex-shrink-0 w-48 h-48 snap-start bg-white rounded-xl overflow-hidden shadow-md relative group cursor-pointer">
                   <img 
                     src={activity.image + '&w=300&q=60'} 
                     alt={activity.title} 
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     loading="lazy"
                     onError={(e) => {
-                      e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400" fill="%23f1f5f9"%3E%3Crect width="400" height="400" fill="%23f1f5f9"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239ca3af" font-size="14"%3EImage not available%3C/text%3E%3C/svg%3E'
+                      e.target.style.display = 'none'
+                      e.target.nextElementSibling.style.display = 'flex'
                     }}
                   />
+                  <div className="absolute inset-0 hidden items-center justify-center bg-light-bg">
+                    <span className="text-2xl">📷</span>
+                  </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <span className="inline-block bg-emerald-bright text-primary-green text-xs font-bold px-2 py-1 rounded-lg mb-1">{activity.pillar}</span>
+                    <span className="inline-block bg-gold text-white text-xs font-bold px-2 py-1 rounded-lg mb-1">{activity.pillar}</span>
                     <h3 className="text-white font-semibold text-sm">{activity.title}</h3>
                   </div>
                 </div>
               ))}
             </div>
-            
-            {/* Gradient fade edges */}
-            <div className="absolute top-0 left-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10"></div>
-            <div className="absolute top-0 right-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10"></div>
           </div>
         </div>
       </section>
