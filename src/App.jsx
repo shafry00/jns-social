@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { 
   Heart, MapPin, Eye, GraduationCap, Users, Mic, Briefcase, Send, X, Mail, 
   MapPin as Location, CheckCircle, Sparkles, Star, ArrowRight, HandHeart, 
-  ChevronLeft, ChevronRight, Clock, Quote, ArrowUpRight, HeartHandshake, Target, Shield, Upload
+  ChevronLeft, ChevronRight, Clock, Quote, ArrowUpRight, HeartHandshake, Target, Shield, Upload, MessageCircle
 } from 'lucide-react'
 
 const activities = [
@@ -128,7 +128,7 @@ function App() {
   const [activePillar, setActivePillar] = useState('pendidikan')
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedCampaign, setSelectedCampaign] = useState(null)
-  const [donorData, setDonorData] = useState({ name: '', whatsapp: '', email: '' })
+  const [donorData, setDonorData] = useState({ name: '', whatsapp: '', email: '', message: '', suggestion: '' })
   const [donationAmount, setDonationAmount] = useState(0)
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null)
   const [transactionProof, setTransactionProof] = useState(null)
@@ -218,14 +218,28 @@ function App() {
     }
     localStorage.setItem('jns_donor', JSON.stringify(donorData))
     const { pillar, campaign } = selectedCampaign
-    const message = `Halo Admin JNS Social, saya ${donorData.name} ingin donasi ${campaign.title} (${pillar.title}) Rp${formatRupiah(amount)} via ${selectedPaymentMethod.name}. WA: ${donorData.whatsapp}${donorData.email ? `, Email: ${donorData.email}` : ''}`
+    let message = `Halo Admin JNS Social, saya ${donorData.name} ingin donasi ${campaign.title} (${pillar.title}) Rp${formatRupiah(amount)} via ${selectedPaymentMethod.name}. WA: ${donorData.whatsapp}`
+    if (donorData.email) message += `, Email: ${donorData.email}`
+    if (donorData.message) message += `%0A%0APesan & Doa: ${donorData.message}`
+    if (donorData.suggestion) message += `%0A%0AUsulan Program: ${donorData.suggestion}`
     const waNumber = '628XXXXXXXXXX'
     window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`, '_blank')
     closeModal()
   }
 
-  return (
-    <div className="min-h-screen bg-cream-soft">
+return (
+    <div className="min-h-screen bg-light-bg">
+      {/* Floating WhatsApp Button */}
+      <a 
+        href="https://wa.me/628XXXXXXXXXX" 
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 bg-primary-green hover:bg-dark-green text-white p-3 sm:p-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center"
+        aria-label="Chat via WhatsApp"
+      >
+        <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7" />
+      </a>
+      
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
@@ -655,7 +669,7 @@ function App() {
       {modalOpen && selectedCampaign && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={closeModal}>
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm animate-fade-in" />
-          <div className="relative w-full max-w-lg max-h-[90vh] bg-white rounded-2xl shadow-2xl overflow-hidden animate-scale-in flex flex-col" onClick={e => e.stopPropagation()}>
+          <div className="relative w-full max-w-sm sm:max-w-lg max-h-[90vh] bg-white rounded-xl sm:rounded-2xl shadow-2xl overflow-hidden animate-scale-in flex flex-col" onClick={e => e.stopPropagation()}>
             <div className="bg-gradient-to-r from-primary-green to-dark-green px-6 py-5 flex-shrink-0">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -696,7 +710,7 @@ function App() {
               <input 
                 type="number" 
                 placeholder="Nominal custom (Rp)" 
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-teal-deep focus:outline-none focus:ring-2 focus:ring-teal-deep/20 mb-4 transition-all duration-200"
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-green focus:outline-none focus:ring-2 focus:ring-primary-green/20 mb-4 transition-all duration-200"
                 onChange={e => setDonationAmount(parseInt(e.target.value) || 0)}
               />
               
@@ -740,7 +754,7 @@ function App() {
                   required
                   value={donorData.name} 
                   onChange={e => setDonorData({ ...donorData, name: e.target.value })} 
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-teal-deep focus:outline-none focus:ring-2 focus:ring-teal-deep/20 transition-all duration-200" 
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-green focus:outline-none focus:ring-2 focus:ring-primary-green/20 transition-all duration-200" 
                 />
                 <input 
                   type="tel" 
@@ -748,14 +762,28 @@ function App() {
                   required
                   value={donorData.whatsapp} 
                   onChange={e => setDonorData({ ...donorData, whatsapp: e.target.value })} 
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-teal-deep focus:outline-none focus:ring-2 focus:ring-teal-deep/20 transition-all duration-200" 
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-green focus:outline-none focus:ring-2 focus:ring-primary-green/20 transition-all duration-200" 
                 />
                 <input 
                   type="email" 
                   placeholder="Email (opsional)" 
                   value={donorData.email} 
                   onChange={e => setDonorData({ ...donorData, email: e.target.value })} 
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-teal-deep focus:outline-none focus:ring-2 focus:ring-teal-deep/20 transition-all duration-200" 
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-green focus:outline-none focus:ring-2 focus:ring-primary-green/20 transition-all duration-200" 
+                />
+                <textarea 
+                  placeholder="Pesan & Titipan Doa (opsional)" 
+                  value={donorData.message || ''} 
+                  onChange={e => setDonorData({ ...donorData, message: e.target.value })} 
+                  rows={2}
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-green focus:outline-none focus:ring-2 focus:ring-primary-green/20 transition-all duration-200 resize-none" 
+                />
+                <input 
+                  type="text" 
+                  placeholder="Usulan Program (opsional)" 
+                  value={donorData.suggestion || ''} 
+                  onChange={e => setDonorData({ ...donorData, suggestion: e.target.value })} 
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary-green focus:outline-none focus:ring-2 focus:ring-primary-green/20 transition-all duration-200" 
                 />
               </div>
               
