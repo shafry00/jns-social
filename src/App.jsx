@@ -267,8 +267,30 @@ return (
         </div>
       </nav>
 
+      {/* Donation Ticker Banner */}
+      <div className="fixed top-[57px] left-0 right-0 z-40 bg-primary-green/90 backdrop-blur-sm py-2 overflow-hidden">
+        <div className="animate-marquee whitespace-nowrap">
+          <span className="inline-flex items-center text-white text-sm font-medium mx-8">
+            <Heart className="w-4 h-4 mr-2" /> 
+            Beasiswa Anak Yatim - Bantu anak yatim melanjutkan pendidikan | 
+            Paket Sembako - Kirim kebahagiaan ke keluarga kurang mampu | 
+            Modal UMKM - Wujudkan mimpi entrepreneur lokal | 
+            Qurban 2026 - Bagikan berkah dengan berkurban | 
+            Webinar Islami - Tingkatkan ilmu agama bersama ustadz ternama
+          </span>
+          <span className="inline-flex items-center text-white text-sm font-medium mx-8">
+            <Heart className="w-4 h-4 mr-2" /> 
+            Beasiswa Anak Yatim - Bantu anak yatim melanjutkan pendidikan | 
+            Paket Sembako - Kirim kebahagiaan ke keluarga kurang mampu | 
+            Modal UMKM - Wujudkan mimpi entrepreneur lokal | 
+            Qurban 2026 - Bagikan berkah dengan berkurban | 
+            Webinar Islami - Tingkatkan ilmu agama bersama ustadz ternama
+          </span>
+        </div>
+      </div>
+
       {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center pt-20 bg-gradient-to-br from-white via-light-bg to-white relative overflow-hidden">
+      <section id="hero" className="min-h-screen flex items-center pt-20 sm:pt-24 bg-gradient-to-br from-white via-light-bg to-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(#2F5D3A 0.5px, transparent 0.5px)', backgroundSize: '16px 16px' }}></div>
         <div className="absolute top-1/3 -left-16 sm:-left-24 w-40 sm:w-56 h-40 sm:h-56 bg-primary-green/10 rounded-full blur-2xl"></div>
         <div className="absolute bottom-1/3 -right-16 sm:-right-24 w-40 sm:w-56 h-40 sm:h-56 bg-gold/10 rounded-full blur-2xl"></div>
