@@ -45,13 +45,6 @@ const pillars = [
     color: 'bg-purple-500', 
     gradient: 'from-purple-500 to-purple-700', 
     tagline: 'Uluran Tangan Kita',
-    description: 'Ada keluarga di Makassar yang belum makan hari ini. Ada yang sakit tapi tidak punya biaya berobat. Mari ulurkan tangan kita sebelum terlambat.',
-    reasons: [
-      'Bantu keluarga kurang mampu bisa makan hari ini',
-      'Biaya pengobatan untuk yang sakit',
-      'Dukungan untuk panti asuhan yang membutuhkan',
-      'Bantuan korban banjir dan bencana'
-    ],
     description: 'Bantuan sosial untuk saudara-saudara kita yang membutuhkan. Dari paket kebutuhan dasar hingga bantuan kesehatan, kami hadir untuk meringankan beban mereka.',
     reasons: [
       'Distribusi paket Sembako setiap bulan',
@@ -139,7 +132,31 @@ function App() {
   const [donationAmount, setDonationAmount] = useState(0)
   const [loaded, setLoaded] = useState(false)
   const [galleryIndex, setGalleryIndex] = useState(0)
+  const [visibleSections, setVisibleSections] = useState({})
   const galleryRef = useRef(null)
+
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleSections((prev) => ({
+              ...prev,
+              [entry.target.id]: true,
+            }))
+          }
+        })
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    )
+
+    document.querySelectorAll('section').forEach((section) => {
+      observer.observe(section)
+    })
+
+    return () => observer.disconnect()
+  }, [])
 
   const currentPillar = pillars.find(p => p.id === activePillar)
   const formatRupiah = (num) => new Intl.NumberFormat('id-ID').format(num)
@@ -225,7 +242,7 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center pt-20 bg-gradient-to-b from-cream-soft via-white to-white relative overflow-hidden">
+      <section id="hero" className="min-h-screen flex items-center pt-20 bg-gradient-to-b from-cream-soft via-white to-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(#006D77 0.5px, transparent 0.5px)', backgroundSize: '16px 16px' }}></div>
         <div className="absolute top-1/4 -left-32 w-64 h-64 bg-emerald-bright/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-teal-deep/10 rounded-full blur-3xl"></div>
@@ -300,7 +317,9 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 lg:py-28 bg-gradient-to-b from-white to-emerald-50/30">
+      <section id="about" className={`py-20 lg:py-28 bg-gradient-to-b from-white to-emerald-50/30 transition-all duration-700 ${
+          visibleSections.about ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -343,7 +362,7 @@ function App() {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
                 <div className="bg-gradient-to-br from-teal-deep to-teal-light rounded-2xl p-6 text-white shadow-xl">
-                  <div className="font-display text-5xl font-bold mb-2">5</div>
+                  <div className="font-display text-4xl font-bold mb-2 opacity-90">5</div>
                   <div className="text-teal-light/80 font-medium">Pilar Program</div>
                 </div>
                 <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
@@ -363,7 +382,7 @@ function App() {
                   <p className="text-sm text-gray-600">Ribuan donatur yang telah terpercaya.</p>
                 </div>
                 <div className="bg-gradient-to-br from-emerald-400 to-emerald-500 rounded-2xl p-6 text-white shadow-xl">
-                  <div className="font-display text-5xl font-bold mb-2">100%</div>
+                  <div className="font-display text-4xl font-bold mb-2 opacity-90">100%</div>
                   <div className="text-emerald-100 font-medium">Dana Tersalur</div>
                 </div>
               </div>
@@ -373,7 +392,9 @@ function App() {
       </section>
 
       {/* Programs Section */}
-      <section id="programs" className="py-20 lg:py-28 bg-gradient-to-b from-white to-cream-soft relative">
+      <section id="programs" className={`py-20 lg:py-28 bg-gradient-to-b from-white to-cream-soft relative transition-all duration-700 ${
+          visibleSections.programs ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block bg-emerald-bright/10 text-emerald-bright font-medium px-4 py-2 rounded-full text-sm mb-4">PROGRAM KAMI</span>
@@ -499,7 +520,9 @@ function App() {
       </section>
 
       {/* Transparency - Running Gallery */}
-      <section id="transparency" className="py-20 lg:py-28 bg-white">
+      <section id="transparency" className={`py-20 lg:py-28 bg-white transition-all duration-700 ${
+          visibleSections.transparency ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block bg-teal-deep/10 text-teal-deep font-medium px-4 py-2 rounded-full text-sm mb-4">TRANSPARANSI</span>
@@ -537,12 +560,14 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 lg:py-28 bg-gradient-to-br from-teal-deep via-teal-deep to-teal-800">
+      <section id="contact" className={`py-20 lg:py-28 bg-gradient-to-br from-teal-deep via-teal-deep to-teal-800 transition-all duration-700 ${
+          visibleSections.contact ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
               <h2 className="font-display text-4xl font-bold text-white mb-4">Hubungi Kami</h2>
-              <p className="text-teal-light/80 text-lg mb-10">Memiliki pertanyaan atau ingin berkolaborasi?</p>
+              <p className="text-teal-200 text-lg mb-10">Memiliki pertanyaan atau ingin berkolaborasi?</p>
               
               <div className="space-y-5">
                 <div className="flex items-center gap-4 text-white p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors cursor-pointer">
@@ -551,7 +576,7 @@ function App() {
                   </div>
                   <div>
                     <div className="font-medium">Kantor Makassar</div>
-                    <div className="text-teal-light/70 text-sm">Jl. Perintis Kemerdekaan No.XX, Sulawesi Selatan</div>
+                    <div className="text-teal-200 text-sm">Jl. Perintis Kemerdekaan No.XX, Sulawesi Selatan</div>
                   </div>
                 </div>
                 
@@ -561,7 +586,7 @@ function App() {
                   </div>
                   <div>
                     <div className="font-medium">Email</div>
-                    <div className="text-teal-light/70 text-sm">info@jnssocial.org</div>
+                    <div className="text-teal-200 text-sm">info@jnssocial.org</div>
                   </div>
                 </div>
                 
@@ -571,7 +596,7 @@ function App() {
                   </div>
                   <div>
                     <div className="font-medium">WhatsApp</div>
-                    <div className="text-teal-light/70 text-sm">+62 XXX XXXX XXXX</div>
+                    <div className="text-teal-200 text-sm">+62 XXX XXXX XXXX</div>
                   </div>
                 </div>
               </div>
