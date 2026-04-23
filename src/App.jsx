@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import { 
-  Heart, MapPin, Eye, GraduationCap, Users, Mic, Briefcase, Activity, Send, X, Mail, 
-  MapPin as Location, CheckCircle, Star, Sparkles, ArrowRight, HandHeart, 
-  Image, Play, ChevronLeft, ChevronRight, Clock, DollarSign
+  Heart, MapPin, Eye, GraduationCap, Users, Mic, Briefcase, Send, X, Mail, 
+  MapPin as Location, CheckCircle, Sparkles, ArrowRight, HandHeart, 
+  ChevronLeft, ChevronRight, Clock
 } from 'lucide-react'
 
 const activities = [
@@ -317,9 +317,9 @@ function App() {
           </div>
 
           {/* Photo Gallery Carousel */}
-          <div className="relative mb-12" ref={galleryRef}>
+          <div className="relative" ref={galleryRef}>
             <div className="overflow-hidden rounded-3xl shadow-2xl">
-              <div className="relative h-64 sm:h-80 lg:h-96">
+              <div className="relative aspect-square max-w-2xl mx-auto">
                 {activities.map((activity, idx) => (
                   <div 
                     key={activity.id}
@@ -354,7 +354,7 @@ function App() {
                 <ChevronRight className="w-6 h-6 text-teal-deep" />
               </button>
               
-              {/* Dots Indicator */}
+{/* Dots Indicator */}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
                 {activities.map((_, idx) => (
                   <button 
@@ -362,43 +362,6 @@ function App() {
                     onClick={() => setGalleryIndex(idx)}
                     className={`w-2 h-2 rounded-full transition-all ${idx === galleryIndex ? 'bg-white w-6' : 'bg-white/50'}`}
                   />
-                ))}
-              </div>
-            </div>
-          </div>
-          
-          {/* Stats & Donors */}
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Total Raised */}
-            <div className="bg-gradient-to-br from-teal-deep to-teal-light rounded-2xl shadow-xl p-8 text-white">
-              <div className="flex items-center gap-3 mb-4">
-                <DollarSign className="w-8 h-8 text-emerald-bright" />
-                <h3 className="font-display text-xl font-bold">Total Penyaluran</h3>
-              </div>
-              <div className="text-4xl font-bold mb-2">Rp 187.500.000</div>
-              <div className="text-teal-light/70">Telah penyalurkan kepada 1.247 penerima manfaat</div>
-            </div>
-            
-            {/* Recent Donors */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-12 h-12 rounded-xl bg-emerald-bright/10 flex items-center justify-center">
-                  <Users className="w-6 h-6 text-emerald-bright" />
-                </div>
-                <h3 className="font-display text-xl font-bold text-teal-deep">Donatur Terkini</h3>
-              </div>
-              <div className="space-y-3 max-h-48 overflow-y-auto">
-                {donors.map((d, i) => (
-                  <div key={i} className="flex items-center gap-3 p-2 rounded-lg hover:bg-cream-soft transition-colors">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-deep to-teal-light flex items-center justify-center">
-                      <span className="text-white font-semibold text-sm">{d.name[0]}</span>
-                    </div>
-                    <div className="flex-1">
-                      <p className="font-medium text-gray-800">{d.name}</p>
-                      <p className="text-xs text-gray-400">{d.time}</p>
-                    </div>
-                    <p className="font-semibold text-emerald-bright">{d.amount}</p>
-                  </div>
                 ))}
               </div>
             </div>
