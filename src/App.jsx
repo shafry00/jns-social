@@ -267,17 +267,12 @@ return (
         </div>
       </nav>
 
-      {/* Donation Ticker Banner - Fixed */}
-      <div className="fixed left-0 right-0 z-[60] bg-primary-green border-4 border-yellow-400 backdrop-blur-sm py-2 overflow-hidden" style={{ top: '90px' }}>
-        <div className="animate-marquee whitespace-nowrap">
-          <span className="inline-flex items-center text-white text-xs sm:text-sm font-medium mx-8">
-            <Heart className="w-4 h-4 mr-2 flex-shrink-0" /> 
-            Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat.
-          </span>
-          <span className="inline-flex items-center text-white text-xs sm:text-sm font-medium mx-8">
-            <Heart className="w-4 h-4 mr-2 flex-shrink-0" /> 
-            Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat.
-          </span>
+      {/* Donation Ticker Banner - NEW SIMPLE */}
+      <div className="w-full bg-primary-green py-2">
+        <div className="animate-marquee whitespace-nowrap text-white text-sm">
+          Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat.
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat.
         </div>
       </div>
 
