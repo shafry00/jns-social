@@ -278,6 +278,15 @@ return (
         </div>
       </div>
 
+      {/* SEPARATE FIXED TICKER - Always on top */}
+      <div className="fixed top-0 left-0 right-0 z-[999] bg-primary-green py-2">
+        <div className="animate-marquee whitespace-nowrap text-white text-sm px-4">
+          Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat.
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat.
+        </div>
+      </div>
+
       {/* Hero Section */}
       <section id="hero" className="min-h-screen flex items-center pt-36 sm:pt-36 bg-gradient-to-br from-white via-light-bg to-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(#2F5D3A 0.5px, transparent 0.5px)', backgroundSize: '16px 16px' }}></div>
