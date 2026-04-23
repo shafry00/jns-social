@@ -250,10 +250,11 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center pt-20 bg-gradient-to-b from-cream-soft via-white to-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(#006D77 0.5px, transparent 0.5px)', backgroundSize: '16px 16px' }}></div>
-        <div className="absolute top-1/4 -left-32 w-64 h-64 bg-emerald-bright/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-teal-deep/10 rounded-full blur-3xl"></div>
+      <section id="hero" className="min-h-screen flex items-center pt-20 bg-gradient-to-br from-indigo-50 via-blue-50 to-cyan-50 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-40" style={{ backgroundImage: 'radial-gradient(#3B82F6 0.5px, transparent 0.5px)', backgroundSize: '16px 16px' }}></div>
+        <div className="absolute top-1/4 -left-32 w-64 h-64 bg-purple-400/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-pink-400/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-yellow-300/10 rounded-full blur-3xl"></div>
         
         <div className={`max-w-7xl mx-auto px-4 py-16 lg:py-20 relative transition-all duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -325,7 +326,7 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className={`py-20 lg:py-28 bg-gradient-to-b from-white to-emerald-50/30 transition-all duration-700 ${
+      <section id="about" className={`py-20 lg:py-28 bg-gradient-to-br from-violet-50 via-purple-50 to-pink-50 transition-all duration-700 ${
           visibleSections.about ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
         <div className="max-w-7xl mx-auto px-4">
@@ -400,7 +401,7 @@ function App() {
       </section>
 
       {/* Programs Section */}
-      <section id="programs" className={`py-20 lg:py-28 bg-gradient-to-b from-white to-cream-soft relative transition-all duration-700 ${
+      <section id="programs" className={`py-20 lg:py-28 bg-gradient-to-br from-blue-50 via-indigo-50 to-violet-50 relative transition-all duration-700 ${
           visibleSections.programs ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
         <div className="max-w-7xl mx-auto px-4">
@@ -528,7 +529,7 @@ function App() {
       </section>
 
       {/* Transparency - Running Gallery */}
-      <section id="transparency" className={`py-20 lg:py-28 bg-white transition-all duration-700 ${
+      <section id="transparency" className={`py-20 lg:py-28 bg-gradient-to-br from-cyan-50 via-blue-50 to-indigo-50 transition-all duration-700 ${
           visibleSections.transparency ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
         <div className="max-w-7xl mx-auto px-4">
@@ -568,7 +569,7 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className={`py-20 lg:py-28 bg-gradient-to-br from-teal-deep via-teal-deep to-teal-800 transition-all duration-700 ${
+      <section id="contact" className={`py-20 lg:py-28 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 transition-all duration-700 ${
           visibleSections.contact ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
         <div className="max-w-7xl mx-auto px-4">
