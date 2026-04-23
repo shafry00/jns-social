@@ -1,12 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  --color-teal-deep: #3B82F6;
-  --color-teal: #3B82F6;
-  --color-teal-light: #60A5FA;
-  --color-emerald-bright: #38BDF8;
-  --color-cream-soft: #F1FAEE;
-  --font-display: "Playfair Display", serif;
+  --color-primary-green: #2F5D3A;
+  --color-dark-green: #1F3E29;
+  --color-soft-green: #4F7F5E;
+  --color-gold: #C8A24A;
+  --color-gold-light: #D4B85A;
+  --color-bg-gold: #FDF6E3;
+  --color-light-bg: #F5F7F6;
+  --color-neutral-dark: #333333;
+  --color-neutral-gray: #6B7280;
+  
+  --color-teal-deep: #2F5D3A;
+  --color-teal: #2F5D3A;
+  --color-teal-light: #4F7F5E;
+  --color-emerald-bright: #C8A24A;
+  --color-cream-soft: #F5F7F6;
+  --font-display: "Poppins", serif;
   --font-body: "Inter", sans-serif;
 }
 
@@ -16,51 +26,33 @@
   }
   
   body {
-    @apply antialiased text-gray-800;
+    @apply antialiased text-neutral-dark;
   }
 }
 
 @layer utilities {
   .font-display {
-    font-family: "Playfair Display", serif;
+    font-family: "Poppins", serif;
   }
   
   .font-body {
     font-family: "Inter", sans-serif;
   }
-}
-
-@layer components {
-  .pillar-card {
-    @apply transition-all duration-300 ease-out cursor-pointer;
-  }
-  
-  .pillar-card:hover {
-    @apply transform scale-[1.02];
-  }
-  
-  .campaign-card {
-    @apply transition-all duration-500 ease-out;
-  }
-  
-  .campaign-card:hover {
-    @apply transform -translate-y-2 shadow-2xl;
-  }
   
   .btn-primary {
-    @apply bg-teal-deep text-white px-8 py-4 rounded-full font-semibold transition-all duration-300;
+    @apply bg-primary-green text-white px-6 py-3.5 rounded-lg font-semibold transition-all duration-300;
   }
   
   .btn-primary:hover {
-    @apply bg-teal-light shadow-xl;
+    @apply bg-dark-green;
   }
   
   .btn-secondary {
-    @apply border-2 border-teal-deep text-teal-deep px-8 py-4 rounded-full font-semibold transition-all duration-300;
+    @apply border-2 border-primary-green text-primary-green px-6 py-3 rounded-lg font-semibold transition-all duration-300;
   }
   
   .btn-secondary:hover {
-    @apply bg-teal-deep text-white;
+    @apply bg-light-bg;
   }
 }
 
@@ -137,7 +129,6 @@
     animation: float 3s ease-in-out infinite;
   }
   
-  /* Scroll reveal animations */
   .scroll-reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -154,13 +145,6 @@
   .scroll-reveal-delay-3 { transition-delay: 300ms; }
   .scroll-reveal-delay-4 { transition-delay: 400ms; }
   .scroll-reveal-delay-5 { transition-delay: 500ms; }
-  
-  /* Stagger delays for children */
-  .stagger-1 { animation-delay: 100ms; }
-  .stagger-2 { animation-delay: 200ms; }
-  .stagger-3 { animation-delay: 300ms; }
-  .stagger-4 { animation-delay: 400ms; }
-  .stagger-5 { animation-delay: 500ms; }
 }
 
 @media (prefers-reduced-motion: reduce) {

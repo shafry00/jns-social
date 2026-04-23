@@ -21,8 +21,8 @@ const pillars = [
     id: 'pendidikan', 
     title: 'Pendidikan', 
     icon: GraduationCap, 
-    color: 'bg-blue-500', 
-    gradient: 'from-blue-500 to-blue-700', 
+    color: 'bg-primary-green', 
+    gradient: 'from-primary-green to-soft-green', 
     tagline: 'Wujudkan Mimpi Mereka',
     description: 'Ribuan anak di Makassar terancam kehilangan kesempatan belajar karena keterbatasan ekonomi. Setiap donasi Anda bisa membantu mereka tetap sekolah dan bermimpi besar.',
     reasons: [
@@ -42,8 +42,8 @@ const pillars = [
     id: 'sosial', 
     title: 'Sosial', 
     icon: Users, 
-    color: 'bg-purple-500', 
-    gradient: 'from-purple-500 to-purple-700', 
+    color: 'bg-primary-green', 
+    gradient: 'from-primary-green to-soft-green', 
     tagline: 'Uluran Tangan Kita',
     description: 'Bantuan sosial untuk saudara-saudara kita yang membutuhkan. Dari paket kebutuhan dasar hingga bantuan kesehatan, kami hadir untuk meringankan beban mereka.',
     reasons: [
@@ -63,8 +63,8 @@ const pillars = [
     id: 'media-dakwah', 
     title: 'Media & Dakwah', 
     icon: Mic, 
-    color: 'bg-orange-500', 
-    gradient: 'from-orange-500 to-orange-700', 
+    color: 'bg-primary-green', 
+    gradient: 'from-primary-green to-soft-green', 
     tagline: 'Menyebarkan Kebenaran',
     description: 'Konten dakwah Islami yang edukatif dan relevan untuk ummat di era digital. Kami memproduksi berbagai konten untuk memudahkan传播 ilmu agama.',
     reasons: [
@@ -84,8 +84,8 @@ const pillars = [
     id: 'sedekah-infaq', 
     title: 'Sedekah & Infaq', 
     icon: Heart, 
-    color: 'bg-emerald-500', 
-    gradient: 'from-emerald-500 to-emerald-700', 
+    color: 'bg-gold', 
+    gradient: 'from-gold to-gold-light', 
     tagline: 'Beramal dengan Hati',
     description: 'Menghimpun dan menyalurkan sedekah dan infaq untuk kepentingan ummat. Setiap rupiah yang masuk akan kami salurkan dengan penuh amanah.',
     reasons: [
@@ -105,8 +105,8 @@ const pillars = [
     id: 'ekonomi-ummat', 
     title: 'Ekonomi Ummat', 
     icon: Briefcase, 
-    color: 'bg-teal-600', 
-    gradient: 'from-teal-600 to-teal-800', 
+    color: 'bg-primary-green', 
+    gradient: 'from-primary-green to-soft-green', 
     tagline: 'Membangun Kemandirian',
     description: 'Memberdayakan pelaku UMKM lokal Makassar melalui pelatihan, permodalan, dan akses pasar. Kami membantu masyarakat mencapai kemandirian ekonomi.',
     reasons: [
@@ -232,15 +232,15 @@ function App() {
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <img src="/jns-logo.png" alt="JNS Social" className="w-10 h-10 rounded-xl object-contain" />
             <div className="hidden sm:block">
-              <span className="font-display text-lg font-bold text-teal-deep block tracking-tight">JNS</span>
+              <span className="font-display text-lg font-bold text-primary-green block tracking-tight">JNS</span>
               <span className="font-display text-xs text-orange-500 font-medium tracking-widest uppercase">Social</span>
             </div>
           </div>
           <div className="flex items-center gap-6">
-            <a href="#about" className="hidden sm:block text-sm font-medium text-gray-600 hover:text-teal-deep transition-colors">Tentang Kami</a>
-            <a href="#programs" className="hidden sm:block text-sm font-medium text-gray-600 hover:text-teal-deep transition-colors">Program</a>
-            <a href="#contact" className="hidden sm:block text-sm font-medium text-gray-600 hover:text-teal-deep transition-colors">Kontak</a>
-            <button onClick={() => document.getElementById('programs').scrollIntoView({ behavior: 'smooth' })} className="bg-teal-deep hover:bg-teal-light text-white font-medium px-4 py-2 rounded-full transition-all text-sm">
+            <a href="#about" className="hidden sm:block text-sm font-medium text-gray-600 hover:text-primary-green transition-colors">Tentang Kami</a>
+            <a href="#programs" className="hidden sm:block text-sm font-medium text-gray-600 hover:text-primary-green transition-colors">Program</a>
+            <a href="#contact" className="hidden sm:block text-sm font-medium text-gray-600 hover:text-primary-green transition-colors">Kontak</a>
+            <button onClick={() => document.getElementById('programs').scrollIntoView({ behavior: 'smooth' })} className="bg-primary-green hover:bg-teal-light text-white font-medium px-4 py-2 rounded-lg transition-all text-sm">
               Donasi
             </button>
           </div>
@@ -248,11 +248,11 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center pt-20 bg-gradient-to-br from-indigo-50 via-blue-50 to-cyan-50 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-40" style={{ backgroundImage: 'radial-gradient(#3B82F6 0.5px, transparent 0.5px)', backgroundSize: '16px 16px' }}></div>
-        <div className="absolute top-1/4 -left-32 w-64 h-64 bg-purple-400/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-pink-400/20 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-yellow-300/10 rounded-full blur-3xl"></div>
+      <section id="hero" className="min-h-screen flex items-center pt-20 bg-gradient-to-br from-white via-light-bg to-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-40" style={{ backgroundImage: 'radial-gradient(#2F5D3A 0.5px, transparent 0.5px)', backgroundSize: '16px 16px' }}></div>
+        <div className="absolute top-1/4 -left-32 w-64 h-64 bg-purple-400/20 rounded-lg blur-3xl"></div>
+        <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-pink-400/20 rounded-lg blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-yellow-300/10 rounded-lg blur-3xl"></div>
         
         <div className={`max-w-7xl mx-auto px-4 py-16 lg:py-20 relative transition-all duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -273,7 +273,7 @@ function App() {
                     />
                     <div className={`absolute inset-0 bg-gradient-to-t ${pillar.gradient} opacity-60`}></div>
                     <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <span className="inline-block bg-white/90 text-teal-deep text-sm font-bold px-3 py-1 rounded-full mb-2">{pillar.title}</span>
+                      <span className="inline-block bg-white/90 text-primary-green text-sm font-bold px-3 py-1 rounded-lg mb-2">{pillar.title}</span>
                       <h3 className="text-white text-2xl font-bold mb-1">{pillar.campaigns[0].title}</h3>
                       <p className="text-white/80 text-sm">{pillar.tagline}</p>
                     </div>
@@ -287,35 +287,35 @@ function App() {
                   <button 
                     key={pillar.id}
                     onClick={() => setGalleryIndex(idx)}
-                    className={`h-3 rounded-full transition-all ${idx === galleryIndex ? 'bg-emerald-bright w-8' : 'bg-gray-300 hover:bg-gray-400'}`}
+                    className={`h-3 rounded-lg transition-all ${idx === galleryIndex ? 'bg-emerald-bright w-8' : 'bg-gray-300 hover:bg-gray-400'}`}
                   />
                 ))}
               </div>
               
               {/* Decorative Elements */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-emerald-bright/20 to-teal-deep/20 rounded-full blur-2xl"></div>
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-tr from-teal-deep/10 to-emerald-bright/10 rounded-full blur-2xl"></div>
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-primary-green to-soft-green rounded-lg blur-2xl"></div>
+              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-tr from-teal-deep/10 to-emerald-bright/10 rounded-lg blur-2xl"></div>
             </div>
             
             {/* Right: Text & CTA */}
             <div className="order-1 lg:order-2">
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-teal-deep leading-[1.1] mb-6 tracking-tight">
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-green leading-[1.1] mb-6 tracking-tight">
                 Bantuan Anda,<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-bright to-teal-deep">Mengubah Hidup Mereka</span>
               </h1>
               
               <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                Di belakang kita, ada <span className="font-semibold text-teal-deep">ribuan anak</span> yang bermimpi punya masa depan cerah. Tapi keterbatasan ekonomi mengancam mimpi mereka. <span className="font-semibold">Bantu kami wujudkan harapan mereka</span> — karena kebaikan Anda hari ini, adalah investasi untuk generasi masa depan.
+                Di belakang kita, ada <span className="font-semibold text-primary-green">ribuan anak</span> yang bermimpi punya masa depan cerah. Tapi keterbatasan ekonomi mengancam mimpi mereka. <span className="font-semibold">Bantu kami wujudkan harapan mereka</span> — karena kebaikan Anda hari ini, adalah investasi untuk generasi masa depan.
               </p>
               
               <div className="flex flex-wrap gap-4 mb-10">
                 <button onClick={() => document.getElementById('programs').scrollIntoView({ behavior: 'smooth' })} 
-                  className="group bg-gradient-to-r from-teal-deep to-teal-light hover:from-teal-light hover:to-teal-deep text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-2xl hover:shadow-teal-deep/30 hover:scale-105 active:scale-95 flex items-center gap-3">
+                  className="group bg-gradient-to-r from-primary-green to-dark-green hover:from-teal-light hover:to-teal-deep text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-teal-deep/30 hover:scale-105 active:scale-95 flex items-center gap-3">
                   <Heart className="w-5 h-5 group-hover:scale-110 transition-transform" />
                   <span>Donasi Sekarang</span>
                 </button>
                 <a href="#transparency" 
-                  className="border-2 border-teal-deep text-teal-deep font-semibold px-6 py-4 rounded-full transition-all duration-300 hover:bg-teal-deep hover:text-white hover:scale-105 active:scale-95">
+                  className="border-2 border-teal-deep text-primary-green font-semibold px-6 py-4 rounded-lg transition-all duration-300 hover:bg-primary-green hover:text-white hover:scale-105 active:scale-95">
                   Dampak Bantuan Anda
                 </a>
               </div>
@@ -325,42 +325,42 @@ function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className={`py-20 lg:py-28 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 transition-all duration-700 ${
+      <section id="about" className={`py-20 lg:py-28 bg-light-bg transition-all duration-700 ${
           visibleSections.about ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="inline-block bg-teal-deep/10 text-teal-deep font-medium px-4 py-2 rounded-full text-sm mb-4">TENTANG KAMI</span>
-              <h2 className="font-display text-4xl lg:text-5xl font-bold text-teal-deep mb-6">JNS Social</h2>
+              <span className="inline-block bg-primary-green/10 text-primary-green font-medium px-4 py-2 rounded-lg text-sm mb-4">TENTANG KAMI</span>
+              <h2 className="font-display text-4xl lg:text-5xl font-bold text-primary-green mb-6">JNS Social</h2>
               <div className="space-y-5 text-gray-700 leading-relaxed">
                 <p className="text-lg">
-                  <strong className="text-teal-deep">JNS Social</strong> lahir dari keprihatinan melihat kondisi saudara-saudara kita di Makassar yang membutuhkan uluran tangan. Kami percaya bahwa satu rupiah dari Anda bisa mengubah hidup mereka.
+                  <strong className="text-primary-green">JNS Social</strong> lahir dari keprihatinan melihat kondisi saudara-saudara kita di Makassar yang membutuhkan uluran tangan. Kami percaya bahwa satu rupiah dari Anda bisa mengubah hidup mereka.
                 </p>
                 <p>
                   Setiap donasi yang masuk <span className="font-semibold text-emerald-600">100% kami salurkan</span> ke penerima manfaat. Kami beroperasi dengan prinsip transparansi penuh — karena kepercayaan Anda adalah tanggung jawab kami.
                 </p>
                 <p>
-                  Dari anak yatim yang bermimpi menjadi dokter, ibu-ibu yang ingin mandiri secara ekonomi, hingga masyarakat yang membutuhkan bantuan kesehatan — <span className="font-semibold text-teal-deep">mereka menunggu kebaikan hati Anda.</span>
+                  Dari anak yatim yang bermimpi menjadi dokter, ibu-ibu yang ingin mandiri secara ekonomi, hingga masyarakat yang membutuhkan bantuan kesehatan — <span className="font-semibold text-primary-green">mereka menunggu kebaikan hati Anda.</span>
                 </p>
               </div>
               
               <div className="mt-8 grid grid-cols-2 gap-4">
-                <div className="bg-white border-2 border-amber-100 p-5 rounded-2xl">
+                <div className="bg-white border-2 border-primary-green/20 p-5 rounded-2xl">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-400 to-amber-500 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-green to-dark-green flex items-center justify-center">
                       <Target className="w-6 h-6 text-white" />
                     </div>
-                    <span className="font-display text-lg font-bold text-teal-deep">Visi</span>
+                    <span className="font-display text-lg font-bold text-primary-green">Visi</span>
                   </div>
-                  <p className="text-sm text-gray-600">Menjadi harapan bagi mereka yang membutuhkan di Sulawesi Selatan.</p>
+                  <p className="text-sm text-neutral-gray">Menjadi harapan bagi mereka yang membutuhkan di Sulawesi Selatan.</p>
                 </div>
-                <div className="bg-white border-2 border-amber-100 p-5 rounded-2xl">
+                <div className="bg-white border-2 border-primary-green/20 p-5 rounded-2xl">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-400 to-amber-500 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-green to-dark-green flex items-center justify-center">
                       <Shield className="w-6 h-6 text-white" />
                     </div>
-                    <span className="font-display text-lg font-bold text-teal-deep">Misi</span>
+                    <span className="font-display text-lg font-bold text-primary-green">Misi</span>
                   </div>
                   <p className="text-sm text-gray-600">Menyalurkan bantuan dengan amanah dan transparan.</p>
                 </div>
@@ -376,7 +376,7 @@ function App() {
                 <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
                   <div className="flex items-center gap-3 mb-3">
                     <Heart className="w-6 h-6 text-emerald-500" />
-                    <span className="font-display text-lg font-bold text-teal-deep">Transparan</span>
+                    <span className="font-display text-lg font-bold text-primary-green">Transparan</span>
                   </div>
                   <p className="text-sm text-gray-600">Laporan keuangan publik dan audit berkala.</p>
                 </div>
@@ -385,7 +385,7 @@ function App() {
                 <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
                   <div className="flex items-center gap-3 mb-3">
                     <Users className="w-6 h-6 text-purple-500" />
-                    <span className="font-display text-lg font-bold text-teal-deep">Community</span>
+                    <span className="font-display text-lg font-bold text-primary-green">Community</span>
                   </div>
                   <p className="text-sm text-gray-600">Ribuan donatur yang telah terpercaya.</p>
                 </div>
@@ -400,13 +400,13 @@ function App() {
       </section>
 
       {/* Programs Section */}
-      <section id="programs" className={`py-20 lg:py-28 bg-gradient-to-br from-blue-50 via-indigo-50 to-blue-100 relative transition-all duration-700 ${
+      <section id="programs" className={`py-20 lg:py-28 bg-light-bg relative transition-all duration-700 ${
           visibleSections.programs ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="inline-block bg-emerald-bright/10 text-emerald-bright font-medium px-4 py-2 rounded-full text-sm mb-4">PROGRAM KAMI</span>
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-teal-deep mb-4">Pilar Program Kebaikan</h2>
+            <span className="inline-block bg-emerald-bright/10 text-emerald-bright font-medium px-4 py-2 rounded-lg text-sm mb-4">PROGRAM KAMI</span>
+            <h2 className="font-display text-4xl lg:text-5xl font-bold text-primary-green mb-4">Pilar Program Kebaikan</h2>
             <p className="text-gray-500 max-w-xl mx-auto">Pilih salah satu pilar untuk melihat campaign donasi yang tersedia.</p>
           </div>
           
@@ -418,7 +418,7 @@ function App() {
                 onClick={() => setActivePillar(p.id)}
                 className={`group flex-shrink-0 w-36 sm:w-40 p-4 rounded-2xl transition-all duration-500 cursor-pointer ${
                   activePillar === p.id 
-                    ? `bg-white shadow-2xl ring-2 ring-emerald-bright scale-105` 
+                    ? `bg-white shadow-2xl ring-2 ring-primary-green scale-105` 
                     : 'bg-white/50 shadow-lg hover:shadow-xl hover:scale-102'
                 }`}
                 style={{ 
@@ -444,8 +444,8 @@ function App() {
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
-                  <h3 className="font-display text-2xl font-bold text-teal-deep">{currentPillar.title}</h3>
-                  <span className="bg-gradient-to-r from-emerald-bright to-teal-deep text-white text-sm font-medium px-3 py-1 rounded-full">{currentPillar.tagline}</span>
+                  <h3 className="font-display text-2xl font-bold text-primary-green">{currentPillar.title}</h3>
+                  <span className="bg-gradient-to-r from-emerald-bright to-teal-deep text-white text-sm font-medium px-3 py-1 rounded-lg">{currentPillar.tagline}</span>
                 </div>
                 <p className="text-gray-600 mb-6">{currentPillar.description}</p>
                 
@@ -453,7 +453,7 @@ function App() {
                   <div className="bg-gradient-to-br from-emerald-bright/5 to-teal-deep/5 rounded-xl p-4 border border-emerald-bright/10">
                     <div className="flex items-center gap-2 mb-3">
                       <HeartHandshake className="w-5 h-5 text-emerald-bright" />
-                      <span className="font-semibold text-teal-deep">Kenapa Berdonasi?</span>
+                      <span className="font-semibold text-primary-green">Kenapa Berdonasi?</span>
                     </div>
                     <ul className="space-y-2">
                       {currentPillar.reasons.map((reason, i) => (
@@ -466,7 +466,7 @@ function App() {
                   </div>
                   <div className="bg-gradient-to-br from-teal-deep/5 to-emerald-bright/5 rounded-xl p-4 flex flex-col justify-center border border-emerald-bright/20">
                     <Quote className="w-8 h-8 text-emerald-bright mb-2" />
-                    <p className="text-teal-deep/80 italic text-sm leading-relaxed">
+                    <p className="text-primary-green/80 italic text-sm leading-relaxed">
                       "Setiap kebaikan yang kita lakukan untuk sesama adalah investasi untuk akhirat. Mari bersama menebar manfaat di Kota Daeng."
                     </p>
                   </div>
@@ -509,10 +509,10 @@ function App() {
                     <div className={`absolute inset-0 bg-gradient-to-t ${currentPillar.gradient} opacity-60`}></div>
                     <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
                       <span className="text-white/90 text-xs font-medium">{currentPillar.title}</span>
-                      <span className="bg-white/90 text-teal-deep text-xs font-bold px-2 py-1 rounded-full">{percent}%</span>
+                      <span className="bg-white/90 text-primary-green text-xs font-bold px-2 py-1 rounded-lg">{percent}%</span>
                     </div>
-                    <div className="absolute inset-0 bg-teal-deep/0 group-hover:bg-teal-deep/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                      <button className="bg-white text-teal-deep font-semibold px-4 py-2 rounded-full flex items-center gap-2 transform scale-90 group-hover:scale-100 transition-transform duration-300">
+                    <div className="absolute inset-0 bg-primary-green/0 group-hover:bg-primary-green/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                      <button className="bg-white text-primary-green font-semibold px-4 py-2 rounded-lg flex items-center gap-2 transform scale-90 group-hover:scale-100 transition-transform duration-300">
                         <Heart className="w-4 h-4" /> Donasi
                       </button>
                     </div>
@@ -521,15 +521,15 @@ function App() {
                   <div className="p-5">
                     <h3 className="font-display text-lg font-bold text-gray-800 mb-4">{c.title}</h3>
                     <div className="mb-4">
-                      <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                        <div className={`h-full bg-gradient-to-r from-emerald-bright to-teal-deep rounded-full transition-all duration-1000`} style={{ width: `${percent}%` }}></div>
+                      <div className="h-2 bg-gray-100 rounded-lg overflow-hidden">
+                        <div className={`h-full bg-gradient-to-r from-emerald-bright to-teal-deep rounded-lg transition-all duration-1000`} style={{ width: `${percent}%` }}></div>
                       </div>
                     </div>
                     <div className="space-y-2 mb-5 text-sm">
                       <div className="flex justify-between"><span className="text-gray-400">Terkumpul</span><span className="font-semibold text-emerald-bright">Rp{formatRupiah(c.raised)}</span></div>
                       <div className="flex justify-between"><span className="text-gray-400">Target</span><span className="font-medium text-gray-600">Rp{formatRupiah(c.target)}</span></div>
                     </div>
-                    <button onClick={(e) => { e.stopPropagation(); openModal(currentPillar.id, c.id) }} className="w-full bg-teal-deep hover:bg-teal-light text-white font-medium py-3 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 hover:shadow-lg">
+                    <button onClick={(e) => { e.stopPropagation(); openModal(currentPillar.id, c.id) }} className="w-full bg-primary-green hover:bg-teal-light text-white font-medium py-3 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 hover:shadow-lg">
                       <Heart className="w-4 h-4" /> Donasi Sekarang
                     </button>
                   </div>
@@ -541,13 +541,13 @@ function App() {
       </section>
 
       {/* Transparency - Running Gallery */}
-      <section id="transparency" className={`py-20 lg:py-28 bg-gradient-to-br from-sky-50 via-blue-50 to-cyan-50 transition-all duration-700 ${
+      <section id="transparency" className={`py-20 lg:py-28 bg-white transition-all duration-700 ${
           visibleSections.transparency ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="inline-block bg-teal-deep/10 text-teal-deep font-medium px-4 py-2 rounded-full text-sm mb-4">TRANSPARANSI</span>
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-teal-deep mb-4">Bukti Penyaluran</h2>
+            <span className="inline-block bg-primary-green/10 text-primary-green font-medium px-4 py-2 rounded-lg text-sm mb-4">TRANSPARANSI</span>
+            <h2 className="font-display text-4xl lg:text-5xl font-bold text-primary-green mb-4">Bukti Penyaluran</h2>
             <p className="text-gray-500 max-w-xl mx-auto">Dokumentasi kegiatan dan menyalurkan bantuan kami.</p>
           </div>
 
@@ -567,7 +567,7 @@ function App() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <span className="inline-block bg-emerald-bright text-teal-deep text-xs font-bold px-2 py-1 rounded-full mb-1">{activity.pillar}</span>
+                    <span className="inline-block bg-emerald-bright text-primary-green text-xs font-bold px-2 py-1 rounded-lg mb-1">{activity.pillar}</span>
                     <h3 className="text-white font-semibold text-sm">{activity.title}</h3>
                   </div>
                 </div>
@@ -582,7 +582,7 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className={`py-20 lg:py-28 bg-gradient-to-br from-blue-600 via-indigo-600 to-cyan-600 transition-all duration-700 ${
+      <section id="contact" className={`py-20 lg:py-28 bg-dark-green transition-all duration-700 ${
           visibleSections.contact ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
         <div className="max-w-7xl mx-auto px-4">
@@ -625,7 +625,7 @@ function App() {
             </div>
             
             <div className="bg-white rounded-3xl shadow-2xl p-8">
-              <h3 className="font-display text-2xl font-bold text-teal-deep mb-6">Informasi Legal</h3>
+              <h3 className="font-display text-2xl font-bold text-primary-green mb-6">Informasi Legal</h3>
               <div className="space-y-4">
                 <div className="flex justify-between py-3 border-b border-gray-100">
                   <span className="text-gray-500">Nama Yayasan</span>
@@ -656,15 +656,15 @@ function App() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={closeModal}>
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm animate-fade-in" />
           <div className="relative w-full max-w-lg max-h-[90vh] bg-white rounded-2xl shadow-2xl overflow-hidden animate-scale-in flex flex-col" onClick={e => e.stopPropagation()}>
-            <div className="bg-gradient-to-r from-teal-deep to-teal-light px-6 py-5 flex-shrink-0">
+            <div className="bg-gradient-to-r from-primary-green to-dark-green px-6 py-5 flex-shrink-0">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
-                    <Heart className="w-5 h-5 text-emerald-bright" fill="#38BDF8" />
+                    <Heart className="w-5 h-5 text-emerald-bright" fill="#C8A24A" />
                   </div>
                   <span className="font-semibold text-white text-lg">Donasi</span>
                 </div>
-                <button onClick={closeModal} className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+                <button onClick={closeModal} className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
                   <X className="w-5 h-5 text-white" />
                 </button>
               </div>
@@ -672,7 +672,7 @@ function App() {
             
             <div className="px-6 py-4 border-b border-gray-100 flex-shrink-0">
               <p className="text-sm text-gray-400">Donasi untuk</p>
-              <p className="font-display text-base font-bold text-teal-deep">{selectedCampaign.pillar.title} - {selectedCampaign.campaign.title}</p>
+              <p className="font-display text-base font-bold text-primary-green">{selectedCampaign.pillar.title} - {selectedCampaign.campaign.title}</p>
             </div>
             
             <div className="flex-1 overflow-y-auto px-6 py-4">
@@ -684,8 +684,8 @@ function App() {
                     onClick={() => setDonationAmount(amt)}
                     className={`py-2.5 border-2 rounded-lg text-center font-bold text-sm transition-all duration-200 ${
                       donationAmount === amt 
-                        ? 'bg-teal-deep text-white border-teal-deep shadow-lg' 
-                        : 'border-gray-200 hover:border-teal-deep hover:bg-teal-deep/5'
+                        ? 'bg-primary-green text-white border-teal-deep shadow-lg' 
+                        : 'border-gray-200 hover:border-teal-deep hover:bg-primary-green/5'
                     }`}
                   >
                     {amt / 1000}rb
@@ -713,7 +713,7 @@ function App() {
                     onClick={() => setSelectedPaymentMethod(method)}
                     className={`p-3 border-2 rounded-xl text-left transition-all duration-200 flex items-center gap-3 ${
                       selectedPaymentMethod?.id === method.id
-                        ? 'bg-teal-deep/10 border-teal-deep'
+                        ? 'bg-primary-green/10 border-teal-deep'
                         : 'border-gray-200 hover:border-teal-deep'
                     }`}
                   >
@@ -723,7 +723,7 @@ function App() {
                     <div className="flex-1">
                       <span className="font-semibold text-gray-800 block">{method.name}</span>
                       {selectedPaymentMethod?.id === method.id && (
-                        <span className="text-xs text-teal-deep mt-0.5 block">
+                        <span className="text-xs text-primary-green mt-0.5 block">
                           {method.rekening}
                         </span>
                       )}
@@ -770,7 +770,7 @@ function App() {
                 />
                 <label htmlFor="bukti-transfer" className="cursor-pointer">
                   {transactionProof ? (
-                    <div className="flex items-center justify-center gap-2 text-teal-deep">
+                    <div className="flex items-center justify-center gap-2 text-primary-green">
                       <CheckCircle className="w-5 h-5" />
                       <span className="text-sm font-medium">{transactionProof.name}</span>
                     </div>
@@ -788,7 +788,7 @@ function App() {
               <button 
                 onClick={submitDonation} 
                 disabled={!donorData.name || !donorData.whatsapp || !donationAmount || !selectedPaymentMethod}
-                className="w-full bg-gradient-to-r from-teal-deep to-teal-light text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-gradient-to-r from-primary-green to-dark-green text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Send className="w-5 h-5" /> Konfirmasi Donasi
               </button>
