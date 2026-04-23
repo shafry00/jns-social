@@ -247,7 +247,7 @@ return (
         <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7" />
       </a>
       
-      {/* Navigation */}
+{/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
@@ -265,21 +265,20 @@ return (
             </button>
           </div>
         </div>
-      </nav>
-
-{/* Donation Ticker Banner - Floating below navbar */}
-      <div className="fixed top-[72px] left-0 right-0 z-50 bg-primary-green/95 backdrop-blur-sm py-2 overflow-hidden">
-        <div className="animate-marquee whitespace-nowrap">
-          <span className="inline-flex items-center text-white text-xs sm:text-sm font-medium mx-8">
-            <Heart className="w-4 h-4 mr-2 flex-shrink-0" /> 
-            Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat.
-          </span>
-          <span className="inline-flex items-center text-white text-xs sm:text-sm font-medium mx-8">
-            <Heart className="w-4 h-4 mr-2 flex-shrink-0" /> 
-            Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat.
-          </span>
+        {/* Ticker inside nav, below content */}
+        <div className="bg-primary-green/95 backdrop-blur-sm py-2 overflow-hidden">
+          <div className="animate-marquee whitespace-nowrap">
+            <span className="inline-flex items-center text-white text-xs sm:text-sm font-medium mx-8">
+              <Heart className="w-4 h-4 mr-2 flex-shrink-0" /> 
+              Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat.
+            </span>
+            <span className="inline-flex items-center text-white text-xs sm:text-sm font-medium mx-8">
+              <Heart className="w-4 h-4 mr-2 flex-shrink-0" /> 
+              Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat.
+            </span>
+          </div>
         </div>
-      </div>
+      </nav>
 
       {/* Hero Section */}
       <section id="hero" className="min-h-screen flex items-center pt-16 sm:pt-20 bg-gradient-to-br from-white via-light-bg to-white relative overflow-hidden">
