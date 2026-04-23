@@ -277,7 +277,7 @@ return (
       </div>
 
       {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center pt-16 sm:pt-20 bg-gradient-to-br from-white via-light-bg to-white relative overflow-hidden">
+      <section id="hero" className="min-h-screen flex items-center pt-36 sm:pt-36 bg-gradient-to-br from-white via-light-bg to-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(#2F5D3A 0.5px, transparent 0.5px)', backgroundSize: '16px 16px' }}></div>
         <div className="absolute top-1/3 -left-16 sm:-left-24 w-40 sm:w-56 h-40 sm:h-56 bg-primary-green/10 rounded-full blur-2xl"></div>
         <div className="absolute bottom-1/3 -right-16 sm:-right-24 w-40 sm:w-56 h-40 sm:h-56 bg-gold/10 rounded-full blur-2xl"></div>
