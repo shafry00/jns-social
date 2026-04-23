@@ -249,16 +249,16 @@ function App() {
 
       {/* Hero Section */}
       <section id="hero" className="min-h-screen flex items-center pt-20 bg-gradient-to-br from-white via-light-bg to-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-40" style={{ backgroundImage: 'radial-gradient(#2F5D3A 0.5px, transparent 0.5px)', backgroundSize: '16px 16px' }}></div>
-        <div className="absolute top-1/4 -left-32 w-64 h-64 bg-purple-400/20 rounded-lg blur-3xl"></div>
-        <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-pink-400/20 rounded-lg blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-yellow-300/10 rounded-lg blur-3xl"></div>
+        <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(#2F5D3A 0.5px, transparent 0.5px)', backgroundSize: '16px 16px' }}></div>
+        <div className="absolute top-1/3 -left-16 sm:-left-24 w-40 sm:w-56 h-40 sm:h-56 bg-primary-green/10 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-1/3 -right-16 sm:-right-24 w-40 sm:w-56 h-40 sm:h-56 bg-gold/10 rounded-full blur-2xl"></div>
+        <div className="hidden sm:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gold/5 rounded-full blur-3xl"></div>
         
         <div className={`max-w-7xl mx-auto px-4 py-16 lg:py-20 relative transition-all duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left: Carousel */}
             <div className="relative order-2 lg:order-1">
-              <div className="relative h-[400px] sm:h-[450px] lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
+              <div className="relative h-[280px] sm:h-[350px] lg:h-[450px] rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl">
                 {pillars.map((pillar, idx) => (
                   <div 
                     key={pillar.id}
@@ -299,23 +299,23 @@ function App() {
             
             {/* Right: Text & CTA */}
             <div className="order-1 lg:order-2">
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-green leading-[1.1] mb-6 tracking-tight">
+              <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-green leading-tight mb-4 sm:mb-6 tracking-tight">
                 Bantuan Anda,<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-bright to-teal-deep">Mengubah Hidup Mereka</span>
               </h1>
               
-              <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+              <p className="text-base sm:text-lg text-neutral-dark mb-6 sm:mb-8 leading-relaxed">
                 Di belakang kita, ada <span className="font-semibold text-primary-green">ribuan anak</span> yang bermimpi punya masa depan cerah. Tapi keterbatasan ekonomi mengancam mimpi mereka. <span className="font-semibold">Bantu kami wujudkan harapan mereka</span> — karena kebaikan Anda hari ini, adalah investasi untuk generasi masa depan.
               </p>
               
               <div className="flex flex-wrap gap-4 mb-10">
                 <button onClick={() => document.getElementById('programs').scrollIntoView({ behavior: 'smooth' })} 
-                  className="group bg-gradient-to-r from-primary-green to-dark-green hover:from-teal-light hover:to-teal-deep text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:shadow-2xl hover:shadow-teal-deep/30 hover:scale-105 active:scale-95 flex items-center gap-3">
+                  className="group bg-primary-green hover:bg-dark-green text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg transition-all duration-300 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2 sm:gap-3">
                   <Heart className="w-5 h-5 group-hover:scale-110 transition-transform" />
                   <span>Donasi Sekarang</span>
                 </button>
                 <a href="#transparency" 
-                  className="border-2 border-teal-deep text-primary-green font-semibold px-6 py-4 rounded-lg transition-all duration-300 hover:bg-primary-green hover:text-white hover:scale-105 active:scale-95">
+                  className="border-2 border-primary-green text-primary-green font-semibold px-5 sm:px-6 py-3 sm:py-4 rounded-lg transition-all duration-300 hover:bg-primary-green hover:text-white hover:scale-[1.02] active:scale-[0.98]">
                   Dampak Bantuan Anda
                 </a>
               </div>
@@ -332,7 +332,7 @@ function App() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="inline-block bg-primary-green/10 text-primary-green font-medium px-4 py-2 rounded-lg text-sm mb-4">TENTANG KAMI</span>
-              <h2 className="font-display text-4xl lg:text-5xl font-bold text-primary-green mb-6">JNS Social</h2>
+              <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-green mb-4 sm:mb-6">JNS Social</h2>
               <div className="space-y-5 text-gray-700 leading-relaxed">
                 <p className="text-lg">
                   <strong className="text-primary-green">JNS Social</strong> lahir dari keprihatinan melihat kondisi saudara-saudara kita di Makassar yang membutuhkan uluran tangan. Kami percaya bahwa satu rupiah dari Anda bisa mengubah hidup mereka.
@@ -370,7 +370,7 @@ function App() {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
                 <div className="bg-gradient-to-br from-orange-400 to-amber-500 rounded-2xl p-6 text-white shadow-xl">
-                  <div className="font-display text-4xl font-bold mb-2 opacity-90">5</div>
+                  <div className="font-display text-3xl sm:text-4xl font-bold mb-2 opacity-90">5</div>
                   <div className="text-white font-medium">Pilar Program</div>
                 </div>
                 <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
@@ -390,7 +390,7 @@ function App() {
                   <p className="text-sm text-gray-600">Ribuan donatur yang telah terpercaya.</p>
                 </div>
                 <div className="bg-gradient-to-br from-orange-400 to-amber-500 rounded-2xl p-6 text-white shadow-xl">
-                  <div className="font-display text-4xl font-bold mb-2 opacity-90">100%</div>
+                  <div className="font-display text-3xl sm:text-4xl font-bold mb-2 opacity-90">100%</div>
                   <div className="text-orange-100 font-medium">Dana Tersalur</div>
                 </div>
               </div>
@@ -406,7 +406,7 @@ function App() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block bg-emerald-bright/10 text-emerald-bright font-medium px-4 py-2 rounded-lg text-sm mb-4">PROGRAM KAMI</span>
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-primary-green mb-4">Pilar Program Kebaikan</h2>
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-green mb-4">Pilar Program Kebaikan</h2>
             <p className="text-gray-500 max-w-xl mx-auto">Pilih salah satu pilar untuk melihat campaign donasi yang tersedia.</p>
           </div>
           
@@ -416,7 +416,7 @@ function App() {
               <button 
                 key={p.id} 
                 onClick={() => setActivePillar(p.id)}
-                className={`group flex-shrink-0 w-36 sm:w-40 p-4 rounded-2xl transition-all duration-500 cursor-pointer ${
+                className={`group flex-shrink-0 w-28 sm:w-32 p-3 sm:p-4 rounded-xl sm:rounded-2xl transition-all duration-500 cursor-pointer ${
                   activePillar === p.id 
                     ? `bg-white shadow-2xl ring-2 ring-primary-green scale-105` 
                     : 'bg-white/50 shadow-lg hover:shadow-xl hover:scale-102'
@@ -547,7 +547,7 @@ function App() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block bg-primary-green/10 text-primary-green font-medium px-4 py-2 rounded-lg text-sm mb-4">TRANSPARANSI</span>
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-primary-green mb-4">Bukti Penyaluran</h2>
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-green mb-4">Bukti Penyaluran</h2>
             <p className="text-gray-500 max-w-xl mx-auto">Dokumentasi kegiatan dan menyalurkan bantuan kami.</p>
           </div>
 
@@ -555,7 +555,7 @@ function App() {
           <div className="relative overflow-hidden">
             <div className="flex gap-4 animate-marquee" ref={galleryRef}>
               {[...activities, ...activities].map((activity, idx) => (
-                <div key={idx} className="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden shadow-lg relative group cursor-pointer">
+                <div key={idx} className="flex-shrink-0 w-48 h-48 sm:w-56 sm:h-56 rounded-xl sm:rounded-2xl overflow-hidden shadow-md sm:shadow-lg relative group cursor-pointer">
                   <img 
                     src={activity.image + '&w=300&q=60'} 
                     alt={activity.title} 
@@ -588,7 +588,7 @@ function App() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="font-display text-4xl font-bold text-white mb-4">Hubungi Kami</h2>
+              <h2 className="font-display text-2xl sm:text-3xl font-bold text-white mb-4">Hubungi Kami</h2>
               <p className="text-teal-200 text-lg mb-10">Memiliki pertanyaan atau ingin berkolaborasi?</p>
               
               <div className="space-y-5">
