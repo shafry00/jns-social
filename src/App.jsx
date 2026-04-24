@@ -244,24 +244,26 @@ return (
       </a>
       
 <div className="sticky top-0 z-50">
-  <nav className="bg-white/95 backdrop-blur-md shadow-sm">
-    <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-      <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-        <img src="/jns-logo.png" alt="JNS Social" className="w-12 h-12 rounded-xl object-contain" />
-        <div>
-          <span className="font-display text-lg font-bold text-primary-green block tracking-tight">JNS Social</span>
+  <div className="bg-white shadow-md">
+    <nav className="bg-white/95 backdrop-blur-md shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <img src="/jns-logo.png" alt="JNS Social" className="w-12 h-12 rounded-xl object-contain" />
+          <div>
+            <span className="font-display text-lg font-bold text-primary-green block tracking-tight">JNS Social</span>
+          </div>
+        </div>
+        <div className="flex items-center gap-6">
+          <a href="#about" className="hidden sm:block text-sm font-medium text-gray-600 hover:text-primary-green transition-colors">Tentang Kami</a>
+          <a href="#programs" className="hidden sm:block text-sm font-medium text-gray-600 hover:text-primary-green transition-colors">Program</a>
+          <a href="#contact" className="hidden sm:block text-sm font-medium text-gray-600 hover:text-primary-green transition-colors">Kontak</a>
+          <button onClick={() => document.getElementById('programs').scrollIntoView({ behavior: 'smooth' })} className="bg-primary-green hover:bg-dark-green text-white font-medium px-4 py-2 rounded-lg transition-all text-sm">
+            Donasi
+          </button>
         </div>
       </div>
-      <div className="flex items-center gap-6">
-        <a href="#about" className="hidden sm:block text-sm font-medium text-gray-600 hover:text-primary-green transition-colors">Tentang Kami</a>
-        <a href="#programs" className="hidden sm:block text-sm font-medium text-gray-600 hover:text-primary-green transition-colors">Program</a>
-        <a href="#contact" className="hidden sm:block text-sm font-medium text-gray-600 hover:text-primary-green transition-colors">Kontak</a>
-        <button onClick={() => document.getElementById('programs').scrollIntoView({ behavior: 'smooth' })} className="bg-primary-green hover:bg-dark-green text-white font-medium px-4 py-2 rounded-lg transition-all text-sm">
-          Donasi
-        </button>
-      </div>
-    </div>
-  </nav>
+    </nav>
+  </div>
   <div className="bg-gradient-to-r from-primary-green to-dark-green overflow-hidden py-2">
     <div className="marquee-track">
       <span className="marquee-text inline-flex items-center gap-2 text-white font-medium mx-8">
@@ -650,7 +652,7 @@ return (
                       <img src="https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/White/Facebook_white.svg" alt="Facebook" className="w-6 h-6" />
                     </a>
                     <a href="https://tiktok.com/@jnssocial" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
-                      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 0013 19.4V2h-3.45v2.12A8.14 8.14 0 0011.83 16c-.07-.09-.13-.18-.19-.27a5.09 5.09 0 01-2.67-4.37c0-2.82 2.38-5.12 5.33-5.12a5.12 5.12 0 013.67 1.26l.05-.05h.09z"/></svg>
+                      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round"><path d="M16.8217 5.1344C16.0886 4.29394 15.6479 3.19805 15.6479 2H14.7293M16.8217 5.1344C17.4898 5.90063 18.3944 6.45788 19.4245 6.67608C19.7446 6.74574 20.0786 6.78293 20.4266 6.78293V10.2191C18.645 10.2191 16.9932 9.64801 15.6477 8.68211V15.6707C15.6477 19.1627 12.8082 22 9.32386 22C7.50043 22 5.85334 21.2198 4.69806 19.98C3.64486 18.847 2.99994 17.3331 2.99994 15.6707C2.99994 12.2298 5.75592 9.42509 9.17073 9.35079M16.8217 5.1344C16.8039 5.12276 16.7861 5.11101 16.7684 5.09914M6.9855 17.3517C6.64217 16.8781 6.43802 16.2977 6.43802 15.6661C6.43802 14.0734 7.73249 12.7778 9.32394 12.7778C9.62087 12.7778 9.9085 12.8288 10.1776 12.9124V9.40192C9.89921 9.36473 9.61622 9.34149 9.32394 9.34149C9.27287 9.34149 8.86177 9.36884 8.81073 9.36884M14.7244 2H12.2097L12.2051 15.7775C12.1494 17.3192 10.8781 18.5591 9.32386 18.5591C8.35878 18.5591 7.50971 18.0808 6.98079 17.3564"/></svg>
                     </a>
                     <a href="https://youtube.com/@jnssocial" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
                       <svg className="w-6 h-6" viewBox="0 0 24 24" fill="white"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
