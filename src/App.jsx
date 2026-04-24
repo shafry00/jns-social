@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { 
   Heart, MapPin, Eye, GraduationCap, Users, Mic, Briefcase, Send, X, Mail, 
   MapPin as Location, CheckCircle, Sparkles, Star, ArrowRight, HandHeart, 
@@ -133,61 +133,16 @@ function App() {
   const [donationAmount, setDonationAmount] = useState(0)
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null)
   const [transactionProof, setTransactionProof] = useState(null)
-  const [loaded, setLoaded] = useState(false)
   const [galleryIndex, setGalleryIndex] = useState(0)
-  const [visibleSections, setVisibleSections] = useState({})
+  const [isClient, setIsClient] = useState(false)
   const galleryRef = useRef(null)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisibleSections((prev) => ({
-              ...prev,
-              [entry.target.id]: true,
-            }))
-          }
-        })
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-    )
-
-    document.querySelectorAll('section').forEach((section) => {
-      observer.observe(section)
-    })
-
-    return () => observer.disconnect()
+    setIsClient(true)
   }, [])
 
   const currentPillar = pillars.find(p => p.id === activePillar)
   const formatRupiah = (num) => new Intl.NumberFormat('id-ID').format(num)
-
-  useEffect(() => {
-    setLoaded(true)
-    const saved = localStorage.getItem('jns_donor')
-    if (saved) setDonorData(JSON.parse(saved))
-  }, [])
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setGalleryIndex(prev => (prev + 1) % activities.length)
-      if (galleryRef.current) {
-        galleryRef.current.scrollBy({ left: 280, behavior: 'smooth' })
-        if (galleryRef.current.scrollLeft >= galleryRef.current.scrollWidth - galleryRef.current.clientWidth - 10) {
-          galleryRef.current.scrollTo({ left: 0, behavior: 'smooth' })
-        }
-      }
-    }, 4000)
-    return () => clearInterval(interval)
-  }, [])
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setGalleryIndex(prev => (prev + 1) % pillars.length)
-    }, 4000)
-    return () => clearInterval(interval)
-  }, [])
 
   const openModal = (pillarId, campaignId) => {
     const pillar = pillars.find(p => p.id === pillarId)
@@ -243,67 +198,61 @@ return (
         <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7" />
       </a>
       
-<div className="sticky top-0 z-50">
-  <div className="bg-white shadow-md">
-    <nav className="bg-white/95 backdrop-blur-md shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <img src="/jns-logo.png" alt="JNS Social" className="w-12 h-12 rounded-xl object-contain" />
-          <div>
-            <span className="font-display text-lg font-bold text-primary-green block tracking-tight">JNS Social</span>
-          </div>
-        </div>
-        <div className="flex items-center gap-6">
-          <a href="#about" className="hidden sm:block text-sm font-medium text-gray-600 hover:text-primary-green transition-colors">Tentang Kami</a>
-          <a href="#programs" className="hidden sm:block text-sm font-medium text-gray-600 hover:text-primary-green transition-colors">Program</a>
-          <a href="#contact" className="hidden sm:block text-sm font-medium text-gray-600 hover:text-primary-green transition-colors">Kontak</a>
-          <button onClick={() => document.getElementById('programs').scrollIntoView({ behavior: 'smooth' })} className="bg-primary-green hover:bg-dark-green text-white font-medium px-4 py-2 rounded-lg transition-all text-sm">
-            Donasi
-          </button>
-        </div>
-      </div>
-    </nav>
-  </div>
-  <div className="bg-gradient-to-r from-primary-green to-dark-green overflow-hidden py-2">
-    <div className="marquee-track">
-      <span className="marquee-text inline-flex items-center gap-2 text-white font-medium mx-8">
-        <span className="text-gold">★</span> Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat. <span className="text-gold">★</span> Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat. <span className="text-gold">★</span> Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk goodnesssss
-      </span>
+<div className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+  <nav className="max-w-7xl mx-auto px-2 sm:px-4 py-2 sm:py-3 flex items-center justify-between">
+    <div className="flex items-center gap-2 sm:gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+      <img src="/jns-logo.png" alt="JNS Social" className="w-8 h-8 sm:w-12 sm:h-12 rounded-xl object-contain" />
+      <span className="font-display text-sm sm:text-lg font-bold text-primary-green block tracking-tight">JNS Social</span>
+    </div>
+    <div className="flex items-center gap-2 sm:gap-6">
+      <a href="#about" className="hidden sm:block text-xs sm:text-sm font-medium text-gray-600 hover:text-primary-green transition-colors">Tentang</a>
+      <a href="#programs" className="hidden sm:block text-xs sm:text-sm font-medium text-gray-600 hover:text-primary-green transition-colors">Program</a>
+      <a href="#contact" className="hidden sm:block text-xs sm:text-sm font-medium text-gray-600 hover:text-primary-green transition-colors">Kontak</a>
+      <button onClick={() => document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' })} className="bg-primary-green text-white text-xs px-2 py-1 rounded">
+        Donasi
+      </button>
+    </div>
+</nav>
+  <div className="ticker-box">
+    <div className="ticker-content" suppressHydrationWarning={true}>
+      {isClient && (
+        <>
+          <span>Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat.</span>
+          <span className="mobile-hidden">Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat.</span>
+        </>
+      )}
     </div>
   </div>
 </div>
+<div className="h-24 sm:h-20"></div>
 
-<section id="hero" className={`relative transition-all duration-700 ${visibleSections.hero ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+<section id="hero" className="relative">
   <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(#2F5D3A 0.5px, transparent 0.5px)', backgroundSize: '16px 16px' }}></div>
   <div className="absolute top-1/3 -left-16 sm:-left-24 w-40 sm:w-56 h-40 sm:h-56 bg-primary-green/10 rounded-full blur-2xl"></div>
   <div className="absolute bottom-1/3 -right-16 sm:-right-24 w-40 sm:w-56 h-40 sm:h-56 bg-gold/10 rounded-full blur-2xl"></div>
   <div className="hidden sm:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gold/5 rounded-full blur-3xl"></div>
   
-  <div className={`max-w-7xl mx-auto px-4 py-16 lg:py-20 relative transition-all duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="relative order-2 lg:order-1">
-              <div className="relative h-[280px] sm:h-[350px] lg:h-[450px] rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl">
-                {pillars.map((pillar, idx) => (
-                  <div 
-                    key={pillar.id}
-                    className={`absolute inset-0 transition-all duration-700 ${idx === galleryIndex ? 'opacity-100 translate-x-0 z-10' : 'opacity-0 translate-x-8'}`}
-                  >
-                    <img 
-                      src={pillar.campaigns[0].image + '&w=600&q=70'} 
-                      alt={pillar.title}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                      onError={(e) => e.target.style.display = 'none'}
-                    />
-                    <div className={`absolute inset-0 bg-gradient-to-t ${pillar.gradient} opacity-60`}></div>
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <span className="inline-block bg-white/90 text-primary-green text-sm font-bold px-3 py-1 rounded-lg mb-2">{pillar.title}</span>
-                      <h3 className="text-white text-2xl font-bold mb-1">{pillar.campaigns[0].title}</h3>
-                      <p className="text-white/80 text-sm">{pillar.tagline}</p>
-                    </div>
-                  </div>
-                ))}
+  <div className="max-w-7xl mx-auto px-3 sm:px-4 py-6 sm:py-12 lg:py-20">
+    <div className="grid lg:grid-cols-2 gap-6 sm:gap-10 items-center">
+      <div className="relative order-2 lg:order-1">
+        <div className="relative h-[200px] sm:h-[300px] lg:h-[450px] rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl">
+          {pillars[galleryIndex] && (
+            <div className="absolute inset-0">
+              <img 
+                src={pillars[galleryIndex].campaigns[0].image + '&w=600&q=70'} 
+                alt={pillars[galleryIndex].title}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div className={`absolute inset-0 bg-gradient-to-t ${pillars[galleryIndex].gradient} opacity-60`}></div>
+              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
+                <span className="inline-block bg-white/90 text-primary-green text-xs sm:text-sm font-bold px-2 sm:px-3 py-1 rounded-lg mb-2">{pillars[galleryIndex].title}</span>
+                <h3 className="text-white text-lg sm:text-2xl font-bold mb-1">{pillars[galleryIndex].campaigns[0].title}</h3>
+                <p className="text-white/80 text-xs sm:text-sm">{pillars[galleryIndex].tagline}</p>
               </div>
+            </div>
+          )}
+        </div>
               
               <div className="flex justify-center gap-3 mt-6">
                 {pillars.map((pillar, idx) => (
@@ -317,115 +266,114 @@ return (
               
               <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-primary-green to-soft-green rounded-lg blur-2xl"></div>
               <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-tr from-teal-deep/10 to-emerald-bright/10 rounded-lg blur-2xl"></div>
+      </div>
+      
+      <div className="order-1 lg:order-2">
+        <h1 className="font-display text-2xl sm:text-3xl lg:text-5xl font-bold text-primary-green leading-tight mb-3 sm:mb-6 tracking-tight">
+          Bantuan Anda,<br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-bright to-teal-deep">Mengubah Hidup Mereka</span>
+        </h1>
+        
+        <p className="text-sm sm:text-base text-neutral-dark mb-4 sm:mb-6 leading-relaxed">
+          Di belakang kita, ada <span className="font-semibold text-primary-green">ribuan anak</span> yang bermimpi punya masa depan cerah. Tapi keterbatasan ekonomi mengancam mimpi mereka. <span className="font-semibold">Bantu kami wujudkan harapan mereka</span> — karena kebaikan Anda hari ini, adalah investasi untuk generasi masa depan.
+        </p>
+        
+        <div className="flex flex-wrap gap-3 sm:gap-4 mb-6 sm:mb-8">
+          <button onClick={() => document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' })} 
+            className="bg-primary-green text-white text-xs sm:text-sm px-3 sm:px-5 py-2 sm:py-2.5 rounded-lg">
+            Donasi Sekarang
+          </button>
+          <a href="#transparency" 
+            className="border border-primary-green text-primary-green text-xs sm:text-sm px-3 sm:px-4 py-2 rounded-lg">
+            Dampak
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" className="py-8 sm:py-16 lg:py-28 bg-light-bg">
+  <div className="max-w-7xl mx-auto px-3 sm:px-4">
+    <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-start">
+      <div>
+        <span className="inline-block bg-primary-green/10 text-primary-green font-medium px-3 py-1 rounded text-xs mb-3">TENTANG KAMI</span>
+        <h2 className="font-display text-xl sm:text-2xl lg:text-4xl font-bold text-primary-green mb-4">JNS Social</h2>
+        <div className="space-y-3 sm:space-y-4 text-gray-700 text-xs sm:text-base leading-relaxed">
+          <p>
+            <strong className="text-primary-green">JNS Social</strong> lahir dari keprihatinan melihat kondisi saudara-saudara kita di Makassar yang membutuhkan uluran tangan. Kami percaya bahwa satu rupiah dari Anda bisa mengubah hidup mereka.
+          </p>
+          <p>
+            Setiap donasi yang masuk <span className="font-semibold text-emerald-600">100% kami salurkan</span> ke penerima manfaat. Kami beroperasi dengan prinsip transparansi penuh.
+          </p>
+          <p>
+            Dari anak yatim yang bermimpi menjadi dokter, ibu-ibu yang ingin mandiri secara ekonomi, hingga masyarakat yang membutuhkan bantuan kesehatan — <span className="font-semibold text-primary-green">mereka menunggu kebaikan hati Anda.</span>
+          </p>
+        </div>
+              
+        <div className="mt-6 grid grid-cols-2 gap-3 sm:gap-4">
+          <div className="bg-white border border-primary-green/20 p-3 sm:p-5 rounded-xl">
+            <div className="flex items-center gap-2 sm:gap-3 mb-2">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-primary-green to-dark-green flex items-center justify-center">
+                <Target className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+              </div>
+              <span className="font-display text-sm sm:text-lg font-bold text-primary-green">Visi</span>
             </div>
-            
-            <div className="order-1 lg:order-2">
-              <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-green leading-tight mb-4 sm:mb-6 tracking-tight">
-                Bantuan Anda,<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-bright to-teal-deep">Mengubah Hidup Mereka</span>
-              </h1>
-              
-              <p className="text-base sm:text-lg text-neutral-dark mb-6 sm:mb-8 leading-relaxed">
-                Di belakang kita, ada <span className="font-semibold text-primary-green">ribuan anak</span> yang bermimpi punya masa depan cerah. Tapi keterbatasan ekonomi mengancam mimpi mereka. <span className="font-semibold">Bantu kami wujudkan harapan mereka</span> — karena kebaikan Anda hari ini, adalah investasi untuk generasi masa depan.
-              </p>
-              
-              <div className="flex flex-wrap gap-4 mb-10">
-                <button onClick={() => document.getElementById('programs').scrollIntoView({ behavior: 'smooth' })} 
-                  className="group bg-primary-green hover:bg-dark-green text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg transition-all duration-300 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2 sm:gap-3">
-                  <Heart className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                  <span>Donasi Sekarang</span>
-                </button>
-                <a href="#transparency" 
-                  className="border-2 border-primary-green text-primary-green font-semibold px-5 sm:px-6 py-3 sm:py-4 rounded-lg transition-all duration-300 hover:bg-primary-green hover:text-white hover:scale-[1.02] active:scale-[0.98]">
-                  Dampak Bantuan Anda
-                </a>
+            <p className="text-xs sm:text-sm text-neutral-gray">Menjadi harapan bagi mereka yang membutuhkan di Sulawesi Selatan.</p>
+          </div>
+          <div className="bg-white border border-primary-green/20 p-3 sm:p-5 rounded-xl">
+            <div className="flex items-center gap-2 sm:gap-3 mb-2">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-primary-green to-dark-green flex items-center justify-center">
+                <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+              </div>
+              <span className="font-display text-sm sm:text-lg font-bold text-primary-green">Misi</span>
+            </div>
+            <p className="text-xs sm:text-sm text-gray-600">Menyalurkan bantuan dengan amanah dan transparan.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-6 lg:mt-0">
+        <div className="space-y-3 sm:space-y-4">
+          <div className="bg-gradient-to-br from-orange-400 to-amber-500 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-white shadow-md">
+            <div className="font-display text-2xl sm:text-3xl font-bold mb-1">5</div>
+            <div className="text-xs sm:text-sm font-medium">Pilar Program</div>
+          </div>
+          <div className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-5 shadow-md border border-gray-100">
+            <div className="flex items-center gap-2 sm:gap-3 mb-2">
+              <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-500" />
+              <span className="font-display text-sm sm:text-lg font-bold text-primary-green">Transparan</span>
+            </div>
+            <p className="text-xs sm:text-sm text-gray-600">Laporan keuangan publik dan audit berkala.</p>
+          </div>
+        </div>
+        <div className="space-y-3 sm:space-y-4">
+          <div className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-5 shadow-md border border-gray-100">
+            <div className="flex items-center gap-2 sm:gap-3 mb-2">
+              <Users className="w-4 h-4 sm:w-5 sm:h-5 text-purple-500" />
+              <span className="font-display text-sm sm:text-lg font-bold text-primary-green">Community</span>
+            </div>
+            <p className="text-xs sm:text-sm text-gray-600">Ribuan donatur yang telah terpercaya.</p>
+          </div>
+          <div className="bg-gradient-to-br from-orange-400 to-amber-500 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-white shadow-md">
+            <div className="font-display text-2xl sm:text-3xl font-bold mb-1">100%</div>
+            <div className="text-xs sm:text-sm text-orange-100 font-medium">Dana Tersalur</div>
+          </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="about" className={`py-20 lg:py-28 bg-light-bg transition-all duration-700 ${visibleSections.about ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="inline-block bg-primary-green/10 text-primary-green font-medium px-4 py-2 rounded-lg text-sm mb-4">TENTANG KAMI</span>
-              <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-green mb-4 sm:mb-6">JNS Social</h2>
-              <div className="space-y-5 text-gray-700 leading-relaxed">
-                <p className="text-lg">
-                  <strong className="text-primary-green">JNS Social</strong> lahir dari keprihatinan melihat kondisi saudara-saudara kita di Makassar yang membutuhkan uluran tangan. Kami percaya bahwa satu rupiah dari Anda bisa mengubah hidup mereka.
-                </p>
-                <p>
-                  Setiap donasi yang masuk <span className="font-semibold text-emerald-600">100% kami salurkan</span> ke penerima manfaat. Kami beroperasi dengan prinsip transparansi penuh — karena kepercayaan Anda adalah tanggung jawab kami.
-                </p>
-                <p>
-                  Dari anak yatim yang bermimpi menjadi dokter, ibu-ibu yang ingin mandiri secara ekonomi, hingga masyarakat yang membutuhkan bantuan kesehatan — <span className="font-semibold text-primary-green">mereka menunggu kebaikan hati Anda.</span>
-                </p>
-              </div>
-              
-              <div className="mt-8 grid grid-cols-2 gap-4">
-                <div className="bg-white border-2 border-primary-green/20 p-5 rounded-2xl">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-green to-dark-green flex items-center justify-center">
-                      <Target className="w-6 h-6 text-white" />
-                    </div>
-                    <span className="font-display text-lg font-bold text-primary-green">Visi</span>
-                  </div>
-                  <p className="text-sm text-neutral-gray">Menjadi harapan bagi mereka yang membutuhkan di Sulawesi Selatan.</p>
-                </div>
-                <div className="bg-white border-2 border-primary-green/20 p-5 rounded-2xl">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-green to-dark-green flex items-center justify-center">
-                      <Shield className="w-6 h-6 text-white" />
-                    </div>
-                    <span className="font-display text-lg font-bold text-primary-green">Misi</span>
-                  </div>
-                  <p className="text-sm text-gray-600">Menyalurkan bantuan dengan amanah dan transparan.</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-4">
-                <div className="bg-gradient-to-br from-orange-400 to-amber-500 rounded-2xl p-6 text-white shadow-xl">
-                  <div className="font-display text-3xl sm:text-4xl font-bold mb-2 opacity-90">5</div>
-                  <div className="text-white font-medium">Pilar Program</div>
-                </div>
-                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Heart className="w-6 h-6 text-emerald-500" />
-                    <span className="font-display text-lg font-bold text-primary-green">Transparan</span>
-                  </div>
-                  <p className="text-sm text-gray-600">Laporan keuangan publik dan audit berkala.</p>
-                </div>
-              </div>
-              <div className="space-y-4 mt-8">
-                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Users className="w-6 h-6 text-purple-500" />
-                    <span className="font-display text-lg font-bold text-primary-green">Community</span>
-                  </div>
-                  <p className="text-sm text-gray-600">Ribuan donatur yang telah terpercaya.</p>
-                </div>
-                <div className="bg-gradient-to-br from-orange-400 to-amber-500 rounded-2xl p-6 text-white shadow-xl">
-                  <div className="font-display text-3xl sm:text-4xl font-bold mb-2 opacity-90">100%</div>
-                  <div className="text-orange-100 font-medium">Dana Tersalur</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="programs" className={`py-20 lg:py-28 bg-light-bg relative transition-all duration-700 ${visibleSections.programs ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <span className="inline-block bg-emerald-bright/10 text-emerald-bright font-medium px-4 py-2 rounded-lg text-sm mb-4">PROGRAM KAMI</span>
-            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-green mb-4">Pilar Program Kebaikan</h2>
-            <p className="text-gray-500 max-w-xl mx-auto">Pilih salah satu pilar untuk melihat campaign donasi yang tersedia.</p>
+      <section id="programs" className="py-8 sm:py-16 lg:py-28 bg-light-bg">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4">
+          <div className="text-center mb-6 sm:mb-10">
+            <span className="inline-block bg-emerald-bright/10 text-emerald-bright font-medium px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm mb-3 sm:mb-4">PROGRAM KAMI</span>
+            <h2 className="font-display text-xl sm:text-2xl lg:text-4xl font-bold text-primary-green mb-3 sm:mb-4">Pilar Program Kebaikan</h2>
+            <p className="text-gray-500 text-xs sm:text-sm px-4">Pilih salah satu pilar untuk melihat campaign donasi.</p>
           </div>
           
-          <div className="flex gap-4 justify-center flex-wrap mb-8">
+          <div className="flex gap-2 sm:gap-4 justify-center flex-wrap mb-6 sm:mb-8">
             {pillars.map((p, idx) => (
               <button 
                 key={p.id} 
@@ -433,44 +381,38 @@ return (
                   setActivePillar(p.id)
                   document.getElementById('campaigns')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
                 }}
-                className={`group flex-shrink-0 w-28 sm:w-32 p-3 sm:p-4 rounded-xl sm:rounded-2xl transition-all duration-500 cursor-pointer ${
+                className={`group flex-shrink-0 w-20 sm:w-28 p-2 sm:p-4 rounded-xl sm:rounded-2xl transition-all cursor-pointer ${
                   activePillar === p.id 
-                    ? `bg-white shadow-2xl ring-2 ring-primary-green scale-105` 
-                    : 'bg-white/50 shadow-lg hover:shadow-xl hover:scale-102'
+                    ? `bg-white shadow-xl ring-2 ring-primary-green` 
+                    : 'bg-white/50 shadow-md'
                 }`}
-                style={{ 
-                  animationDelay: `${idx * 100}ms`,
-                  transform: loaded ? 'scale(1)' : 'scale(0.9)',
-                  opacity: loaded ? 1 : 0,
-                  transition: `all 0.5s cubic-bezier(0.25, 1, 0.5, 1) ${idx * 100}ms`
-                }}
               >
-                <div className={`w-12 h-12 rounded-xl ${p.color} flex items-center justify-center mx-auto mb-3 shadow-md transition-transform duration-300 group-hover:scale-110 bg-opacity-20`}>
-                  <p.icon className="w-6 h-6 text-white" />
+                <div className={`w-8 h-8 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl ${p.color} flex items-center justify-center mx-auto mb-2`}>
+                  <p.icon className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
                 </div>
-                <p className="font-semibold text-gray-800 text-center text-sm">{p.title}</p>
+                <p className="font-semibold text-gray-800 text-center text-xs">{p.title}</p>
               </button>
             ))}
           </div>
 
-          <div className="bg-white rounded-3xl shadow-xl p-8 mb-12 max-w-4xl mx-auto border-t-4 border-emerald-bright">
-            <div className="flex items-start gap-6">
-              <div className={`w-16 h-16 rounded-2xl ${currentPillar.gradient} flex items-center justify-center flex-shrink-0 shadow-lg`}>
-                <currentPillar.icon className="w-8 h-8 text-white" />
+          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg sm:shadow-xl p-4 sm:p-6 lg:p-8 mb-8 sm:mb-10 max-w-4xl mx-auto border-t-2 sm:border-t-4 border-emerald-bright">
+            <div className="flex items-start gap-3 sm:gap-4 lg:gap-6">
+              <div className={`w-12 h-12 sm:w-14 lg:w-16 rounded-xl lg:rounded-2xl ${currentPillar.gradient} flex items-center justify-center flex-shrink-0 shadow-lg`}>
+                <currentPillar.icon className="w-5 h-5 sm:w-6 lg:w-8 text-white" />
               </div>
-              <div className="flex-1">
-                <div className="flex items-center gap-3 mb-2">
-                  <h3 className="font-display text-2xl font-bold text-primary-green">{currentPillar.title}</h3>
-                  <span className="bg-gradient-to-r from-emerald-bright to-teal-deep text-white text-sm font-medium px-3 py-1 rounded-lg">{currentPillar.tagline}</span>
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mb-2">
+                  <h3 className="font-display text-lg sm:text-xl lg:text-2xl font-bold text-primary-green">{currentPillar.title}</h3>
+                  <span className="bg-gradient-to-r from-emerald-bright to-teal-deep text-white text-xs px-2 py-0.5 rounded">{currentPillar.tagline}</span>
                 </div>
-                <p className="text-gray-600 mb-6">{currentPillar.description}</p>
+                <p className="text-gray-600 text-xs sm:text-sm mb-4">{currentPillar.description}</p>
                 
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-2 sm:gap-3">
                   {currentPillar.benefits?.map((item, i) => (
-                    <div key={i} className="bg-white rounded-xl p-3 border border-primary-green/10 flex items-start gap-2 shadow-sm">
-                      <item.icon className="w-5 h-5 text-primary-green flex-shrink-0 mt-0.5" />
+                    <div key={i} className="bg-white rounded-lg p-2 sm:p-3 border border-primary-green/10 flex items-start gap-2">
+                      <item.icon className="w-4 h-4 text-primary-green flex-shrink-0 mt-0.5" />
                       <div>
-                        <span className="font-semibold text-primary-green text-sm block">{item.title}</span>
+                        <span className="font-semibold text-primary-green text-xs block">{item.title}</span>
                         <span className="text-xs text-neutral-gray">{item.desc}</span>
                       </div>
                     </div>
@@ -480,61 +422,42 @@ return (
             </div>
           </div>
           
-          <div id="campaigns" className="flex flex-wrap gap-6 justify-center">
+          <div id="campaigns" className="flex flex-wrap gap-4 sm:gap-6 justify-center">
             {currentPillar.campaigns.map((c, idx) => {
               const percent = Math.round((c.raised / c.target) * 100)
               return (
                 <div 
                   key={c.id} 
-                  className="group w-full sm:w-72 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer hover:-translate-y-2"
+                  className="group w-[45%] sm:w-72 bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer"
                   onClick={() => openModal(currentPillar.id, c.id)}
-                  style={{
-                    animationDelay: `${(idx + 5) * 100}ms`,
-                    transform: loaded ? 'translateY(0)' : 'translateY(20px)',
-                    opacity: loaded ? 1 : 0,
-                    transition: `all 0.5s cubic-bezier(0.25, 1, 0.5, 1) ${(idx + 5) * 100}ms`
-                  }}
                 >
-                  <div className="relative h-40 overflow-hidden bg-gray-100">
+                  <div className="relative h-28 sm:h-40 overflow-hidden bg-gray-100">
                     <img 
                       src={c.image + '&w=300&q=60'} 
                       alt={c.title} 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                      className="w-full h-full object-cover" 
                       loading="lazy" 
-                      onError={(e) => {
-                        e.target.style.display = 'none'
-                        e.target.nextElementSibling.classList.remove('hidden')
-                        e.target.nextElementSibling.classList.add('flex')
-                      }} 
                     />
-                    <div className="absolute inset-0 hidden items-center justify-center">
-                      <currentPillar.icon className={`w-10 h-10 ${currentPillar.color.replace('bg-', 'text-')}`} />
-                    </div>
-                    <div className={`absolute inset-0 bg-gradient-to-t ${currentPillar.gradient} opacity-60`}></div>
-                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
-                      <span className="text-white/90 text-xs font-medium">{currentPillar.title}</span>
-                      <span className="bg-white/90 text-primary-green text-xs font-bold px-2 py-1 rounded-lg">{percent}%</span>
-                    </div>
-                    <div className="absolute inset-0 bg-primary-green/0 group-hover:bg-primary-green/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                      <button className="bg-white text-primary-green font-semibold px-4 py-2 rounded-lg flex items-center gap-2 transform scale-90 group-hover:scale-100 transition-transform duration-300">
-                        <Heart className="w-4 h-4" /> Donasi
-                      </button>
+                    <div className={`absolute inset-0 bg-gradient-to-t ${currentPillar.gradient} opacity-50`}></div>
+                    <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between">
+                      <span className="text-white/90 text-xs">{currentPillar.title}</span>
+                      <span className="bg-white/90 text-primary-green text-xs font-bold px-1.5 py-0.5 rounded">{percent}%</span>
                     </div>
                   </div>
                   
-                  <div className="p-5">
-                    <h3 className="font-display text-lg font-bold text-gray-800 mb-4">{c.title}</h3>
-                    <div className="mb-4">
-                      <div className="h-2 bg-gray-100 rounded-lg overflow-hidden">
-                        <div className={`h-full bg-gradient-to-r from-emerald-bright to-teal-deep rounded-lg transition-all duration-1000`} style={{ width: `${percent}%` }}></div>
+                  <div className="p-3 sm:p-5">
+                    <h3 className="font-display text-sm sm:text-lg font-bold text-gray-800 mb-2 sm:mb-4">{c.title}</h3>
+                    <div className="mb-2 sm:mb-4">
+                      <div className="h-1.5 sm:h-2 bg-gray-100 rounded-lg overflow-hidden">
+                        <div className={`h-full bg-gradient-to-r from-emerald-bright to-teal-deep rounded-lg`} style={{ width: `${percent}%` }}></div>
                       </div>
                     </div>
-                    <div className="space-y-2 mb-5 text-sm">
+                    <div className="space-y-1 sm:space-y-2 text-xs sm:text-sm">
                       <div className="flex justify-between"><span className="text-gray-400">Terkumpul</span><span className="font-semibold text-emerald-bright">Rp{formatRupiah(c.raised)}</span></div>
                       <div className="flex justify-between"><span className="text-gray-400">Target</span><span className="font-medium text-gray-600">Rp{formatRupiah(c.target)}</span></div>
                     </div>
-                    <button onClick={(e) => { e.stopPropagation(); openModal(currentPillar.id, c.id) }} className="w-full bg-primary-green hover:bg-teal-light text-white font-medium py-3 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 hover:shadow-lg">
-                      <Heart className="w-4 h-4" /> Donasi Sekarang
+                    <button onClick={(e) => { e.stopPropagation(); openModal(currentPillar.id, c.id) }} className="w-full bg-primary-green text-white text-xs py-2 rounded-lg">
+                      Donasi
                     </button>
                   </div>
                 </div>
@@ -544,67 +467,36 @@ return (
         </div>
       </section>
 
-      <section id="transparency" className={`py-20 lg:py-28 bg-white transition-all duration-700 ${visibleSections.transparency ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <span className="inline-block bg-primary-green/10 text-primary-green font-medium px-4 py-2 rounded-lg text-sm mb-4">TRANSPARANSI</span>
-            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-green mb-4">Bukti Penyaluran</h2>
-            <p className="text-gray-500 max-w-xl mx-auto">Dokumentasi kegiatan dan menyalurkan bantuan kami.</p>
-          </div>
+      <section id="transparency" className="py-8 sm:py-16 lg:py-28 bg-white">
+  <div className="max-w-7xl mx-auto px-3 sm:px-4">
+    <div className="text-center mb-6 sm:mb-10">
+      <span className="inline-block bg-primary-green/10 text-primary-green font-medium px-3 py-1 rounded text-xs mb-3">TRANSPARANSI</span>
+      <h2 className="font-display text-xl sm:text-2xl lg:text-4xl font-bold text-primary-green mb-3">Bukti Penyaluran</h2>
+      <p className="text-gray-500 text-xs sm:text-sm px-4">Dokumentasi kegiatan dan diserahkan bantuan kami.</p>
+    </div>
 
-          <div className="relative pt-32">
-            <button 
-              onClick={() => {
-                const container = galleryRef.current
-                container.scrollBy({ left: -280, behavior: 'smooth' })
-              }}
-              className="absolute left-2 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white/90 transition-all z-20 group"
-            >
-              <ChevronLeft className="w-6 h-6 text-primary-green group-hover:scale-110 transition-transform" />
-            </button>
-            <button 
-              onClick={() => {
-                const container = galleryRef.current
-                container.scrollBy({ left: 280, behavior: 'smooth' })
-              }}
-              className="absolute right-2 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white/90 transition-all z-20 group"
-            >
-              <ChevronRight className="w-6 h-6 text-primary-green group-hover:scale-110 transition-transform" />
-            </button>
-            
-            <div 
-              ref={galleryRef}
-              className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory px-12"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-            >
-              {[...activities, ...activities].map((activity, idx) => (
-                <div key={idx} className="flex-shrink-0 w-48 h-48 snap-start bg-white rounded-xl overflow-hidden shadow-md relative group cursor-pointer">
-                  <img 
-                    src={activity.image + '&w=300&q=60'} 
-                    alt={activity.title} 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    loading="lazy"
-                    onError={(e) => {
-                      e.target.style.display = 'none'
-                      e.target.nextElementSibling.style.display = 'flex'
-                    }}
-                  />
-                  <div className="absolute inset-0 hidden items-center justify-center bg-light-bg">
-                    <span className="text-2xl">📷</span>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <span className="inline-block bg-gold text-white text-xs font-bold px-2 py-1 rounded-lg mb-1">{activity.pillar}</span>
-                    <h3 className="text-white font-semibold text-sm">{activity.title}</h3>
-                  </div>
-                </div>
-              ))}
+    <div className="flex gap-3 sm:gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+      {[...activities, ...activities].map((activity, idx) => (
+        <div key={idx} className="flex-shrink-0 w-32 sm:w-44 snap-start">
+          <div className="bg-gray-100 rounded-lg overflow-hidden">
+            <img 
+              src={activity.image + '&w=200&q=60'} 
+              alt={activity.title} 
+              className="w-full h-24 sm:h-32 object-cover"
+              loading="lazy"
+            />
+            <div className="p-2">
+              <span className="text-gold text-xs font-bold">{activity.pillar}</span>
+              <h3 className="text-gray-800 font-semibold text-xs truncate block">{activity.title}</h3>
             </div>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
-      <section id="contact" className={`py-20 lg:py-28 bg-dark-green transition-all duration-700 ${visibleSections.contact ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+<section id="contact" className="py-8 sm:py-16 lg:py-28 bg-dark-green">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
             <div>

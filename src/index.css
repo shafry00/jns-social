@@ -10,7 +10,6 @@
   --color-light-bg: #F5F7F6;
   --color-neutral-dark: #333333;
   --color-neutral-gray: #6B7280;
-  
   --color-teal-deep: #2F5D3A;
   --color-teal: #2F5D3A;
   --color-teal-light: #4F7F5E;
@@ -21,172 +20,64 @@
 }
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-  }
-  
-  body {
-    @apply antialiased text-neutral-dark overflow-x-hidden;
-    max-width: 100vw;
-  }
-  
-  * {
-    max-width: 100%;
-    overflow-x: hidden;
-  }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
+  body { @apply antialiased text-neutral-dark overflow-x-hidden; max-width: 100vw; }
+  * { max-width: 100%; overflow-x: hidden; }
 }
 
 @layer utilities {
-  .font-display {
-    font-family: "Poppins", serif;
+  .font-display { font-family: "Poppins", serif; }
+  .font-body { font-family: "Inter", sans-serif; }
+}
+
+.ticker-box {
+  width: 100%;
+  overflow: hidden;
+  background: #2F5D3A;
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 60px;
+}
+
+.ticker-content {
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  position: absolute;
+  width: auto;
+  min-width: max-content;
+  animation: jalan-terus 40s linear infinite;
+  will-change: transform;
+}
+
+.ticker-content span {
+  padding-right: 100px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .ticker-content span {
+    font-size: 0.9rem;
+    padding-right: 50px;
   }
-  
-  .font-body {
-    font-family: "Inter", sans-serif;
-  }
-  
-  .btn-primary {
-    @apply bg-primary-green text-white px-6 py-3.5 rounded-lg font-semibold transition-all duration-300;
-  }
-  
-  .btn-primary:hover {
-    @apply bg-dark-green;
-  }
-  
-  .btn-secondary {
-    @apply border-2 border-primary-green text-primary-green px-6 py-3 rounded-lg font-semibold transition-all duration-300;
-  }
-  
-  .btn-secondary:hover {
-    @apply bg-light-bg;
+  .ticker-content {
+    animation-duration: 30s;
   }
 }
 
-@layer animations {
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  
-  @keyframes fadeInUp {
-    from { 
-      opacity: 0; 
-      transform: translateY(20px); 
-    }
-    to { 
-      opacity: 1; 
-      transform: translateY(0); 
-    }
-  }
-  
-  @keyframes scaleIn {
-    from { 
-      opacity: 0; 
-      transform: scale(0.95); 
-    }
-    to { 
-      opacity: 1; 
-      transform: scale(1); 
-    }
-  }
-  
-  @keyframes slideInRight {
-    from { 
-      opacity: 0; 
-      transform: translateX(-20px); 
-    }
-    to { 
-      opacity: 1; 
-      transform: translateX(0); 
-    }
-  }
-  
-  @keyframes pulse-gentle {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.6; }
-  }
-  
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-  }
-  
-  .animate-fade-in {
-    animation: fadeIn 0.3s ease-out forwards;
-  }
-  
-  .animate-fade-in-up {
-    animation: fadeInUp 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-  }
-  
-  .animate-scale-in {
-    animation: scaleIn 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-  }
-  
-  .animate-slide-in-right {
-    animation: slideInRight 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-  }
-  
-  .animate-pulse-gentle {
-    animation: pulse-gentle 2s ease-in-out infinite;
-  }
-  
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-  
-  .scroll-reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  }
-  
-  .scroll-reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .scroll-reveal-delay-1 { transition-delay: 100ms; }
-  .scroll-reveal-delay-2 { transition-delay: 200ms; }
-  .scroll-reveal-delay-3 { transition-delay: 300ms; }
-  .scroll-reveal-delay-4 { transition-delay: 400ms; }
-  .scroll-reveal-delay-5 { transition-delay: 500ms; }
+@keyframes jalan-terus {
+  0% { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+@keyframes jalan-terus {
+  0% { 
+    transform: translateX(100vw);
   }
-}
-
-@keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
+  100% { 
+    transform: translateX(-100%);
   }
-  
-  .marquee-track {
-    display: flex;
-    width: max-content;
-    animation: marquee 25s linear infinite;
-  }
-  
-  .marquee-text {
-    display: inline-flex;
-    white-space: nowrap;
-  }
-    
-  .animate-marquee {
-    animation: marquee 30s linear infinite;
-    display: flex;
-    width: max-content;
-  }
-.scroll-smooth::-webkit-scrollbar {
-  display: none;
-}
-.scroll-smooth {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
