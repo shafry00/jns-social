@@ -164,9 +164,20 @@
 
 @keyframes marquee {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    100% { transform: translateX(-100%); }
   }
   
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 25s linear infinite;
+  }
+  
+  .marquee-text {
+    display: inline-flex;
+    white-space: nowrap;
+  }
+    
   .animate-marquee {
     animation: marquee 30s linear infinite;
     display: flex;
