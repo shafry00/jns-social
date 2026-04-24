@@ -23,10 +23,17 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
   
   body {
-    @apply antialiased text-neutral-dark;
+    @apply antialiased text-neutral-dark overflow-x-hidden;
+    max-width: 100vw;
+  }
+  
+  * {
+    max-width: 100%;
+    overflow-x: hidden;
   }
 }
 

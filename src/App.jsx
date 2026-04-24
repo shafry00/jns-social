@@ -232,7 +232,7 @@ function App() {
   }
 
 return (
-    <div className="min-h-screen bg-light-bg">
+    <div className="min-h-screen bg-light-bg overflow-x-hidden">
       <a 
         href="https://wa.me/628XXXXXXXXXX" 
         target="_blank"
@@ -637,6 +637,24 @@ return (
                   <div>
                     <div className="font-medium">WhatsApp</div>
                     <div className="text-teal-200 text-sm">+62 XXX XXXX XXXX</div>
+                  </div>
+                </div>
+
+                <div className="mt-8">
+                  <p className="text-teal-200 text-sm mb-4">Ikuti kami di:</p>
+                  <div className="flex gap-4">
+                    <a href="https://instagram.com/jnssocial" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+                      <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.01-4.947.071-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.071-4.947-.071zm-5.454 6.317c.534-.009 1.409.02 2.402.593 1.162.672 1.997 1.907 2.23 3.515.071 1.235.075 1.576.075 4.245 0 2.669-.004 3.01-.075 4.245-.233 1.608-1.068 2.843-2.23 3.515-.993.573-1.868.602-2.402.593-2.652-.021-3.262-.605-3.356-.814-.347-.771-.436-1.546-.436-2.388 0-2.446.004-2.979.079-3.628.193-1.671 1.186-2.945 2.776-3.535.93-.345 1.864-.46 2.793-.474.602-.009 1.077-.024 1.406-.038.986-.044 1.444-.169 1.779-.361.925-.529 1.513-1.372 1.889-2.407.224-.616.299-1.062.368-1.882.073-.871.109-1.305.109-3.95 0-2.644-.036-3.078-.109-3.949-.069-.821-.144-1.267-.368-1.882-.376-1.035-.964-1.878-1.889-2.407-.335-.192-.793-.318-1.779-.36-.329-.015-.804-.03-1.406-.039z"/><path d="M12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a3.999 3.999 0 110-7.998 3.999 3.999 0 010 7.998zm6.406-11.845a1.44 1.44 0 11-1.44-1.44 1.44 1.44 0 011.44 1.44z"/></svg>
+                    </a>
+                    <a href="https://facebook.com/jnssocial" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+                      <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.955 10.125 11.884v-8.385H7.078v-3.499h3.047V9.362c0-3.012 1.792-4.675 4.533-4.675 1.312 0 2.686.235 2.686.235v2.953h-1.514c-1.491 0-1.956.93-1.956 1.874v2.25h3.328l-.532 3.499h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="https://tiktok.com/@jnssocial" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+                      <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 0013 19.4V2h-3.45v2.12A8.14 8.14 0 0011.83 16c-.07-.09-.13-.18-.19-.27a5.09 5.09 0 01-2.67-4.37c0-2.82 2.38-5.12 5.33-5.12a5.12 5.12 0 013.67 1.26l.05-.05h.09z"/></svg>
+                    </a>
+                    <a href="https://youtube.com/@jnssocial" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+                      <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
                   </div>
                 </div>
               </div>
