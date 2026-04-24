@@ -271,9 +271,7 @@ return (
   </div>
 </div>
 
-<section id="hero" className={`relative transition-all duration-700 ${
-          visibleSections.hero ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}>
+<section id="hero" className={`relative transition-all duration-700 ${visibleSections.hero ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
   <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(#2F5D3A 0.5px, transparent 0.5px)', backgroundSize: '16px 16px' }}></div>
   <div className="absolute top-1/3 -left-16 sm:-left-24 w-40 sm:w-56 h-40 sm:h-56 bg-primary-green/10 rounded-full blur-2xl"></div>
   <div className="absolute bottom-1/3 -right-16 sm:-right-24 w-40 sm:w-56 h-40 sm:h-56 bg-gold/10 rounded-full blur-2xl"></div>
@@ -345,9 +343,7 @@ return (
         </div>
       </section>
 
-      <section id="about" className={`py-20 lg:py-28 bg-light-bg transition-all duration-700 ${
-          visibleSections.about ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}>
+      <section id="about" className={`py-20 lg:py-28 bg-light-bg transition-all duration-700 ${visibleSections.about ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -419,9 +415,7 @@ return (
         </div>
       </section>
 
-      <section id="programs" className={`py-20 lg:py-28 bg-light-bg relative transition-all duration-700 ${
-          visibleSections.programs ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}>
+      <section id="programs" className={`py-20 lg:py-28 bg-light-bg relative transition-all duration-700 ${visibleSections.programs ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block bg-emerald-bright/10 text-emerald-bright font-medium px-4 py-2 rounded-lg text-sm mb-4">PROGRAM KAMI</span>
@@ -548,9 +542,7 @@ return (
         </div>
       </section>
 
-      <section id="transparency" className={`py-20 lg:py-28 bg-white transition-all duration-700 ${
-          visibleSections.transparency ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}>
+      <section id="transparency" className={`py-20 lg:py-28 bg-white transition-all duration-700 ${visibleSections.transparency ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block bg-primary-green/10 text-primary-green font-medium px-4 py-2 rounded-lg text-sm mb-4">TRANSPARANSI</span>
@@ -558,7 +550,7 @@ return (
             <p className="text-gray-500 max-w-xl mx-auto">Dokumentasi kegiatan dan menyalurkan bantuan kami.</p>
           </div>
 
-<div className="relative pt-32">
+          <div className="relative pt-32">
             <button 
               onClick={() => {
                 const container = galleryRef.current
@@ -610,9 +602,7 @@ return (
         </div>
       </section>
 
-      <section id="contact" className={`py-20 lg:py-28 bg-dark-green transition-all duration-700 ${
-          visibleSections.contact ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}>
+      <section id="contact" className={`py-20 lg:py-28 bg-dark-green transition-all duration-700 ${visibleSections.contact ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
