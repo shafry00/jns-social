@@ -61,7 +61,7 @@ const pillars = [
     ]
   },
   { 
-id: 'media-dakwah', 
+    id: 'media-dakwah', 
     title: 'Media & Dakwah', 
     icon: Mic, 
     color: 'bg-primary-green', 
@@ -138,7 +138,6 @@ function App() {
   const [visibleSections, setVisibleSections] = useState({})
   const galleryRef = useRef(null)
 
-  // Intersection Observer for scroll animations
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -170,7 +169,6 @@ function App() {
     if (saved) setDonorData(JSON.parse(saved))
   }, [])
 
-  // Auto-scroll gallery + transparency gallery
   useEffect(() => {
     const interval = setInterval(() => {
       setGalleryIndex(prev => (prev + 1) % activities.length)
@@ -184,7 +182,6 @@ function App() {
     return () => clearInterval(interval)
   }, [])
 
-  // Hero carousel auto-scroll
   useEffect(() => {
     const interval = setInterval(() => {
       setGalleryIndex(prev => (prev + 1) % pillars.length)
@@ -236,7 +233,6 @@ function App() {
 
 return (
     <div className="min-h-screen bg-light-bg">
-      {/* Floating WhatsApp Button */}
       <a 
         href="https://wa.me/628XXXXXXXXXX" 
         target="_blank"
@@ -247,7 +243,6 @@ return (
         <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7" />
       </a>
       
-<!-- Navbar + Ticker - STICKY - stick at top when scroll -->
 <div className="sticky top-0 z-50">
   <nav className="bg-white/95 backdrop-blur-md shadow-sm">
     <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
@@ -267,10 +262,18 @@ return (
       </div>
     </div>
   </nav>
+  <div className="bg-gradient-to-r from-primary-green to-dark-green overflow-hidden py-2">
+    <div className="animate-marquee whitespace-nowrap">
+      <span className="inline-flex items-center gap-2 text-white font-medium mx-8">
+        <span className="text-gold">★</span> Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat. <span className="text-gold">★</span> Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat. <span className="text-gold">★</span> Jalankan program kebermanfaatan umat 2026: santunan fakir miskin, bantuan pendidikan, kesehatan, dan pembangunan musholla. Mari bersama berkontribusi untuk kebaikan umat.
+      </span>
+    </div>
+  </div>
 </div>
 
-{/* Hero Section */}
-<div className="relative">
+<section id="hero" className={`relative transition-all duration-700 ${
+          visibleSections.hero ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
   <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(#2F5D3A 0.5px, transparent 0.5px)', backgroundSize: '16px 16px' }}></div>
   <div className="absolute top-1/3 -left-16 sm:-left-24 w-40 sm:w-56 h-40 sm:h-56 bg-primary-green/10 rounded-full blur-2xl"></div>
   <div className="absolute bottom-1/3 -right-16 sm:-right-24 w-40 sm:w-56 h-40 sm:h-56 bg-gold/10 rounded-full blur-2xl"></div>
@@ -278,7 +281,6 @@ return (
   
   <div className={`max-w-7xl mx-auto px-4 py-16 lg:py-20 relative transition-all duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left: Carousel */}
             <div className="relative order-2 lg:order-1">
               <div className="relative h-[280px] sm:h-[350px] lg:h-[450px] rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl">
                 {pillars.map((pillar, idx) => (
@@ -303,7 +305,6 @@ return (
                 ))}
               </div>
               
-              {/* Pillar Indicators */}
               <div className="flex justify-center gap-3 mt-6">
                 {pillars.map((pillar, idx) => (
                   <button 
@@ -314,12 +315,10 @@ return (
                 ))}
               </div>
               
-              {/* Decorative Elements */}
               <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-primary-green to-soft-green rounded-lg blur-2xl"></div>
               <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-tr from-teal-deep/10 to-emerald-bright/10 rounded-lg blur-2xl"></div>
             </div>
             
-            {/* Right: Text & CTA */}
             <div className="order-1 lg:order-2">
               <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-green leading-tight mb-4 sm:mb-6 tracking-tight">
                 Bantuan Anda,<br />
@@ -346,7 +345,6 @@ return (
         </div>
       </section>
 
-      {/* About Section */}
       <section id="about" className={`py-20 lg:py-28 bg-light-bg transition-all duration-700 ${
           visibleSections.about ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
@@ -421,7 +419,6 @@ return (
         </div>
       </section>
 
-      {/* Programs Section */}
       <section id="programs" className={`py-20 lg:py-28 bg-light-bg relative transition-all duration-700 ${
           visibleSections.programs ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
@@ -432,7 +429,6 @@ return (
             <p className="text-gray-500 max-w-xl mx-auto">Pilih salah satu pilar untuk melihat campaign donasi yang tersedia.</p>
           </div>
           
-          {/* Pillar Cards - Horizontal */}
           <div className="flex gap-4 justify-center flex-wrap mb-8">
             {pillars.map((p, idx) => (
               <button 
@@ -461,7 +457,6 @@ return (
             ))}
           </div>
 
-          {/* Pillar Description */}
           <div className="bg-white rounded-3xl shadow-xl p-8 mb-12 max-w-4xl mx-auto border-t-4 border-emerald-bright">
             <div className="flex items-start gap-6">
               <div className={`w-16 h-16 rounded-2xl ${currentPillar.gradient} flex items-center justify-center flex-shrink-0 shadow-lg`}>
@@ -489,7 +484,6 @@ return (
             </div>
           </div>
           
-          {/* Campaign Grid */}
           <div id="campaigns" className="flex flex-wrap gap-6 justify-center">
             {currentPillar.campaigns.map((c, idx) => {
               const percent = Math.round((c.raised / c.target) * 100)
@@ -554,7 +548,6 @@ return (
         </div>
       </section>
 
-      {/* Transparency - Running Gallery */}
       <section id="transparency" className={`py-20 lg:py-28 bg-white transition-all duration-700 ${
           visibleSections.transparency ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
@@ -565,7 +558,6 @@ return (
             <p className="text-gray-500 max-w-xl mx-auto">Dokumentasi kegiatan dan menyalurkan bantuan kami.</p>
           </div>
 
-          {/* Transparency - Gallery Slider */}
 <div className="relative pt-32">
             <button 
               onClick={() => {
@@ -618,7 +610,6 @@ return (
         </div>
       </section>
 
-      {/* Contact Section */}
       <section id="contact" className={`py-20 lg:py-28 bg-dark-green transition-all duration-700 ${
           visibleSections.contact ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
@@ -688,7 +679,6 @@ return (
         </div>
       </section>
 
-      {/* Donation Modal */}
       {modalOpen && selectedCampaign && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={closeModal}>
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm animate-fade-in" />
