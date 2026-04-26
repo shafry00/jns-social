@@ -23,7 +23,7 @@ const pillars = [
     title: 'Pendidikan', 
     icon: GraduationCap, 
     color: 'bg-primary-green', 
-    gradient: 'from-primary-green to-soft-green', 
+    gradient: 'bg-gradient-to-br from-primary-green to-dark-green', 
     tagline: 'Wujudkan Mimpi Mereka',
     description: 'Ribuan anak di Makassar terancam kehilangan kesempatan belajar karena keterbatasan ekonomi. Setiap donasi Anda bisa membantu mereka tetap sekolah dan bermimpi besar.',
     benefits: [
@@ -44,7 +44,7 @@ const pillars = [
     title: 'Sosial', 
     icon: Users, 
     color: 'bg-primary-green', 
-    gradient: 'from-primary-green to-soft-green', 
+    gradient: 'bg-gradient-to-br from-primary-green to-dark-green', 
     tagline: 'Uluran Tangan Kita',
     description: 'Bantuan sosial untuk saudara-saudara kita yang membutuhkan. Dari paket kebutuhan dasar hingga bantuan kesehatan, kami hadir untuk meringankan beban mereka.',
     benefits: [
@@ -65,7 +65,7 @@ const pillars = [
     title: 'Media & Dakwah', 
     icon: Mic, 
     color: 'bg-primary-green', 
-    gradient: 'from-primary-green to-soft-green', 
+    gradient: 'bg-gradient-to-br from-primary-green to-dark-green', 
     tagline: 'Menyebaran Kebenaran',
     description: 'Konten dakwah Islami yang edukatif dan relevan untuk ummat di era digital. Kami memproduksi berbagai konten untuk memudahkan spread ilmu agama.',
     benefits: [
@@ -86,7 +86,7 @@ const pillars = [
     title: 'Sedekah & Infaq', 
     icon: Heart, 
     color: 'bg-gold', 
-    gradient: 'from-gold to-gold-light', 
+    gradient: 'bg-gradient-to-br from-amber-500 to-yellow-400', 
     tagline: 'Beramal dengan Hati',
     description: 'Menghimpun dan menyalurkan sedekah dan infaq untuk kepentingan ummat. Setiap rupiah yang masuk akan kami salurkan dengan penuh amanah.',
     benefits: [
@@ -107,7 +107,7 @@ const pillars = [
     title: 'Ekonomi Ummat', 
     icon: Briefcase, 
     color: 'bg-primary-green', 
-    gradient: 'from-primary-green to-soft-green', 
+    gradient: 'bg-gradient-to-br from-primary-green to-dark-green', 
     tagline: 'Membangun Kemandirian',
     description: 'Memberdayakan pelaku UMKM lokal Makassar melalui pelatihan, permodalan, dan akses pasar. Kami membantu masyarakat mencapai kemandirian ekonomi.',
     benefits: [
